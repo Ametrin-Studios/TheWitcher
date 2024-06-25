@@ -1,0 +1,41 @@
+ {
+   "type": "the_witcher:large_spike",
+   "config": {
+     "base_block": {
+       "type": "minecraft:simple_state_provider",
+       "state": {
+         "Name": "minecraft:packed_ice"
+       }
+     },
+     "column_radius": {
+       "type": "minecraft:uniform",
+       "value": {
+         "min_inclusive": 4,
+         "max_inclusive": 7
+       }
+     },
+     "height_scale": {
+       "type": "minecraft:uniform",
+       "value": {
+         "min_inclusive": 1.2,
+         "max_exclusive": 1.8
+       }
+     },
+     "bluntness": {
+       "type": "minecraft:uniform",
+       "value": {
+         "min_inclusive": 0.3,
+         "max_exclusive": 0.8
+       }
+     },
+     "wind_speed": {
+       "type": "minecraft:uniform",
+       "value": {
+         "min_inclusive": 0.1,
+         "max_exclusive": 0.4
+       }
+     },
+     "min_radius_for_wind": 5,
+     "min_bluntness_for_wind": 0.5
+   }
+ }

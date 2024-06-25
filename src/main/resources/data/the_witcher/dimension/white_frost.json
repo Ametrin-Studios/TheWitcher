@@ -1,0 +1,177 @@
+{
+  "type": "the_witcher:white_frost",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "the_witcher:white_frost",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "the_witcher:icy_peaks",
+          "parameters": {
+            "temperature": [
+              -2,
+              2
+            ],
+            "humidity": [
+              -2,
+              2
+            ],
+            "continentalness": [
+              0.7,
+              2
+            ],
+            "erosion": [
+              -2,
+              -0.4
+            ],
+            "weirdness": [
+              0,
+              2
+            ],
+            "depth": -1,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "the_witcher:snowy_desert",
+          "parameters": {
+            "temperature": [
+              -2,
+              2
+            ],
+            "humidity": [
+              -2,
+              0.2
+            ],
+            "continentalness": [
+              -0.13,
+              0.6
+            ],
+            "erosion": [
+              0,
+              2
+            ],
+            "weirdness": [
+              -2,
+              0.3
+            ],
+            "depth": -1,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "the_witcher:frozen_spikes",
+          "parameters": {
+            "temperature": [
+              -2,
+              2
+            ],
+            "humidity": [
+              -2,
+              0.5
+            ],
+            "continentalness": [
+              -0.13,
+              0.6
+            ],
+            "erosion": [
+              -0.3,
+              0.4
+            ],
+            "weirdness": [
+              -0.3,
+              0.3
+            ],
+            "depth": -1,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "the_witcher:frosted_ocean",
+          "parameters": {
+            "temperature": [
+              -2,
+              2
+            ],
+            "humidity": [
+              -2,
+              2
+            ],
+            "continentalness": [
+              -2,
+              -0.19
+            ],
+            "erosion": [
+              -2,
+              2
+            ],
+            "weirdness": [
+              -2,
+              2
+            ],
+            "depth": -1,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "the_witcher:arctic_boneyard",
+          "parameters": {
+            "temperature": [
+              -2,
+              2
+            ],
+            "humidity": [
+              -0.2,
+              2
+            ],
+            "continentalness": [
+              -0.13,
+              0.6
+            ],
+            "erosion": [
+              -0.4,
+              2
+            ],
+            "weirdness": [
+              -0.2,
+              0.8
+            ],
+            "depth": -1,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "the_witcher:icebound_depths",
+          "parameters": {
+            "temperature": [
+              -2,
+              0
+            ],
+            "humidity": [
+              0,
+              2
+            ],
+            "continentalness": [
+              -2,
+              2
+            ],
+            "erosion": [
+              -1,
+              1
+            ],
+            "weirdness": [
+              -2,
+              2
+            ],
+            "depth": [
+              1.3,
+              2
+            ],
+            "offset": 0
+          }
+        }
+      ]
+    }
+  }
+}

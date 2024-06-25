@@ -1,0 +1,42 @@
+{
+  "temperature": 0,
+  "downfall": 0.5,
+  "precipitation": "snow",
+  "creature_spawn_probability": 0.07,
+  "effects": {
+    "sky_color": 8364543,
+    "fog_color": 12638463,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "particle": {
+      "options": {
+        "type": "minecraft:snowflake"
+      },
+      "probability": 0.07
+    }
+  },
+  "spawners": {},
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [
+      "the_witcher:large_icicle"
+    ],
+    [
+      "the_witcher:icebound_depths/floor",
+      "the_witcher:icebound_depths/ceiling"
+    ],
+    [
+      "the_witcher:icebound_depths/larimar"
+    ],
+    [
+      "minecraft:freeze_top_layer"
+    ]
+  ]
+}
