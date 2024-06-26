@@ -27,15 +27,15 @@ public class TWLargeSpikeFeature extends Feature<TWLargeSpikeConfiguration> {
         RandomSource random = context.random();
         TWLargeSpikeConfiguration configuration = context.config();
 
-        int k = Mth.randomBetweenInclusive(random, configuration.columnRadius.getMinValue(), configuration.columnRadius.getMaxValue());
-        TWLargeSpike spike = makeSpike(origin.atY(genLevel.getHeight(Heightmap.Types.MOTION_BLOCKING, origin.getX(), origin.getZ())), random, k, configuration.bluntness, configuration.heightScale);
+        int k = Mth.randomBetweenInclusive(random, configuration.columnRadius().getMinValue(), configuration.columnRadius().getMaxValue());
+        TWLargeSpike spike = makeSpike(origin.atY(genLevel.getHeight(Heightmap.Types.MOTION_BLOCKING, origin.getX(), origin.getZ())), random, k, configuration.bluntness(), configuration.heightScale());
 
         TWLargeSpike.WindOffsetter windOffsetter;
-        if (spike.isSuitableForWind(configuration.minRadiusForWind, configuration.minBluntnessForWind)) {windOffsetter = new TWLargeSpike.WindOffsetter(origin.getY(), random, configuration.windSpeed);}
+        if (spike.isSuitableForWind(configuration.minRadiusForWind(), configuration.minBluntnessForWind())) {windOffsetter = new TWLargeSpike.WindOffsetter(origin.getY(), random, configuration.windSpeed());}
         else {windOffsetter = TWLargeSpike.WindOffsetter.noWind();}
 
         boolean flag = spike.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(genLevel, windOffsetter);
-        if (flag) {spike.placeBlocks(genLevel, random, windOffsetter, configuration.baseBlock);}
+        if (flag) {spike.placeBlocks(genLevel, random, windOffsetter, configuration.baseBlock());}
         return flag;
     }
 

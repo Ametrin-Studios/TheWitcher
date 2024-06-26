@@ -53,18 +53,19 @@ public class TWIceGhostEntity extends Monster {
     }
 
     @Override
-    public boolean causeFallDamage(float pFallDistance, float pMultiplier, @NotNull DamageSource pSource) {return false;}
+    public boolean causeFallDamage(float pFallDistance, float pMultiplier, @NotNull DamageSource pSource) { return false; }
     @Override
     protected void checkFallDamage(double pY, boolean pOnGround, @NotNull BlockState pState, @NotNull BlockPos pPos) {}
+    @Override
+    public int getBaseExperienceReward() { return 5 + random.nextInt(5); }
+
     @Override @ParametersAreNonnullByDefault
-    public int getExperienceReward() {return 5 + level.random.nextInt(5);}
-    @Override @ParametersAreNonnullByDefault
-    public boolean isPreventingPlayerRest(Player player) {return true;}
+    public boolean isPreventingPlayerRest(Player player) { return true; }
 
     @Override @NotNull
     protected PathNavigation createNavigation(@NotNull Level level) {
-        FlyingPathNavigation flyingNavigation = new FlyingPathNavigation(this, level){
-            public boolean isStableDestination(BlockPos pos) {return !this.level.getBlockState(pos.below()).isAir();}
+        var flyingNavigation = new FlyingPathNavigation(this, level){
+            public boolean isStableDestination(BlockPos pos) { return !this.level.getBlockState(pos.below()).isAir(); }
         };
 
         flyingNavigation.setCanOpenDoors(false);

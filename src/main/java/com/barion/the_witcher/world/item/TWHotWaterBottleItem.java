@@ -24,9 +24,9 @@ public class TWHotWaterBottleItem extends Item {
     @Override @ParametersAreNonnullByDefault
     public @NotNull ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity entity) {
         super.finishUsingItem(itemStack, level, entity);
-        if (entity instanceof ServerPlayer serverplayer) {
-            CriteriaTriggers.CONSUME_ITEM.trigger(serverplayer, itemStack);
-            serverplayer.awardStat(Stats.ITEM_USED.get(this));
+        if (entity instanceof ServerPlayer serverPlayer) {
+            CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, itemStack);
+            serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
         if (!level.isClientSide) {
@@ -37,7 +37,7 @@ public class TWHotWaterBottleItem extends Item {
             return new ItemStack(Items.GLASS_BOTTLE);
         } else {
             if (entity instanceof Player player && !((Player)entity).getAbilities().instabuild) {
-                ItemStack itemstack = new ItemStack(Items.GLASS_BOTTLE);
+                var itemstack = new ItemStack(Items.GLASS_BOTTLE);
                 if (!player.getInventory().add(itemstack)) {
                     player.drop(itemstack, false);
                 }

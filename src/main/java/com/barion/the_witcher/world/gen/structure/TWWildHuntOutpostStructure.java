@@ -1,7 +1,7 @@
 package com.barion.the_witcher.world.gen.structure;
 
+import com.barion.the_witcher.registry.TWStructures;
 import com.barion.the_witcher.util.TWUtil;
-import com.barion.the_witcher.world.gen.TWStructures;
 import com.barion.the_witcher.world.gen.util.TWProcessors;
 import com.legacy.structure_gel.api.structure.GelTemplateStructurePiece;
 import com.mojang.serialization.Codec;

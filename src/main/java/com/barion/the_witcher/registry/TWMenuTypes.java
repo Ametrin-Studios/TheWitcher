@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class TWMenuTypes {
+public final class TWMenuTypes {
     public static final DeferredRegister<MenuType<?>> REGISTER = DeferredRegister.create(BuiltInRegistries.MENU, TheWitcher.MOD_ID);
 
     public static final Supplier<MenuType<TWMasterSmithingMenu>> MASTER_SMITHING_TABLE_MENU = register("master_smithing_table_menu", TWMasterSmithingMenu::new);

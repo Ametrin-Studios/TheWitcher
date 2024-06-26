@@ -16,7 +16,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class TWEntityTypes {
+public final class TWEntityTypes {
     public static final DeferredRegister<EntityType<?>> REGISTER = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, TheWitcher.MOD_ID);
 
     public static final Supplier<EntityType<TWIceGhostEntity>> ICE_GHOST = register("ice_ghost", livingEntity(TWIceGhostEntity::new, MobCategory.MONSTER, 0.6f, 1.95f, 8));

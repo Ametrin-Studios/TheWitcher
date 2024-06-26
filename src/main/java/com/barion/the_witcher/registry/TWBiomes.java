@@ -1,4 +1,4 @@
-package com.barion.the_witcher.world.gen;
+package com.barion.the_witcher.registry;
 
 import com.barion.the_witcher.util.TWUtil;
 import net.minecraft.core.registries.Registries;

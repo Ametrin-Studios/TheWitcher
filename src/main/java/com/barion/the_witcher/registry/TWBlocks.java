@@ -108,7 +108,7 @@ public class TWBlocks {
 
     private static <T extends Block> DeferredBlock<T> register(String name, Supplier<T> block){
         var registered = registerWithoutItem(name, block);
-        TWItems.REGISTER.register(name, () -> new BlockItem(registered.get(), TWItems.DEFAULT_PROPERIES));
+        TWItems.REGISTER.register(name, () -> new BlockItem(registered.get(), TWItems.DEFAULT_PROPERTIES));
         return registered;
     }
 

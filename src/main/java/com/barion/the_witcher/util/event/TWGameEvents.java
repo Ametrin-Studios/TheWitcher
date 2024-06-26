@@ -10,7 +10,7 @@ import com.barion.the_witcher.effect.TWEffects;
 import com.barion.the_witcher.potion.TWPotions;
 import com.barion.the_witcher.registry.TWAttachmentTypes;
 import com.barion.the_witcher.registry.TWItems;
-import com.barion.the_witcher.world.gen.TWLevels;
+import com.barion.the_witcher.registry.TWLevels;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.LivingEntity;
@@ -35,7 +35,7 @@ public final class TWGameEvents {
     }
 
     private static void freezeEntity(LivingEntity entity) {
-        if(entity.level().dimension() != TWLevels.WhiteFrost) { return; }
+        if(entity.level().dimension() != TWLevels.WHITE_FROST) { return; }
         if(entity.isOnFire()) {
             entity.clearFire();
         }

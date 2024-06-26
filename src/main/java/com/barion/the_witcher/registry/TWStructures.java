@@ -1,4 +1,4 @@
-package com.barion.the_witcher.world.gen;
+package com.barion.the_witcher.registry;
 
 import com.barion.the_witcher.util.TWTags;
 import com.barion.the_witcher.util.TWUtil;
@@ -10,7 +10,7 @@ import com.legacy.structure_gel.api.structure.GridStructurePlacement;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 
-public class TWStructures {
+public final class TWStructures {
     private TWStructures() {}
 
     public static void init() {}
@@ -25,7 +25,7 @@ public class TWStructures {
                 .addPiece(()-> TWIcyRuinStructure.Piece::new)
                 .pushStructure(TWIcyRuinStructure::new)
                         .biomes(TWTags.Biomes.HAS_ICY_RUIN)
-                        .dimensions(TWLevels.WhiteFrost)
+                        .dimensions(TWLevels.WHITE_FROST)
                 .popStructure()
                 .placement(()-> GridStructurePlacement.builder(27, 0.8f).build(IcyRuin.getRegistryName()))
                 .build();

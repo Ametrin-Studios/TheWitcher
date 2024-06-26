@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class TWPOIs {
+public final class TWPOIs {
     public static final DeferredRegister<PoiType> REGISTER = DeferredRegister.create(BuiltInRegistries.POINT_OF_INTEREST_TYPE, TheWitcher.MOD_ID);
 
     public static final Supplier<PoiType> WHITE_FROST_PORTAL = REGISTER.register("white_frost_portal", ()-> new PoiType(ImmutableSet.copyOf(TWBlocks.WHITE_FROST_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));

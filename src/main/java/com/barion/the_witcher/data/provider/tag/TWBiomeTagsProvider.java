@@ -1,8 +1,8 @@
 package com.barion.the_witcher.data.provider.tag;
 
 import com.barion.the_witcher.TheWitcher;
+import com.barion.the_witcher.registry.TWBiomes;
 import com.barion.the_witcher.util.TWTags;
-import com.barion.the_witcher.world.gen.TWBiomes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;

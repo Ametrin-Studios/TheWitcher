@@ -45,7 +45,7 @@ public class TWBlockStateProvider extends ExtendedBlockStateProvider {
     protected void powerBlock(TWPowerBlock powerBlock, String name, String texture){
         var on = models().cubeAll("block/" + name + "/on", modBlockLoc(texture + "/on"));
         var off = models().cubeAll("block/" + name + "/off", modBlockLoc(texture + "/off"));
-        getVariantBuilder(powerBlock).forAllStates(state -> ConfiguredModel.builder().modelFile(state.getValue(TWPowerBlock.hasPower) ? on : off).build());
+        getVariantBuilder(powerBlock).forAllStates(state -> ConfiguredModel.builder().modelFile(state.getValue(TWPowerBlock.HAS_POWER) ? on : off).build());
     }
 
     protected void masterSmithingTableBlock(TWMasterSmithingTableBlock block, String name, String texture){
@@ -68,8 +68,8 @@ public class TWBlockStateProvider extends ExtendedBlockStateProvider {
         ModelFile upTip = models().cross("block/" + name + "/up/tip", modBlockLoc(texture + "/up/tip")).renderType(RenderTypes.Cutout);
         ModelFile upTipMerge = models().cross("block/" + name + "/up/tip_merge", modBlockLoc(texture + "/up/tip_merge")).renderType(RenderTypes.Cutout);
         getVariantBuilder(icicle).forAllStates(state -> {
-            final DripstoneThickness thickness = state.getValue(TWIcicleBlock.Thickness);
-            final Direction direction = state.getValue(TWIcicleBlock.TipDirection);
+            final DripstoneThickness thickness = state.getValue(TWIcicleBlock.THICKNESS);
+            final Direction direction = state.getValue(TWIcicleBlock.TIP_DIRECTION);
             return ConfiguredModel.builder().modelFile((direction == Direction.UP) ? (thickness == DripstoneThickness.BASE) ? upBase : (thickness == DripstoneThickness.FRUSTUM) ? upFrustum : (thickness == DripstoneThickness.MIDDLE) ? upMiddle : (thickness == DripstoneThickness.TIP_MERGE) ? upTipMerge : upTip : (thickness == DripstoneThickness.BASE) ? downBase : (thickness == DripstoneThickness.FRUSTUM) ? downFrustum : (thickness == DripstoneThickness.MIDDLE) ? downMiddle : (thickness == DripstoneThickness.TIP_MERGE) ? downTipMerge : downTip).build();
         });
     }
