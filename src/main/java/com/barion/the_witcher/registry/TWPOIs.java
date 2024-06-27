@@ -1,6 +1,7 @@
 package com.barion.the_witcher.registry;
 
 import com.barion.the_witcher.TheWitcher;
+import com.barion.the_witcher.registry.block.TWBlocks;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.ai.village.poi.PoiType;

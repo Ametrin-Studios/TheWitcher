@@ -1,8 +1,9 @@
-package com.barion.the_witcher.registry;
+package com.barion.the_witcher.registry.block;
 
 import com.ametrinstudios.ametrin.world.block.AgeableBushBlock;
 import com.barion.the_witcher.TheWitcher;
-import com.barion.the_witcher.fluid.TWFluids;
+import com.barion.the_witcher.registry.fluid.TWFluids;
+import com.barion.the_witcher.registry.item.TWItems;
 import com.barion.the_witcher.world.block.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.*;
@@ -19,17 +20,17 @@ import static com.ametrinstudios.ametrin.world.block.helper.BlockBehaviourProper
 import static com.ametrinstudios.ametrin.world.block.helper.BlockBehaviourPropertiesHelper.Properties;
 import static com.ametrinstudios.ametrin.world.block.helper.BlockRegisterHelper.*;
 
-public class TWBlocks {
+public final class TWBlocks {
     public static final DeferredRegister.Blocks REGISTER = DeferredRegister.createBlocks(TheWitcher.MOD_ID);
 
-    protected static final BlockBehaviour.Properties frostedProperties = BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(1.5f, 6).sound(SoundType.STONE).friction(Blocks.ICE.getFriction());
-    protected static final BlockBehaviour.Properties frostedPropertiesNoCollision = CopyProperties(frostedProperties).noCollission();
-    protected static final BlockBehaviour.Properties cobbledFrostedProperties = CopyProperties(frostedProperties).destroyTime(2);
-    protected static final BlockBehaviour.Properties deepFrostedProperties = CopyProperties(frostedProperties).destroyTime(3).sound(SoundType.DEEPSLATE).friction(Blocks.PACKED_ICE.getFriction());
-    protected static final BlockBehaviour.Properties deepFrostedPropertiesNoCollision = CopyProperties(deepFrostedProperties).noCollission();
-    protected static final BlockBehaviour.Properties deepCobbledFrostedProperties = CopyProperties(deepFrostedProperties).destroyTime(3.5f);
-    protected static final BlockBehaviour.Properties hallucinatedStoneProperties = Properties().mapColor(MapColor.COLOR_BLACK).strength(3, 9).requiresCorrectToolForDrops();
-    protected static final BlockBehaviour.Properties hallucinatedStonePropertiesNoCollision = CopyProperties(hallucinatedStoneProperties).noCollission();
+    private static final BlockBehaviour.Properties frostedProperties = BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(1.5f, 6).sound(SoundType.STONE).friction(Blocks.ICE.getFriction());
+    private static final BlockBehaviour.Properties frostedPropertiesNoCollision = CopyProperties(frostedProperties).noCollission();
+    private static final BlockBehaviour.Properties cobbledFrostedProperties = CopyProperties(frostedProperties).destroyTime(2);
+    private static final BlockBehaviour.Properties deepFrostedProperties = CopyProperties(frostedProperties).destroyTime(3).sound(SoundType.DEEPSLATE).friction(Blocks.PACKED_ICE.getFriction());
+    private static final BlockBehaviour.Properties deepFrostedPropertiesNoCollision = CopyProperties(deepFrostedProperties).noCollission();
+    private static final BlockBehaviour.Properties deepCobbledFrostedProperties = CopyProperties(deepFrostedProperties).destroyTime(3.5f);
+    private static final BlockBehaviour.Properties hallucinatedStoneProperties = Properties().mapColor(MapColor.COLOR_BLACK).strength(3, 9).requiresCorrectToolForDrops();
+    private static final BlockBehaviour.Properties hallucinatedStonePropertiesNoCollision = CopyProperties(hallucinatedStoneProperties).noCollission();
 
     public static final DeferredBlock<Block> SILVER_BLOCK = register("silver_block", ()-> new Block(CopyProperties(Blocks.IRON_BLOCK)));
     public static final DeferredBlock<Block> RAW_SILVER_BLOCK = register("raw_silver_block", ()-> new Block(CopyProperties(Blocks.RAW_IRON_BLOCK)));

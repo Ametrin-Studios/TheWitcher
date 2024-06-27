@@ -1,47 +1,31 @@
 package com.barion.the_witcher.world.block;
 
 import com.ametrinstudios.ametrin.world.block.PortalBlock;
-import com.barion.the_witcher.TheWitcher;
-import com.barion.the_witcher.registry.TWBlocks;
-import com.barion.the_witcher.registry.TWPOIs;
-import com.barion.the_witcher.util.TWTags;
+import com.ametrinstudios.ametrin.world.dimension.portal.PortalHelper;
+import com.barion.the_witcher.registry.TWLevels;
+import com.barion.the_witcher.registry.block.TWBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-public class TWWhiteFrostPortalBlock extends PortalBlock {
+public final class TWWhiteFrostPortalBlock extends PortalBlock {
 
-    public TWWhiteFrostPortalBlock() {super(11);}
+    public TWWhiteFrostPortalBlock() {super(11, new PortalHelper(()-> TWBlocks.WHITE_FROST_PORTAL.get().defaultBlockState(), ()-> TWBlocks.WHITE_FROST_PORTAL_FRAME.get().defaultBlockState()));}
 
-    @Override
-    protected PortalBlock registeredBlock() {return TWBlocks.WHITE_FROST_PORTAL.get();}
-    @Override
-    protected TagKey<Block> portalFrameBlocks() {return TWTags.Blocks.WHITE_FROST_PORTAL_FRAME;}
     @Override
     protected SimpleParticleType particle() {return ParticleTypes.SNOWFLAKE;}
     @Override
-    protected ResourceKey<Level> targetLevel() {return TheWitcher.WHITE_FROST;}
-    @Override
-    protected PoiType poi() {return TWPOIs.WHITE_FROST_PORTAL.get();}
-    @Override
-    protected Block defaultPortalFrameBlock() {return TWBlocks.WHITE_FROST_PORTAL_FRAME.get();}
+    protected ResourceKey<Level> targetLevel() {return TWLevels.WHITE_FROST;}
 
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    @ParametersAreNonnullByDefault
+    @Override @ParametersAreNonnullByDefault
     public void animateTick(BlockState blockState, Level level, BlockPos pos, RandomSource rand) {
         if (rand.nextInt(100) == 0) {
             level.playLocalSound((double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, SoundEvents.PORTAL_AMBIENT, SoundSource.BLOCKS, 0.5f, rand.nextFloat() * 0.4F + 0.8F, false);

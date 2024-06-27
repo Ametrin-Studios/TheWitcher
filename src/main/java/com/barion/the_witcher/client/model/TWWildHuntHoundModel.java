@@ -95,7 +95,7 @@ public class TWWildHuntHoundModel extends EntityModel<TWWildHuntHoundEntity> {
 	}
 
 	@Override
-	public void renderToBuffer(@NotNull PoseStack poseStack, @NotNull VertexConsumer buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+	public void renderToBuffer(@NotNull PoseStack poseStack, @NotNull VertexConsumer buffer, int packedLight, int packedOverlay, int i2) {
 		head.render(poseStack, buffer, packedLight, packedOverlay);
 		body.render(poseStack, buffer, packedLight, packedOverlay);
 		leftArm.render(poseStack, buffer, packedLight, packedOverlay);

@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class TWBiomeTagsProvider extends BiomeTagsProvider {
+public final class TWBiomeTagsProvider extends BiomeTagsProvider {
     public TWBiomeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, TheWitcher.MOD_ID, existingFileHelper);
     }

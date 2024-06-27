@@ -9,5 +9,5 @@ import org.slf4j.Logger;
 public class TWUtil {
     public static final Logger Logger = LogUtils.getLogger();
     public static StructurePieces.Builder pieceBuilder() {return new StructurePieces.Builder();}
-    public static ResourceLocation location(String key) {return new ResourceLocation(TheWitcher.MOD_ID, key);}
+    public static ResourceLocation location(String key) {return ResourceLocation.fromNamespaceAndPath(TheWitcher.MOD_ID, key);}
 }

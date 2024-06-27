@@ -1,4 +1,4 @@
-package com.barion.the_witcher.fluid;
+package com.barion.the_witcher.registry.fluid;
 
 import com.ametrinstudios.ametrin.fluid.SimpleFluidType;
 import com.barion.the_witcher.TheWitcher;

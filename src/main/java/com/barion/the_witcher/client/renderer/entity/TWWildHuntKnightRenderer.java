@@ -8,24 +8,21 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
-@OnlyIn(Dist.CLIENT)
-public class TWWildHuntKnightRenderer extends HumanoidMobRenderer<TWWildHuntKnightEntity, HumanoidModel<TWWildHuntKnightEntity>> {
-    private static final ResourceLocation Texture = TWUtil.location("textures/entity/wild_hunt_knight.png");
-    public static final ModelLayerLocation LayerLocation = new ModelLayerLocation(TWUtil.location("wild_hunt_knight"), "main");
-    public static final ModelLayerLocation LayerLocationInnerArmor = new ModelLayerLocation(TWUtil.location("wild_hunt_knight_inner_armor"), "main");
-    public static final ModelLayerLocation LayerLocationOuterArmor = new ModelLayerLocation(TWUtil.location("wild_hunt_knight_outer_armor"), "main");
+public final class TWWildHuntKnightRenderer extends HumanoidMobRenderer<TWWildHuntKnightEntity, HumanoidModel<TWWildHuntKnightEntity>> {
+    private static final ResourceLocation TEXTURE = TWUtil.location("textures/entity/wild_hunt_knight.png");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(TWUtil.location("wild_hunt_knight"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION_INNER_ARMOR = new ModelLayerLocation(TWUtil.location("wild_hunt_knight_inner_armor"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION_OUTER_ARMOR = new ModelLayerLocation(TWUtil.location("wild_hunt_knight_outer_armor"), "main");
 
     public TWWildHuntKnightRenderer(EntityRendererProvider.Context context) {
-        super(context, new HumanoidModel<>(context.bakeLayer(LayerLocation)), 0.5f);
-        addLayer(new HumanoidArmorLayer<>(this, new HumanoidModel<>(context.bakeLayer(LayerLocationInnerArmor)), new HumanoidModel<>(context.bakeLayer(LayerLocationOuterArmor))));
+        super(context, new HumanoidModel<>(context.bakeLayer(LAYER_LOCATION)), 0.5f);
+        addLayer(new HumanoidArmorLayer<>(this, new HumanoidModel<>(context.bakeLayer(LAYER_LOCATION_INNER_ARMOR)), new HumanoidModel<>(context.bakeLayer(LAYER_LOCATION_OUTER_ARMOR)), context.getModelManager()));
     }
 
     @Override @Nonnull
-    public ResourceLocation getTextureLocation(@NotNull TWWildHuntKnightEntity entity) {return Texture;}
+    public ResourceLocation getTextureLocation(@NotNull TWWildHuntKnightEntity entity) { return TEXTURE; }
 }

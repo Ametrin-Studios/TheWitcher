@@ -1,8 +1,7 @@
 package com.barion.the_witcher.world.entity;
 
-import com.barion.the_witcher.registry.TWItems;
+import com.barion.the_witcher.registry.item.TWItems;
 import com.barion.the_witcher.util.TWTags;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
@@ -25,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 public class TWWildHuntKnightEntity extends Monster implements TWWildHuntEntity{
-    public TWWildHuntKnightEntity(EntityType<TWWildHuntKnightEntity> entity, Level level) {super(entity, level);}
+    public TWWildHuntKnightEntity(EntityType<TWWildHuntKnightEntity> entity, Level level) { super(entity, level); }
 
     @Override
     protected void registerGoals() {
@@ -47,9 +46,9 @@ public class TWWildHuntKnightEntity extends Monster implements TWWildHuntEntity{
     }
 
     @Override @ParametersAreNonnullByDefault
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData, @Nullable CompoundTag tag) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
         populateDefaultEquipmentSlots(random, difficulty);
-        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData, tag);
+        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 
     @Override

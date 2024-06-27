@@ -1,7 +1,8 @@
 package com.barion.the_witcher.recipe;
 
-import com.barion.the_witcher.registry.TWBlocks;
-import com.barion.the_witcher.util.TWUtil;
+import com.barion.the_witcher.registry.block.TWBlocks;
+import com.barion.the_witcher.registry.recipe.TWRecipeSerializers;
+import com.barion.the_witcher.registry.recipe.TWRecipeTypes;
 import com.barion.the_witcher.world.inventory.TWMasterSmithingMenu;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -9,7 +10,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
@@ -21,7 +21,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 public class TWMasterSmithingRecipe implements Recipe<TWMasterSmithingMenu> {
-    private final ItemStack output;
+    public static final String ID = "master_smithing";
+    public final ItemStack output;
     private final Ingredient ingredient;
     private final int xpCost;
 
@@ -52,24 +53,19 @@ public class TWMasterSmithingRecipe implements Recipe<TWMasterSmithingMenu> {
     public int getXpCost() { return xpCost; }
 
     @Override
-    public @NotNull ItemStack getToastSymbol() {return TWBlocks.MASTER_SMITHING_TABLE.get().asItem().getDefaultInstance();}
+    public @NotNull ItemStack getToastSymbol() { return TWBlocks.MASTER_SMITHING_TABLE.get().asItem().getDefaultInstance(); }
 
     @Override
-    public @NotNull RecipeSerializer<?> getSerializer() {return Serializer.INSTANCE;}
-    public Ingredient getIngredient() {return ingredient;}
+    public @NotNull RecipeSerializer<?> getSerializer() { return TWRecipeSerializers.MASTER_SMITHING.get(); }
+    public Ingredient getIngredient() { return ingredient; }
     @Override
-    public @NotNull RecipeType<?> getType() {return Type.INSTANCE;}
+    public @NotNull RecipeType<?> getType() { return TWRecipeTypes.MASTER_SMITHING.get(); }
 
     public static class Type implements RecipeType<TWMasterSmithingRecipe> {
-        private Type() { }
-        public static final RecipeType<TWMasterSmithingRecipe> INSTANCE = new Type();
-        public static final String ID = "master_smithing";
+        public Type() { }
     }
 
     public static class Serializer implements RecipeSerializer<TWMasterSmithingRecipe> {
-        public static final Serializer INSTANCE = new Serializer();
-        public static final ResourceLocation ID = TWUtil.location("master_smithing");
-
         public static final MapCodec<TWMasterSmithingRecipe> CODEC = RecordCodecBuilder.mapCodec((builder) -> builder.group(
                 Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter((recipe) -> recipe.ingredient),
                 ItemStack.STRICT_CODEC.fieldOf("output").forGetter((recipe) -> recipe.output),
@@ -92,9 +88,9 @@ public class TWMasterSmithingRecipe implements Recipe<TWMasterSmithingMenu> {
         }
 
         @Override
-        public MapCodec<TWMasterSmithingRecipe> codec() { return CODEC; }
+        public @NotNull MapCodec<TWMasterSmithingRecipe> codec() { return CODEC; }
 
         @Override
-        public StreamCodec<RegistryFriendlyByteBuf, TWMasterSmithingRecipe> streamCodec() { return STREAM_CODEC; }
+        public @NotNull StreamCodec<RegistryFriendlyByteBuf, TWMasterSmithingRecipe> streamCodec() { return STREAM_CODEC; }
     }
 }

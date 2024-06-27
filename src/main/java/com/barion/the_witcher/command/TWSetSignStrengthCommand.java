@@ -1,6 +1,5 @@
 package com.barion.the_witcher.command;
 
-import com.barion.the_witcher.attachment.TWPlayerSignStrengthProvider;
 import com.barion.the_witcher.attachment.TWSignStrengthWrapper;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
@@ -44,10 +43,9 @@ public class TWSetSignStrengthCommand {
         return 1;
     }
 
-    private void setSignStrengthInternal(CommandSourceStack source, ServerPlayer target, int value){
-        target.getCapability(TWPlayerSignStrengthProvider.Instance).ifPresent(signStrength->{
-            signStrength.set(value, target);
-            source.sendSuccess(Component.translatable(success, target.getDisplayName(), value), true);
-        });
+    private void setSignStrengthInternal(CommandSourceStack source, ServerPlayer target, int value) {
+        var wrapper = new TWSignStrengthWrapper(target);
+        wrapper.set(value);
+        source.sendSuccess(()-> Component.translatable(success, target.getDisplayName(), value), true);
     }
 }

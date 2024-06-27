@@ -1,4 +1,4 @@
-package com.barion.the_witcher.registry;
+package com.barion.the_witcher.registry.damage;
 
 import net.minecraft.world.damagesource.DamageSource;
 

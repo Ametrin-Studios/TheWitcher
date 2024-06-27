@@ -1,6 +1,7 @@
-package com.barion.the_witcher.registry;
+package com.barion.the_witcher.registry.item;
 
 import com.barion.the_witcher.TheWitcher;
+import com.barion.the_witcher.registry.block.TWBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -15,11 +16,11 @@ public final class TWCreateModeTabs {
             .title(Component.translatable("itemGroup.the_witcher"))
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> TWItems.TAB_LOGO.get().getDefaultInstance())
-            .displayItems(TWCreateModeTabs::registerWitcherTab)
+            .displayItems(TWCreateModeTabs::fillWitcherTab)
             .build()
     );
 
-    public static void registerWitcherTab(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output event){
+    private static void fillWitcherTab(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output event){
         event.accept(TWBlocks.ALCITE);
         event.accept(TWItems.RAW_SILVER);
         event.accept(TWBlocks.SILVER_BLOCK);

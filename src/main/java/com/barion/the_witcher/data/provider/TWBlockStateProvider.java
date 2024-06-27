@@ -2,7 +2,7 @@ package com.barion.the_witcher.data.provider;
 
 import com.ametrinstudios.ametrin.data.provider.ExtendedBlockStateProvider;
 import com.barion.the_witcher.TheWitcher;
-import com.barion.the_witcher.registry.TWBlocks;
+import com.barion.the_witcher.registry.block.TWBlocks;
 import com.barion.the_witcher.world.block.TWIcicleBlock;
 import com.barion.the_witcher.world.block.TWLarimar;
 import com.barion.the_witcher.world.block.TWMasterSmithingTableBlock;
@@ -15,7 +15,7 @@ import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-public class TWBlockStateProvider extends ExtendedBlockStateProvider {
+public final class TWBlockStateProvider extends ExtendedBlockStateProvider {
     public TWBlockStateProvider(PackOutput output, ExistingFileHelper existingFileHelper){
         super(output, TheWitcher.MOD_ID, existingFileHelper);
     }

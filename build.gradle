@@ -95,7 +95,7 @@ dependencies {
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
     api "com.ametrinstudios:ametrin:${minecraft_version}-${ametrin_version}"
-    api "com.legacy:structure-gel_${minecraft_version}-${gel_version}"
+    //api "com.legacy:structure-gel_${minecraft_version}-${gel_version}"
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar

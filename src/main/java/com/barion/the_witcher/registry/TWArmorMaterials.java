@@ -1,6 +1,7 @@
 package com.barion.the_witcher.registry;
 
 import com.barion.the_witcher.TheWitcher;
+import com.barion.the_witcher.registry.item.TWItems;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;

@@ -1,6 +1,6 @@
 package com.barion.the_witcher.world.item;
 
-import com.barion.the_witcher.registry.TWItems;
+import com.barion.the_witcher.registry.item.TWItems;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;

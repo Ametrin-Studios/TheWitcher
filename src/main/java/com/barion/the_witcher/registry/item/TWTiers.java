@@ -1,4 +1,4 @@
-package com.barion.the_witcher.registry;
+package com.barion.the_witcher.registry.item;
 
 import com.barion.the_witcher.util.TWTags;
 import net.minecraft.tags.BlockTags;

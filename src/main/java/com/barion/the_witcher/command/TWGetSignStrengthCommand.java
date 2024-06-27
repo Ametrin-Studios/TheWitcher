@@ -1,6 +1,6 @@
 package com.barion.the_witcher.command;
 
-import com.barion.the_witcher.attachment.TWPlayerSignStrengthProvider;
+import com.barion.the_witcher.registry.TWAttachmentTypes;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -22,10 +22,7 @@ public class TWGetSignStrengthCommand{
     }
 
     private int getSignStrength(CommandSourceStack source, ServerPlayer player) {
-        player.getCapability(TWPlayerSignStrengthProvider.Instance).ifPresent(signStrength->{
-            source.sendSuccess(Component.translatable(success, player.getDisplayName(), signStrength.get()), true);
-        });
-
+        source.sendSuccess(() -> Component.translatable(success, player.getDisplayName(), player.getData(TWAttachmentTypes.SIGN_STRENGTH)), true);
         return 1;
     }
 

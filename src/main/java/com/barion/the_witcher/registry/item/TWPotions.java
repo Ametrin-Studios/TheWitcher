@@ -1,7 +1,7 @@
-package com.barion.the_witcher.potion;
+package com.barion.the_witcher.registry.item;
 
 import com.barion.the_witcher.TheWitcher;
-import com.barion.the_witcher.effect.TWEffects;
+import com.barion.the_witcher.registry.TWEffects;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.alchemy.Potion;
@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import static com.ametrinstudios.ametrin.util.Extensions.MinutesToTicks;
 
-public class TWPotions {
+public final class TWPotions {
     public static final DeferredRegister<Potion> REGISTER = DeferredRegister.create(BuiltInRegistries.POTION, TheWitcher.MOD_ID);
 
     public static final DeferredHolder<Potion, Potion> ENERGY_REGENERATION_POTION = REGISTER.register("energy_regeneration_potion", ()-> new Potion(new MobEffectInstance(TWEffects.ENERGY_REGENERATION, 6000, 0)));

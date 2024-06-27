@@ -2,7 +2,7 @@ package com.barion.the_witcher.data.provider;
 
 import com.ametrinstudios.ametrin.data.provider.ExtendedItemModelProvider;
 import com.barion.the_witcher.TheWitcher;
-import com.barion.the_witcher.registry.TWItems;
+import com.barion.the_witcher.registry.item.TWItems;
 import com.barion.the_witcher.world.block.TWIcicleBlock;
 import com.barion.the_witcher.world.block.TWPowerBlock;
 import net.minecraft.data.PackOutput;
@@ -10,7 +10,7 @@ import net.minecraft.world.item.SwordItem;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-public class TWItemModelProvider extends ExtendedItemModelProvider {
+public final class TWItemModelProvider extends ExtendedItemModelProvider {
     private final ModelFile bigHandheldModel = getExistingFile(modLoc("item/big_sword"));
 
     public TWItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {

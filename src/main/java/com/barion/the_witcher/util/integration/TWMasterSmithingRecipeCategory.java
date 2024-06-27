@@ -2,7 +2,7 @@ package com.barion.the_witcher.util.integration;
 
 import com.barion.the_witcher.client.screen.TWMasterSmithingScreen;
 import com.barion.the_witcher.recipe.TWMasterSmithingRecipe;
-import com.barion.the_witcher.registry.TWBlocks;
+import com.barion.the_witcher.registry.block.TWBlocks;
 import com.barion.the_witcher.util.TWUtil;
 import com.barion.the_witcher.world.block.TWMasterSmithingTableBlock;
 import mezz.jei.api.constants.VanillaTypes;
@@ -27,7 +27,7 @@ public class TWMasterSmithingRecipeCategory implements IRecipeCategory<TWMasterS
     private final IDrawable icon;
 
     public TWMasterSmithingRecipeCategory(IGuiHelper guiHelper) {
-        background = guiHelper.createDrawable(TWMasterSmithingScreen.Texture, 4, 4, 167, 77);
+        background = guiHelper.createDrawable(TWMasterSmithingScreen.TEXTURE_LOCATION, 4, 4, 167, 77);
         icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(TWBlocks.MASTER_SMITHING_TABLE.get()));
     }
 
@@ -47,6 +47,6 @@ public class TWMasterSmithingRecipeCategory implements IRecipeCategory<TWMasterS
     public void setRecipe(IRecipeLayoutBuilder builder, TWMasterSmithingRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 40, 35).addIngredients(recipe.getIngredient());
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 112, 35).addIngredients(Ingredient.of(recipe.getResultItem()));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 112, 35).addIngredients(Ingredient.of(recipe.output));
     }
 }

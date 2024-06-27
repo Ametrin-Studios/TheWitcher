@@ -1,8 +1,8 @@
 package com.barion.the_witcher.data.provider.loot_table;
 
 import com.ametrinstudios.ametrin.data.provider.loot_table.ExtendedBlockLootSubProvider;
-import com.barion.the_witcher.registry.TWBlocks;
-import com.barion.the_witcher.registry.TWItems;
+import com.barion.the_witcher.registry.block.TWBlocks;
+import com.barion.the_witcher.registry.item.TWItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.level.ItemLike;

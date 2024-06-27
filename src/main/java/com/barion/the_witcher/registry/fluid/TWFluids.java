@@ -1,7 +1,7 @@
-package com.barion.the_witcher.fluid;
+package com.barion.the_witcher.registry.fluid;
 
 import com.barion.the_witcher.TheWitcher;
-import com.barion.the_witcher.registry.TWBlocks;
+import com.barion.the_witcher.registry.block.TWBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;

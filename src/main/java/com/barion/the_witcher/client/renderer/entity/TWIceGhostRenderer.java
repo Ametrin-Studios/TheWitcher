@@ -7,21 +7,18 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@OnlyIn(Dist.CLIENT)
-public class TWIceGhostRenderer extends MobRenderer<TWIceGhostEntity, TWIceGhostModel>{
-    private static final ResourceLocation Texture = TWUtil.location("textures/entity/ice_ghost.png");
-    public static final ModelLayerLocation LayerLocation = new ModelLayerLocation(TWUtil.location("ice_ghost"), "main");
+public final class TWIceGhostRenderer extends MobRenderer<TWIceGhostEntity, TWIceGhostModel> {
+    private static final ResourceLocation TEXTURE = TWUtil.location("textures/entity/ice_ghost.png");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(TWUtil.location("ice_ghost"), "main");
 
     public TWIceGhostRenderer(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new TWIceGhostModel(renderContext.bakeLayer(LayerLocation)), 0.2f);
+        super(renderContext, new TWIceGhostModel(renderContext.bakeLayer(LAYER_LOCATION)), 0.2f);
     }
 
     @Override @Nonnull @ParametersAreNonnullByDefault
-    public ResourceLocation getTextureLocation(TWIceGhostEntity entity) {return Texture;}
+    public ResourceLocation getTextureLocation(TWIceGhostEntity entity) {return TEXTURE;}
 }

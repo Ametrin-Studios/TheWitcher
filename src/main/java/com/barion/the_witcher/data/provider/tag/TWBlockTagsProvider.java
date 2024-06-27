@@ -2,7 +2,7 @@ package com.barion.the_witcher.data.provider.tag;
 
 import com.ametrinstudios.ametrin.data.provider.ExtendedBlockTagsProvider;
 import com.barion.the_witcher.TheWitcher;
-import com.barion.the_witcher.registry.TWBlocks;
+import com.barion.the_witcher.registry.block.TWBlocks;
 import com.barion.the_witcher.util.TWTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -14,7 +14,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import javax.annotation.Nonnull;
 import java.util.concurrent.CompletableFuture;
 
-public class TWBlockTagsProvider extends ExtendedBlockTagsProvider {
+public final class TWBlockTagsProvider extends ExtendedBlockTagsProvider {
     public TWBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper){
         super(output, lookupProvider, TheWitcher.MOD_ID, existingFileHelper);
     }

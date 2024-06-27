@@ -1,7 +1,7 @@
 package com.barion.the_witcher.data.provider.tag;
 
 import com.barion.the_witcher.TheWitcher;
-import com.barion.the_witcher.registry.TWDamageTypes;
+import com.barion.the_witcher.registry.damage.TWDamageTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.DamageTypeTagsProvider;

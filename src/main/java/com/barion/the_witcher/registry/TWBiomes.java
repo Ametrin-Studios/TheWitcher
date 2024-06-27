@@ -5,7 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 
-public class TWBiomes {
+public final class TWBiomes {
     public static final ResourceKey<Biome> SNOWY_DESERT = ResourceKey.create(Registries.BIOME, TWUtil.location("snowy_desert"));
     public static final ResourceKey<Biome> ICY_PEAKS = ResourceKey.create(Registries.BIOME, TWUtil.location("icy_peaks"));
     public static final ResourceKey<Biome> FROZEN_SPIKES = ResourceKey.create(Registries.BIOME, TWUtil.location("frozen_spikes"));

@@ -14,7 +14,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public class TWEntityTypeTagsProvider extends EntityTypeTagsProvider {
+public final class TWEntityTypeTagsProvider extends EntityTypeTagsProvider {
     public TWEntityTypeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, TheWitcher.MOD_ID, existingFileHelper);
     }

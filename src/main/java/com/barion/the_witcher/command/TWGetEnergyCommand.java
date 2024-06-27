@@ -1,6 +1,6 @@
 package com.barion.the_witcher.command;
 
-import com.barion.the_witcher.attachment.TWPlayerEnergyProvider;
+import com.barion.the_witcher.registry.TWAttachmentTypes;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -22,10 +22,7 @@ public class TWGetEnergyCommand {
     }
 
     private int getEnergy(CommandSourceStack source, ServerPlayer player) {
-        player.getCapability(TWPlayerEnergyProvider.Instance).ifPresent(energy->{
-            source.sendSuccess(Component.translatable(success, player.getDisplayName(), energy.get()), true);
-        });
-
+        source.sendSuccess(() -> Component.translatable(success, player.getDisplayName(), player.getData(TWAttachmentTypes.ENERGY)), true);
         return 1;
     }
 

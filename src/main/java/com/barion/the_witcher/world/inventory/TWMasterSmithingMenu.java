@@ -1,8 +1,9 @@
 package com.barion.the_witcher.world.inventory;
 
 import com.barion.the_witcher.recipe.TWMasterSmithingRecipe;
-import com.barion.the_witcher.registry.TWBlocks;
 import com.barion.the_witcher.registry.TWMenuTypes;
+import com.barion.the_witcher.registry.block.TWBlocks;
+import com.barion.the_witcher.registry.recipe.TWRecipeTypes;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
@@ -82,7 +83,7 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
     }
 
     public void createResult() {
-        var recipes = level.getRecipeManager().getRecipesFor(TWMasterSmithingRecipe.Type.INSTANCE, this, level);
+        var recipes = level.getRecipeManager().getRecipesFor(TWRecipeTypes.MASTER_SMITHING.get(), this, level);
         if (recipes.isEmpty()) {
             if(itemHandler.getStackInSlot(RESULT_SLOT_ID) != ItemStack.EMPTY) {
                 itemHandler.setStackInSlot(RESULT_SLOT_ID, ItemStack.EMPTY);

@@ -2,8 +2,8 @@ package com.barion.the_witcher.data.provider;
 
 import com.ametrinstudios.ametrin.data.provider.ExtendedRecipeProvider;
 import com.barion.the_witcher.TheWitcher;
-import com.barion.the_witcher.registry.TWBlocks;
-import com.barion.the_witcher.registry.TWItems;
+import com.barion.the_witcher.registry.block.TWBlocks;
+import com.barion.the_witcher.registry.item.TWItems;
 import com.barion.the_witcher.util.TWTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
-public class TWRecipeProvider extends ExtendedRecipeProvider {
+public final class TWRecipeProvider extends ExtendedRecipeProvider {
 
     public TWRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> registries) {
         super(packOutput, TheWitcher.MOD_ID, registries);

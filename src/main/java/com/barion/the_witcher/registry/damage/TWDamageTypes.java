@@ -1,4 +1,4 @@
-package com.barion.the_witcher.registry;
+package com.barion.the_witcher.registry.damage;
 
 import com.barion.the_witcher.TheWitcher;
 import net.minecraft.core.registries.Registries;

@@ -6,14 +6,18 @@ import com.barion.the_witcher.data.provider.TWItemModelProvider;
 import com.barion.the_witcher.data.provider.TWRecipeProvider;
 import com.barion.the_witcher.data.provider.loot_table.TWBlockLoot;
 import com.barion.the_witcher.data.provider.tag.*;
-import com.barion.the_witcher.effect.TWEffects;
-import com.barion.the_witcher.fluid.TWFluidTypes;
-import com.barion.the_witcher.fluid.TWFluids;
-import com.barion.the_witcher.potion.TWPotions;
-import com.barion.the_witcher.recipe.TWRecipeTypes;
 import com.barion.the_witcher.registry.*;
+import com.barion.the_witcher.registry.block.TWBlockEntities;
+import com.barion.the_witcher.registry.block.TWBlocks;
+import com.barion.the_witcher.registry.damage.TWDamageTypes;
+import com.barion.the_witcher.registry.fluid.TWFluidTypes;
+import com.barion.the_witcher.registry.fluid.TWFluids;
+import com.barion.the_witcher.registry.item.TWCreateModeTabs;
+import com.barion.the_witcher.registry.item.TWItems;
+import com.barion.the_witcher.registry.item.TWPotions;
+import com.barion.the_witcher.registry.recipe.TWRecipeSerializers;
+import com.barion.the_witcher.registry.recipe.TWRecipeTypes;
 import com.barion.the_witcher.util.TWConfig;
-import com.barion.the_witcher.world.block.entity.TWBlockEntities;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -23,27 +27,36 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 @Mod(TheWitcher.MOD_ID)
-public class TheWitcher {
+public final class TheWitcher {
     public static final String MOD_ID = "the_witcher";
 
     public TheWitcher(IEventBus modBus, ModContainer modContainer) {
         modContainer.registerConfig(ModConfig.Type.COMMON, TWConfig.Common.SPEC);
         modContainer.registerConfig(ModConfig.Type.CLIENT, TWConfig.Client.SPEC);
 
-        TWItems.REGISTER.register(modBus);
-        TWBlocks.REGISTER.register(modBus);
-        TWEntityTypes.REGISTER.register(modBus);
-        TWFeatures.REGISTER.register(modBus);
         TWBlockEntities.REGISTER.register(modBus);
-        TWMenuTypes.REGISTER.register(modBus);
-        TWRecipeTypes.REGISTER.register(modBus);
-        TWEffects.REGISTER.register(modBus);
-        TWPotions.REGISTER.register(modBus);
-        TWPOIs.REGISTER.register(modBus);
+        TWBlocks.REGISTER.register(modBus);
+
+        TWDamageTypes.REGISTER.register(modBus);
+
         TWFluids.REGISTER.register(modBus);
         TWFluidTypes.REGISTER.register(modBus);
 
-        modBus.addListener(TWRecipeTypes::registerRecipeTypes);
+        TWCreateModeTabs.REGISTER.register(modBus);
+        TWItems.REGISTER.register(modBus);
+        TWPotions.REGISTER.register(modBus);
+
+        TWRecipeTypes.REGISTER.register(modBus);
+        TWRecipeSerializers.REGISTER.register(modBus);
+
+        TWArmorMaterials.REGISTER.register(modBus);
+        TWAttachmentTypes.REGISTER.register(modBus);
+        TWEffects.REGISTER.register(modBus);
+        TWEntityTypes.REGISTER.register(modBus);
+        TWFeatures.REGISTER.register(modBus);
+        TWMenuTypes.REGISTER.register(modBus);
+        TWPOIs.REGISTER.register(modBus);
+
         modBus.addListener(TWEntityTypes::registerAttributes);
         TWStructures.init();
 

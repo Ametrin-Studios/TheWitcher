@@ -1,6 +1,6 @@
 package com.barion.the_witcher.command;
 
-import com.barion.the_witcher.attachment.TWPlayerEnergyProvider;
+import com.barion.the_witcher.attachment.TWEnergyWrapper;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.minecraft.commands.CommandSourceStack;
@@ -26,7 +26,7 @@ public class TWSetEnergyCommand {
     }
 
     private int setEnergy(CommandSourceStack source, Collection<ServerPlayer> targets, int value) {
-        for(ServerPlayer target : targets){
+        for(ServerPlayer target : targets) {
             setEnergyInternal(source, target, value);
         }
 
@@ -44,9 +44,8 @@ public class TWSetEnergyCommand {
     }
 
     private void setEnergyInternal(CommandSourceStack source, ServerPlayer target, int value){
-        target.getCapability(TWPlayerEnergyProvider.Instance).ifPresent(energy->{
-            energy.set(value, target);
-            source.sendSuccess(Component.translatable(success, target.getDisplayName(), value), true);
-        });
+        var wrapper = new TWEnergyWrapper(target);
+        wrapper.set(value);
+        source.sendSuccess(() -> Component.translatable(success, target.getDisplayName(), value), true);
     }
 }

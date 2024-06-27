@@ -1,7 +1,7 @@
 package com.barion.the_witcher.world.gen.util;
 
 import com.ametrinstudios.ametrin.world.gen.structure.processor.KeepStateRandomBlockSwapProcessor;
-import com.barion.the_witcher.registry.TWBlocks;
+import com.barion.the_witcher.registry.block.TWBlocks;
 import com.legacy.structure_gel.api.structure.processor.RandomBlockSwapProcessor;
 import net.minecraft.world.level.block.Blocks;
 
