@@ -2,6 +2,7 @@ package com.barion.the_witcher;
 
 import com.ametrinstudios.ametrin.data.DataProviderHelper;
 import com.barion.the_witcher.data.provider.TWBlockStateProvider;
+import com.barion.the_witcher.data.provider.TWDamageTypeProvider;
 import com.barion.the_witcher.data.provider.TWItemModelProvider;
 import com.barion.the_witcher.data.provider.TWRecipeProvider;
 import com.barion.the_witcher.data.provider.loot_table.TWBlockLoot;
@@ -18,6 +19,10 @@ import com.barion.the_witcher.registry.item.TWPotions;
 import com.barion.the_witcher.registry.recipe.TWRecipeSerializers;
 import com.barion.the_witcher.registry.recipe.TWRecipeTypes;
 import com.barion.the_witcher.util.TWConfig;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -25,7 +30,11 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 @Mod(TheWitcher.MOD_ID)
 public final class TheWitcher {
@@ -74,6 +83,12 @@ public final class TheWitcher {
         public static void gatherData(GatherDataEvent event){
             var helper = new DataProviderHelper(event);
 
+
+            helper.add((PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) -> new DatapackBuiltinEntriesProvider(output, lookupProvider, new RegistrySetBuilder()
+                    .add(Registries.DAMAGE_TYPE, TWDamageTypeProvider::run),
+                    Set.of(MOD_ID)
+            ));
+
             helper.add(TWBlockStateProvider::new);
             helper.add(TWItemModelProvider::new);
             helper.add(TWBiomeTagsProvider::new);
@@ -84,6 +99,7 @@ public final class TheWitcher {
             helper.addBlockAndItemTags(TWBlockTagsProvider::new, TWItemTagsProvider::new);
             helper.add(TWEntityTypeTagsProvider::new);
             helper.add(TWDamageTypeTagsProvider::new);
+
         }
     }
 }
