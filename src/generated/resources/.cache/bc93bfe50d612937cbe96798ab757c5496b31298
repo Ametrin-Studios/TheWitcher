@@ -1,0 +1,20 @@
+// 1.21.1	2024-10-25T13:12:27.1536385	Tags for minecraft:item mod id the_witcher
+7e84ad47a883c955bd0840618f34fbb44a9e81a6 data/c/tags/item/ingots.json
+269a4b2283f0cd05a65405c0589bb4993b7b9793 data/c/tags/item/ingots/silver.json
+5e891ae74dea68b8aea184a9a9c05bee9b89713b data/c/tags/item/nuggets.json
+7ea84e6363456c60c3d7c76ab8be407d99d0864d data/c/tags/item/nuggets/silver.json
+cfda1018ccfc73424a6acc8273d62b234b53463f data/c/tags/item/raw_materials.json
+3dbd6dec3ddae8192c79280b9ea6def20b350f67 data/c/tags/item/raw_materials/raw_silver.json
+eea26b51d63a26ed77f89e9a41a04bb5b20d1fed data/c/tags/item/storage_blocks.json
+5f774c1514cbdec38546aec7ad9eb20200d84666 data/c/tags/item/storage_blocks/raw_silver.json
+a19f158ea62aecb2decae8db799e4c94220dd282 data/c/tags/item/storage_blocks/silver.json
+c6cc9ae2c82ba6a033cadd219b59c48e0ca167a4 data/minecraft/tags/item/beacon_payment_items.json
+9c06cc4b78c78456a0b2d02c8979f6a5802ff48b data/minecraft/tags/item/buttons.json
+3595cddac008d77d7a2160bd7ad93613e4dd0b5d data/minecraft/tags/item/freeze_immune_wearables.json
+3ad8bb8cee36ba07d7eff13ca0ddc302b5b5c70a data/minecraft/tags/item/slabs.json
+5786d05be7c48c65df49cd613efce30d20c1f973 data/minecraft/tags/item/stairs.json
+e93d0dcade0235d66987b6285169bcc58e495522 data/minecraft/tags/item/stone_crafting_materials.json
+b727ea6a4bfdf35cb1717924f92490be761fc47f data/minecraft/tags/item/walls.json
+ff3a3b673874f7b3a403e20237d77480338c239b data/the_witcher/tags/item/brews_beer.json
+a2d1653a72db672faeb80cac74fd0dda897c6f3e data/the_witcher/tags/item/ingots/steel.json
+a3444ae7fa4c206cf8b90affdc8c16b2e95dd728 data/the_witcher/tags/item/nuggets/steel.json

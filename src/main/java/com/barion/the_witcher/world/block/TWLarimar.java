@@ -1,6 +1,6 @@
 package com.barion.the_witcher.world.block;
 
-import com.legacy.structure_gel.api.util.VoxelShapeUtil;
+import com.barion.the_witcher.util.TWUtil;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -32,11 +32,11 @@ public class TWLarimar extends FaceAttachedHorizontalDirectionalBlock implements
 
     private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     private static final VoxelShape FLOOR = Block.box(4, 0, 4, 12, 2, 12);
-    private static final VoxelShape CEILING = VoxelShapeUtil.mirror(FLOOR, Direction.Axis.Y);
+    private static final VoxelShape CEILING = TWUtil.mirror(FLOOR, Direction.Axis.Y);
     private static final VoxelShape NORTH = Block.box(4, 4, 14, 12, 12, 16);
-    private static final VoxelShape SOUTH = VoxelShapeUtil.rotate(NORTH, Direction.SOUTH);
-    private static final VoxelShape EAST = VoxelShapeUtil.rotate(NORTH, Direction.EAST);
-    private static final VoxelShape WEST = VoxelShapeUtil.rotate(NORTH, Direction.WEST);
+    private static final VoxelShape SOUTH = TWUtil.rotate(NORTH, Direction.SOUTH);
+    private static final VoxelShape EAST = TWUtil.rotate(NORTH, Direction.EAST);
+    private static final VoxelShape WEST = TWUtil.rotate(NORTH, Direction.WEST);
 
     public TWLarimar(BlockBehaviour.Properties properties) {
         super(properties);

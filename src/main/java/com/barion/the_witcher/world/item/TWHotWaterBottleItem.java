@@ -30,7 +30,7 @@ public class TWHotWaterBottleItem extends Item {
         }
 
         if (!level.isClientSide) {
-            entity.hurt(TWDamageSources.hotWater(), 10);
+            entity.hurt(TWDamageSources.hotWater(entity), 10);
         }
 
         if (itemStack.isEmpty()) {

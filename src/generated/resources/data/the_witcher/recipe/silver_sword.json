@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "tag": "c:ingots/silver"
+    },
+    "+": {
+      "tag": "the_witcher:ingots/steel"
+    },
+    "-": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "#",
+    "+",
+    "-"
+  ],
+  "result": {
+    "count": 1,
+    "id": "the_witcher:silver_sword"
+  }
+}

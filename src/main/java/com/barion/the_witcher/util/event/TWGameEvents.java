@@ -25,10 +25,11 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.server.command.ConfigCommand;
 
+@SuppressWarnings("unused")
 @EventBusSubscriber(modid = TheWitcher.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public final class TWGameEvents {
     @SubscribeEvent
-    public static void entityTick(final EntityTickEvent event){
+    public static void entityTick(final EntityTickEvent.Post event){
         if(event.getEntity() instanceof LivingEntity livingEntity) {
             freezeEntity(livingEntity);
         }
@@ -48,7 +49,7 @@ public final class TWGameEvents {
     }
 
     @SubscribeEvent
-    public static void playerTick(PlayerTickEvent event) {
+    public static void playerTick(PlayerTickEvent.Post event) {
         updateEnergy((ServerPlayer) event.getEntity());
     }
 

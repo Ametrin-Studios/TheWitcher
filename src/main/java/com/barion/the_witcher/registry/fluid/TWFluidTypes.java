@@ -1,12 +1,10 @@
 package com.barion.the_witcher.registry.fluid;
 
-import com.ametrinstudios.ametrin.fluid.SimpleFluidType;
 import com.barion.the_witcher.TheWitcher;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-import java.awt.*;
 import java.util.function.Supplier;
 
 public class TWFluidTypes {
@@ -15,6 +13,6 @@ public class TWFluidTypes {
     public static final Supplier<FluidType> ACID = register("acid", FluidType.Properties.create().canConvertToSource(true).lightLevel(5).supportsBoating(true));
 
     private static Supplier<FluidType> register(String name, FluidType.Properties properties) {
-        return REGISTER.register(name, () -> new SimpleFluidType(new Color(136, 255, 0, 209), new Color(136, 255, 0), properties));
+        return REGISTER.register(name, () -> new FluidType(properties));
     }
 }

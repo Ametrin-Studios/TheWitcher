@@ -1,0 +1,6 @@
+// 1.21.1	2024-10-25T13:12:27.11764	Tags for minecraft:entity_type mod id the_witcher
+f4e6559262c747b9a7091cdd473fcff572e9ba94 data/c/tags/entity_type/magic_mob.json
+14e7cdebd6b5f672cfded947b1f4e3e7b3ee72f7 data/minecraft/tags/entity_type/freeze_immune_entity_types.json
+569cee91ad8896af49760f8b47f60ded6ea937bb data/minecraft/tags/entity_type/powder_snow_walkable_mobs.json
+9ad4c6c6374c7f97fdc9f357bcdf1935981add16 data/the_witcher/tags/entity_type/wild_hunt.json
+7413194ea0504adeb5a4849f9dd5e33158c9ff04 data/the_witcher/tags/entity_type/wild_hunt_ignore.json

@@ -8,7 +8,7 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import static com.ametrinstudios.ametrin.util.TimeHelper.MinutesToTicks;
+import static com.ametrinstudios.ametrin.util.TimeHelper.minutesToTicks;
 
 public final class TWPotions {
     public static final DeferredRegister<Potion> REGISTER = DeferredRegister.create(BuiltInRegistries.POTION, TheWitcher.MOD_ID);
@@ -17,6 +17,6 @@ public final class TWPotions {
     public static final DeferredHolder<Potion, Potion> LONG_ENERGY_REGENERATION_POTION = REGISTER.register("long_energy_regeneration_potion", ()-> new Potion("energy_regeneration_potion", new MobEffectInstance(TWEffects.ENERGY_REGENERATION, 9000, 0)));
     public static final DeferredHolder<Potion, Potion> STRONG_ENERGY_REGENERATION_POTION = REGISTER.register("strong_energy_regeneration_potion", ()-> new Potion("energy_regeneration_potion", new MobEffectInstance(TWEffects.ENERGY_REGENERATION, 6000, 1)));
 
-    public static final DeferredHolder<Potion, Potion> FROST_RESISTANCE_POTION = REGISTER.register("frost_resistance_potion", ()-> new Potion(new MobEffectInstance(TWEffects.FROST_RESISTANCE, MinutesToTicks(20), 0)));
-    public static final DeferredHolder<Potion, Potion> LONG_FROST_RESISTANCE_POTION = REGISTER.register("long_frost_resistance_potion", ()-> new Potion("frost_resistance_potion", new MobEffectInstance(TWEffects.FROST_RESISTANCE, MinutesToTicks(30), 0)));
+    public static final DeferredHolder<Potion, Potion> FROST_RESISTANCE_POTION = REGISTER.register("frost_resistance_potion", ()-> new Potion(new MobEffectInstance(TWEffects.FROST_RESISTANCE, minutesToTicks(20), 0)));
+    public static final DeferredHolder<Potion, Potion> LONG_FROST_RESISTANCE_POTION = REGISTER.register("long_frost_resistance_potion", ()-> new Potion("frost_resistance_potion", new MobEffectInstance(TWEffects.FROST_RESISTANCE, minutesToTicks(30), 0)));
 }

@@ -18,6 +18,7 @@ import com.barion.the_witcher.registry.item.TWPotions;
 import com.barion.the_witcher.registry.recipe.TWRecipeSerializers;
 import com.barion.the_witcher.registry.recipe.TWRecipeTypes;
 import com.barion.the_witcher.util.TWConfig;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -62,6 +63,8 @@ public final class TheWitcher {
 
 //        RegistrarHandler.registerHandlers(MOD_ID, modBus);
     }
+
+    public static ResourceLocation locate(String key) { return ResourceLocation.fromNamespaceAndPath(TheWitcher.MOD_ID, key); }
 
     @EventBusSubscriber(modid = TheWitcher.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
     public static class DataGenerators {

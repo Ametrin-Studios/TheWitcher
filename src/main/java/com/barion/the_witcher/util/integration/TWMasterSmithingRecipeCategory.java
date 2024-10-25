@@ -32,16 +32,16 @@ public class TWMasterSmithingRecipeCategory implements IRecipeCategory<TWMasterS
     }
 
     @Override
-    public @NotNull RecipeType<TWMasterSmithingRecipe> getRecipeType() {return TWJEIPlugin.MASTER_SMITHING;}
+    public @NotNull RecipeType<TWMasterSmithingRecipe> getRecipeType() { return TWJEIPlugin.MASTER_SMITHING; }
 
     @Override
-    public @NotNull Component getTitle() {return TWMasterSmithingTableBlock.TextComponent;}
+    public @NotNull Component getTitle() { return TWMasterSmithingTableBlock.TextComponent; }
 
     @Override
     public @NotNull IDrawable getBackground() {return background;}
 
     @Override
-    public @NotNull IDrawable getIcon() {return icon;}
+    public @NotNull IDrawable getIcon() { return icon; }
 
     @Override @ParametersAreNonnullByDefault
     public void setRecipe(IRecipeLayoutBuilder builder, TWMasterSmithingRecipe recipe, IFocusGroup focuses) {

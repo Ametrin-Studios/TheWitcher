@@ -18,11 +18,11 @@ public final class TWDamageTypeTagsProvider extends DamageTypeTagsProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.@NotNull Provider registryAccess) {
+    protected void addTags(@NotNull HolderLookup.Provider registryAccess) {
         tag(DamageTypeTags.BYPASSES_ARMOR) //includes BYPASSES_SHIELD
-                .add(TWDamageTypes.HOT_WATER.getKey());
+                .add(TWDamageTypes.HOT_WATER);
 
         tag(DamageTypeTags.BYPASSES_ENCHANTMENTS)
-                .add(TWDamageTypes.HOT_WATER.getKey());
+                .add(TWDamageTypes.HOT_WATER);
     }
 }

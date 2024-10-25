@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "the_witcher:deep_frosted_cobblestone"
+  },
+  "result": {
+    "count": 1,
+    "id": "the_witcher:deep_frosted_cobblestone_button"
+  }
+}

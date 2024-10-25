@@ -42,13 +42,13 @@ public final class TWBlockStateProvider extends ExtendedBlockStateProvider {
     @Override
     protected void registerStatesAndModels() {runProviderRules(TWBlocks.getAllBlocks());}
 
-    protected void powerBlock(TWPowerBlock powerBlock, String name, String texture){
+    private void powerBlock(TWPowerBlock powerBlock, String name, String texture){
         var on = models().cubeAll("block/" + name + "/on", modBlockLoc(texture + "/on"));
         var off = models().cubeAll("block/" + name + "/off", modBlockLoc(texture + "/off"));
         getVariantBuilder(powerBlock).forAllStates(state -> ConfiguredModel.builder().modelFile(state.getValue(TWPowerBlock.HAS_POWER) ? on : off).build());
     }
 
-    protected void masterSmithingTableBlock(TWMasterSmithingTableBlock block, String name, String texture){
+    private void masterSmithingTableBlock(TWMasterSmithingTableBlock block, String name, String texture){
         ResourceLocation bottom = modBlockLoc(texture + "_bottom");
         ResourceLocation top = modBlockLoc(texture + "_top");
         ResourceLocation front = modBlockLoc(texture + "_front");
@@ -56,17 +56,17 @@ public final class TWBlockStateProvider extends ExtendedBlockStateProvider {
         simpleBlock(block, models().cube("master_smithing_table", bottom, top, front, front, side, side).texture("particle", top));
     }
 
-    protected void icicleBlock(TWIcicleBlock icicle, String name, String texture) {
-        ModelFile downBase = models().cross("block/" + name + "/down/base", modBlockLoc(texture + "/down/base")).renderType(RenderTypes.Cutout);
-        ModelFile downFrustum = models().cross("block/" + name + "/down/frustum", modBlockLoc(texture + "/down/frustum")).renderType(RenderTypes.Cutout);
-        ModelFile downMiddle = models().cross("block/" + name + "/down/middle", modBlockLoc(texture + "/down/middle")).renderType(RenderTypes.Cutout);
-        ModelFile downTip = models().cross("block/" + name + "/down/tip", modBlockLoc(texture + "/down/tip")).renderType(RenderTypes.Cutout);
-        ModelFile downTipMerge = models().cross("block/" + name + "/down/tip_merge", modBlockLoc(texture + "/down/tip_merge")).renderType(RenderTypes.Cutout);
-        ModelFile upBase = models().cross("block/" + name + "/up/base", modBlockLoc(texture + "/up/base")).renderType(RenderTypes.Cutout);
-        ModelFile upFrustum = models().cross("block/" + name + "/up/frustum", modBlockLoc(texture + "/up/frustum")).renderType(RenderTypes.Cutout);
-        ModelFile upMiddle = models().cross("block/" + name + "/up/middle", modBlockLoc(texture + "/up/middle")).renderType(RenderTypes.Cutout);
-        ModelFile upTip = models().cross("block/" + name + "/up/tip", modBlockLoc(texture + "/up/tip")).renderType(RenderTypes.Cutout);
-        ModelFile upTipMerge = models().cross("block/" + name + "/up/tip_merge", modBlockLoc(texture + "/up/tip_merge")).renderType(RenderTypes.Cutout);
+    private void icicleBlock(TWIcicleBlock icicle, String name, String texture) {
+        ModelFile downBase = models().cross("block/" + name + "/down/base", modBlockLoc(texture + "/down/base")).renderType(RenderTypes.CUTOUT);
+        ModelFile downFrustum = models().cross("block/" + name + "/down/frustum", modBlockLoc(texture + "/down/frustum")).renderType(RenderTypes.CUTOUT);
+        ModelFile downMiddle = models().cross("block/" + name + "/down/middle", modBlockLoc(texture + "/down/middle")).renderType(RenderTypes.CUTOUT);
+        ModelFile downTip = models().cross("block/" + name + "/down/tip", modBlockLoc(texture + "/down/tip")).renderType(RenderTypes.CUTOUT);
+        ModelFile downTipMerge = models().cross("block/" + name + "/down/tip_merge", modBlockLoc(texture + "/down/tip_merge")).renderType(RenderTypes.CUTOUT);
+        ModelFile upBase = models().cross("block/" + name + "/up/base", modBlockLoc(texture + "/up/base")).renderType(RenderTypes.CUTOUT);
+        ModelFile upFrustum = models().cross("block/" + name + "/up/frustum", modBlockLoc(texture + "/up/frustum")).renderType(RenderTypes.CUTOUT);
+        ModelFile upMiddle = models().cross("block/" + name + "/up/middle", modBlockLoc(texture + "/up/middle")).renderType(RenderTypes.CUTOUT);
+        ModelFile upTip = models().cross("block/" + name + "/up/tip", modBlockLoc(texture + "/up/tip")).renderType(RenderTypes.CUTOUT);
+        ModelFile upTipMerge = models().cross("block/" + name + "/up/tip_merge", modBlockLoc(texture + "/up/tip_merge")).renderType(RenderTypes.CUTOUT);
         getVariantBuilder(icicle).forAllStates(state -> {
             final DripstoneThickness thickness = state.getValue(TWIcicleBlock.THICKNESS);
             final Direction direction = state.getValue(TWIcicleBlock.TIP_DIRECTION);

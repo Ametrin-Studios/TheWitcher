@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_deep_frosted_cobblestone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "the_witcher:deep_frosted_cobblestone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "the_witcher:smelting/cobbled_deepslate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_deep_frosted_cobblestone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "the_witcher:smelting/cobbled_deepslate"
+    ]
+  }
+}

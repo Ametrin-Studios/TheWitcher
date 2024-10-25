@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "the_witcher:silver_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "the_witcher:silver_ingot"
+  }
+}
