@@ -21,7 +21,7 @@ import java.util.Objects;
 public class TWJEIPlugin implements IModPlugin {
     public static final RecipeType<TWMasterSmithingRecipe> MASTER_SMITHING = RecipeType.create(TheWitcher.MOD_ID, "master_smithing", TWMasterSmithingRecipe.class);
     @Override
-    public @NotNull ResourceLocation getPluginUid() {return TWUtil.location("jei_plugin");}
+    public @NotNull ResourceLocation getPluginUid() {return TWUtil.locate("jei_plugin");}
 
     @Override
     public void registerCategories(@NotNull IRecipeCategoryRegistration registration) {

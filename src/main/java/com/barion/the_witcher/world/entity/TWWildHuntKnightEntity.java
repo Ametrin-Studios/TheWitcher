@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-public class TWWildHuntKnightEntity extends Monster implements TWWildHuntEntity{
+public class TWWildHuntKnightEntity extends Monster {
     public TWWildHuntKnightEntity(EntityType<TWWildHuntKnightEntity> entity, Level level) { super(entity, level); }
 
     @Override

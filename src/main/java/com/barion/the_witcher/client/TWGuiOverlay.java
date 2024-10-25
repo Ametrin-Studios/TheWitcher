@@ -8,8 +8,8 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public final class TWGuiOverlay {
-    private static final ResourceLocation SIGN_STRENGTH_INFO = TWUtil.location("textures/gui/sign/info.png");
-    private static final ResourceLocation ENERGY_BAR_TEXTURE = TWUtil.location("textures/gui/sign/energy.png");
+    private static final ResourceLocation SIGN_STRENGTH_INFO = TWUtil.locate("textures/gui/sign/info.png");
+    private static final ResourceLocation ENERGY_BAR_TEXTURE = TWUtil.locate("textures/gui/sign/energy.png");
 
     public static final LayeredDraw.Layer EnergyLevel = ((graphics, tracker)-> {
         if(Minecraft.getInstance().player.isSpectator() || Minecraft.getInstance().player.isCreative()) { return; }

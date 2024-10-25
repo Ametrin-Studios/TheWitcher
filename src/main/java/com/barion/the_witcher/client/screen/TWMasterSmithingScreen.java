@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 import org.jetbrains.annotations.NotNull;
 
 public final class TWMasterSmithingScreen extends AbstractContainerScreen<TWMasterSmithingMenu> {
-    public static final ResourceLocation TEXTURE_LOCATION = TWUtil.location("textures/gui/master_smithing.png");
+    public static final ResourceLocation TEXTURE_LOCATION = TWUtil.locate("textures/gui/master_smithing.png");
 
     public TWMasterSmithingScreen(TWMasterSmithingMenu menu, Inventory playerInventory, Component tile) {
         super(menu, playerInventory, tile);

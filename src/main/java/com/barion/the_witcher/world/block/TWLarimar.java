@@ -1,6 +1,7 @@
 package com.barion.the_witcher.world.block;
 
 import com.legacy.structure_gel.api.util.VoxelShapeUtil;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -27,6 +28,8 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 public class TWLarimar extends FaceAttachedHorizontalDirectionalBlock implements SimpleWaterloggedBlock {
+    private static final MapCodec<TWLarimar> CODEC = simpleCodec(TWLarimar::new);
+
     private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     private static final VoxelShape FLOOR = Block.box(4, 0, 4, 12, 2, 12);
     private static final VoxelShape CEILING = VoxelShapeUtil.mirror(FLOOR, Direction.Axis.Y);
@@ -38,6 +41,11 @@ public class TWLarimar extends FaceAttachedHorizontalDirectionalBlock implements
     public TWLarimar(BlockBehaviour.Properties properties) {
         super(properties);
         registerDefaultState(getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(FACE, AttachFace.WALL).setValue(WATERLOGGED, false));
+    }
+
+    @Override
+    protected @NotNull MapCodec<? extends FaceAttachedHorizontalDirectionalBlock> codec() {
+        return CODEC;
     }
 
     @Override @ParametersAreNonnullByDefault

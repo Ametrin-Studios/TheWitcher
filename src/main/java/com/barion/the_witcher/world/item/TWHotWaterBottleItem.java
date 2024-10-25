@@ -47,9 +47,11 @@ public class TWHotWaterBottleItem extends Item {
         }
     }
 
+    @Override @ParametersAreNonnullByDefault
+    public int getUseDuration(ItemStack stack, LivingEntity entity) {
+        return 40;
+    }
 
-
-//    @Override public int getUseDuration(@NotNull ItemStack itemStack) {return 40;}
     @Override public @NotNull UseAnim getUseAnimation(@NotNull ItemStack p_41358_) { return UseAnim.DRINK; }
     @Override public @NotNull SoundEvent getDrinkingSound() { return SoundEvents.HONEY_DRINK; }
     @Override public @NotNull SoundEvent getEatingSound() { return SoundEvents.HONEY_DRINK; }

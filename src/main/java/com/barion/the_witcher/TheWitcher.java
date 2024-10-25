@@ -76,7 +76,7 @@ public final class TheWitcher {
             helper.add(TWBiomeTagsProvider::new);
             helper.add(TWRecipeProvider::new);
 
-            helper.addLootTables(builder -> builder.AddBlockProvider(TWBlockLoot::new));
+            helper.addLootTables(builder -> builder.addBlockProvider(TWBlockLoot::new));
 
             helper.addBlockAndItemTags(TWBlockTagsProvider::new, TWItemTagsProvider::new);
             helper.add(TWEntityTypeTagsProvider::new);

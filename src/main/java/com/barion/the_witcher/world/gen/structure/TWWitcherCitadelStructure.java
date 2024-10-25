@@ -29,7 +29,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Optional;
 
 public class TWWitcherCitadelStructure extends Structure {
-    private static final ResourceLocation StructureFile = TWUtil.location("witcher_citadel");
+    private static final ResourceLocation StructureFile = TWUtil.locate("witcher_citadel");
     public static final com.mojang.serialization.Codec<TWWitcherCitadelStructure> Codec = Structure.simpleCodec(TWWitcherCitadelStructure::new);
 
     public TWWitcherCitadelStructure(StructureSettings settings) {super(settings);}

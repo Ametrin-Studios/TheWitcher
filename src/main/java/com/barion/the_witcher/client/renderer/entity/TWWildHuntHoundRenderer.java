@@ -12,8 +12,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 
 public final class TWWildHuntHoundRenderer extends MobRenderer<TWWildHuntHoundEntity, TWWildHuntHoundModel> {
-    private static final ResourceLocation TEXTURE = TWUtil.location("textures/entity/wild_hunt_hound.png");
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(TWUtil.location("wild_hunt_hound"), "main");
+    private static final ResourceLocation TEXTURE = TWUtil.locate("textures/entity/wild_hunt_hound.png");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(TWUtil.locate("wild_hunt_hound"), "main");
 
     public TWWildHuntHoundRenderer(EntityRendererProvider.Context context) {
         super(context, new TWWildHuntHoundModel(context.bakeLayer(LAYER_LOCATION)), 1.1f);

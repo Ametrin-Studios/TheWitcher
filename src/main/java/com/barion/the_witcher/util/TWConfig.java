@@ -17,7 +17,7 @@ public class TWConfig {
                     .popStructure().build();*/
     }
 
-    public static class Client{
+    public static class Client {
         private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
         public static final ModConfigSpec.BooleanValue ALWAYS_FOGGY = BUILDER

@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 public class TWMasterSmithingRecipeCategory implements IRecipeCategory<TWMasterSmithingRecipe> {
-    public static final ResourceLocation UID = TWUtil.location("master_smithing");
+    public static final ResourceLocation UID = TWUtil.locate("master_smithing");
     private final IDrawable background;
     private final IDrawable icon;
 

@@ -6,5 +6,5 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
 
 public final class TWLevels {
-    public static final ResourceKey<Level> WHITE_FROST = ResourceKey.create(Registries.DIMENSION, TWUtil.location("white_frost"));
+    public static final ResourceKey<Level> WHITE_FROST = ResourceKey.create(Registries.DIMENSION, TWUtil.locate("white_frost"));
 }

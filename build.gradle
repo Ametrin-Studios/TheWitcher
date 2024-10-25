@@ -1,9 +1,7 @@
 plugins {
     id 'java-library'
-    id 'eclipse'
-    id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '0.1.99'
+    id 'net.neoforged.moddev' version '1.0.21'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -12,10 +10,6 @@ tasks.named('wrapper', Wrapper).configure {
 
 version = mod_version
 group = mod_group_id
-
-repositories {
-    mavenLocal()
-}
 
 base {
     archivesName = mod_id
@@ -73,9 +67,10 @@ configurations {
 }
 
 repositories {
+    mavenLocal()
     maven {
         name "Ametrin Studios maven"
-        url "https://github.com/BarionLP/MCModsMaven/raw/main/"
+        url "https://github.com/Ametrin-Studios/maven/raw/main/"
     }
 
     maven {
@@ -83,9 +78,14 @@ repositories {
         url "https://maven.blamejared.com/"
     }
 
+//    maven {
+//        name "Modding Legacy Maven"
+//        url "https://maven.moddinglegacy.com/maven"
+//    }
+
     maven {
-        name "Modding Legacy Maven"
-        url "https://maven.moddinglegacy.com/maven"
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
     }
 }
 
@@ -94,22 +94,14 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
-    api "com.ametrinstudios:ametrin:${minecraft_version}-${ametrin_version}"
-    //api "com.legacy:structure-gel_${minecraft_version}-${gel_version}"
+    compileOnly "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}:api"
+    localRuntime "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
 
-    // Example mod dependency using a mod jar from ./libs with a flat dir repository
-    // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
-    // The group id is ignored when searching -- in this case, it is "blank"
-    // implementation "blank:coolmod-${mc_version}:${coolmod_version}"
-
-    // Example mod dependency using a file as dependency
-    // implementation files("libs/coolmod-${mc_version}-${coolmod_version}.jar")
-
-    // Example project dependency using a sister or child project:
-    // implementation project(":myproject")
+    implementation "com.ametrinstudios:ametrin:${minecraft_version}-${ametrin_version}"
+    //implementation "com.legacy:structure-gel_${minecraft_version}-${gel_version}"
 }
 
-tasks.withType(ProcessResources).configureEach {
+var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
     var replaceProperties = [
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
@@ -124,6 +116,9 @@ tasks.withType(ProcessResources).configureEach {
             gel_version            : gel_version,
             gel_version_range      : gel_version_range,
 
+            emi_version            : emi_version,
+            emi_version_range      : emi_version_range,
+
             jei_version            : jei_version,
             jei_version_range      : jei_version_range,
 
@@ -135,24 +130,13 @@ tasks.withType(ProcessResources).configureEach {
             mod_description        : mod_description
     ]
     inputs.properties replaceProperties
-
-    filesMatching(['META-INF/neoforge.mods.toml']) {
-        expand replaceProperties
-    }
+    expand replaceProperties
+    from "src/main/templates"
+    into "build/generated/sources/modMetadata"
 }
 
-publishing {
-    publications {
-        register('mavenJava', MavenPublication) {
-            from components.java
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/repo"
-        }
-    }
-}
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation

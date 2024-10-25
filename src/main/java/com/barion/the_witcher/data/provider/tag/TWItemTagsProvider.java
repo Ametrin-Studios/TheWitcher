@@ -50,8 +50,8 @@ public final class TWItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.STONE_CRAFTING_MATERIALS).add(
                 TWBlocks.FROSTED_STONE.get().asItem(),
                 TWBlocks.FROSTED_COBBLESTONE.get().asItem(),
-                TWBlocks.DeepFrostedStone.get().asItem(),
-                TWBlocks.DeepFrostedCobblestone.get().asItem(),
+                TWBlocks.DEEP_FROSTED_STONE.get().asItem(),
+                TWBlocks.DEEP_FROSTED_COBBLESTONE.get().asItem(),
                 TWBlocks.HALLUCINATED_STONE.get().asItem()
         );
 
@@ -62,7 +62,7 @@ public final class TWItemTagsProvider extends ItemTagsProvider {
                 TWItems.REINFORCED_LEATHER_BOOTS.get()
         );
 
-        tag(TWTags.Items.BREW_BEER).add(
+        tag(TWTags.Items.BREWS_BEER).add(
                 Items.WHEAT,
                 Items.BROWN_MUSHROOM
         );

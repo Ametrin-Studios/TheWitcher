@@ -14,11 +14,11 @@ public class TWFluids {
     public static final DeferredRegister<Fluid> REGISTER = DeferredRegister.create(BuiltInRegistries.FLUID, TheWitcher.MOD_ID);
 
     public static final Supplier<FlowingFluid> SOURCE_ACID = REGISTER.register("source_acid",
-            () -> new BaseFlowingFluid.Source(TWFluids.AcidProperties));
+            () -> new BaseFlowingFluid.Source(TWFluids.ACID_PROPERTIES));
     public static final Supplier<FlowingFluid> FLOWING_ACID = REGISTER.register("flowing_acid",
-            () -> new BaseFlowingFluid.Flowing(TWFluids.AcidProperties));
+            () -> new BaseFlowingFluid.Flowing(TWFluids.ACID_PROPERTIES));
 
-    private static final BaseFlowingFluid.Properties AcidProperties = new BaseFlowingFluid.Properties(
+    private static final BaseFlowingFluid.Properties ACID_PROPERTIES = new BaseFlowingFluid.Properties(
             TWFluidTypes.ACID, SOURCE_ACID, FLOWING_ACID)
             .slopeFindDistance(4).levelDecreasePerBlock(1).block(TWBlocks.ACID);
 //            .bucket(TWItems.AcidBucket);

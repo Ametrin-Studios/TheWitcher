@@ -15,7 +15,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class TWWildHuntHoundEntity extends Monster implements TWWildHuntEntity{
+public class TWWildHuntHoundEntity extends Monster {
     public TWWildHuntHoundEntity(EntityType<TWWildHuntHoundEntity> entity, Level level) {super(entity, level);}
 
     @Override

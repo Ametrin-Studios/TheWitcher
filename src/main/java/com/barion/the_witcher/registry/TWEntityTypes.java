@@ -38,5 +38,5 @@ public final class TWEntityTypes {
     private static <E extends Entity, EF extends EntityType.EntityFactory<E>> EntityType.Builder<E> entity(EF entity, MobCategory category, float width, float height){
         return EntityType.Builder.of(entity, category).sized(width, height);
     }
-    private static <E extends Entity> DeferredHolder<EntityType<?>, EntityType<E>> register(String id, EntityType.Builder<E> builder) {return REGISTER.register(id, ()-> builder.build(TWUtil.location(id).toString()));}
+    private static <E extends Entity> DeferredHolder<EntityType<?>, EntityType<E>> register(String id, EntityType.Builder<E> builder) {return REGISTER.register(id, ()-> builder.build(TWUtil.locate(id).toString()));}
 }

@@ -46,13 +46,13 @@ public final class TWRecipeProvider extends ExtendedRecipeProvider {
         stairSlabWallButton(consumer, TWBlocks.FROSTED_STONE_STAIRS.get(), TWBlocks.FROSTED_STONE_SLAB.get(), TWBlocks.FROSTED_STONE_WALL.get(), TWBlocks.FROSTED_STONE_BUTTON.get(), TWBlocks.FROSTED_STONE.get(), true);
         stairSlabWallButton(consumer, TWBlocks.FROSTED_STONE_BRICK_STAIRS.get(), TWBlocks.FROSTED_STONE_BRICK_SLAB.get(), TWBlocks.FROSTED_STONE_BRICK_WALL.get(), TWBlocks.FROSTED_STONE_BRICK_BUTTON.get(), TWBlocks.FROSTED_STONE_BRICKS.get(), TWBlocks.FROSTED_STONE.get(), TWBlocks.FROSTED_COBBLESTONE.get());
         stairSlabWallButton(consumer, TWBlocks.CRACKED_FROSTED_STONE_BRICK_STAIRS.get(), TWBlocks.CRACKED_FROSTED_STONE_BRICK_SLAB.get(), TWBlocks.CRACKED_FROSTED_STONE_BRICK_WALL.get(), TWBlocks.CRACKED_FROSTED_STONE_BRICK_BUTTON.get(), TWBlocks.CRACKED_FROSTED_STONE_BRICKS.get(), TWBlocks.FROSTED_STONE_BRICKS.get(), TWBlocks.FROSTED_STONE.get(), TWBlocks.FROSTED_COBBLESTONE.get());
-        stairSlabWallButton(consumer, TWBlocks.DeepFrostedCobblestoneStairs.get(), TWBlocks.DeepFrostedCobblestoneSlab.get(), TWBlocks.DeepFrostedCobblestoneWall.get(), TWBlocks.DeepFrostedCobblestoneButton.get(), TWBlocks.DeepFrostedCobblestone.get(), TWBlocks.DeepFrostedStone.get());
-        stairSlabWallButton(consumer, TWBlocks.DeepFrostedStoneStairs.get(), TWBlocks.DeepFrostedStoneSlab.get(), TWBlocks.DeepFrostedStoneWall.get(), TWBlocks.DeepFrostedStoneButton.get(), TWBlocks.DeepFrostedStone.get(), true);
-        stairSlabWallButton(consumer, TWBlocks.DeepFrostedStoneBrickStairs.get(), TWBlocks.DeepFrostedStoneBrickSlab.get(), TWBlocks.DeepFrostedStoneBrickWall.get(), TWBlocks.DeepFrostedStoneBrickButton.get(), TWBlocks.DeepFrostedStoneBricks.get(), TWBlocks.DeepFrostedCobblestone.get(), TWBlocks.DeepFrostedStone.get());
-        stairSlabWallButton(consumer, TWBlocks.DeepFrostedStoneTileStairs.get(), TWBlocks.DeepFrostedStoneTileSlab.get(), TWBlocks.DeepFrostedStoneTileWall.get(), TWBlocks.DeepFrostedStoneTileButton.get(), TWBlocks.DeepFrostedStoneTiles.get(), TWBlocks.DeepFrostedCobblestone.get(), TWBlocks.DeepFrostedStone.get(), TWBlocks.DeepFrostedStoneBricks.get());
+        stairSlabWallButton(consumer, TWBlocks.DEEP_FROSTED_COBBLESTONE_STAIRS.get(), TWBlocks.DEEP_FROSTED_COBBLESTONE_SLAB.get(), TWBlocks.DEEP_FROSTED_COBBLESTONE_WALL.get(), TWBlocks.DEEP_FROSTED_COBBLESTONE_BUTTON.get(), TWBlocks.DEEP_FROSTED_COBBLESTONE.get(), TWBlocks.DEEP_FROSTED_STONE.get());
+        stairSlabWallButton(consumer, TWBlocks.DEEP_FROSTED_STONE_STAIRS.get(), TWBlocks.DEEP_FROSTED_STONE_SLAB.get(), TWBlocks.DEEP_FROSTED_STONE_WALL.get(), TWBlocks.DEEP_FROSTED_STONE_BUTTON.get(), TWBlocks.DEEP_FROSTED_STONE.get(), true);
+        stairSlabWallButton(consumer, TWBlocks.DEEP_FROSTED_STONE_BRICK_STAIRS.get(), TWBlocks.DEEP_FROSTED_STONE_BRICK_SLAB.get(), TWBlocks.DEEP_FROSTED_STONE_BRICK_WALL.get(), TWBlocks.DEEP_FROSTED_STONE_BRICK_BUTTON.get(), TWBlocks.DEEP_FROSTED_STONE_BRICKS.get(), TWBlocks.DEEP_FROSTED_COBBLESTONE.get(), TWBlocks.DEEP_FROSTED_STONE.get());
+        stairSlabWallButton(consumer, TWBlocks.DEEP_FROSTED_STONE_TILE_STAIRS.get(), TWBlocks.DEEP_FROSTED_STONE_TILE_SLAB.get(), TWBlocks.DEEP_FROSTED_STONE_TILE_WALL.get(), TWBlocks.DEEP_FROSTED_STONE_TILE_BUTTON.get(), TWBlocks.DEEP_FROSTED_STONE_TILES.get(), TWBlocks.DEEP_FROSTED_COBBLESTONE.get(), TWBlocks.DEEP_FROSTED_STONE.get(), TWBlocks.DEEP_FROSTED_STONE_BRICKS.get());
 
         shapeless(consumer, RecipeCategory.BUILDING_BLOCKS, TWBlocks.FROSTED_STONE.get(), 4, TWBlocks.FROSTED_COBBLESTONE.get(), 4);
-        shapeless(consumer, RecipeCategory.BUILDING_BLOCKS, TWBlocks.DeepFrostedStone.get(), 4, TWBlocks.DeepFrostedCobblestone.get(), 4);
+        shapeless(consumer, RecipeCategory.BUILDING_BLOCKS, TWBlocks.DEEP_FROSTED_STONE.get(), 4, TWBlocks.DEEP_FROSTED_COBBLESTONE.get(), 4);
 
         float xp = 0.1f;
         int time = 200;
@@ -71,24 +71,24 @@ public final class TWRecipeProvider extends ExtendedRecipeProvider {
         smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.STONE_BRICK_WALL, TWBlocks.FROSTED_STONE_BRICK_WALL.get(), xp, time);
         smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.CRACKED_STONE_BRICKS, TWBlocks.CRACKED_FROSTED_STONE_BRICKS.get(), xp, time);
 
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.COBBLED_DEEPSLATE, TWBlocks.DeepFrostedCobblestone.get(), xp*2, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.COBBLED_DEEPSLATE_STAIRS, TWBlocks.DeepFrostedCobblestoneStairs.get(), xp*2, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.COBBLED_DEEPSLATE_SLAB, TWBlocks.DeepFrostedCobblestoneSlab.get(), xp, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.COBBLED_DEEPSLATE_WALL, TWBlocks.DeepFrostedCobblestoneWall.get(), xp*2, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE, TWBlocks.DeepFrostedStone.get(), xp*2, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_BRICKS, TWBlocks.DeepFrostedStoneBricks.get(), xp*2, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_BRICK_STAIRS, TWBlocks.DeepFrostedStoneBrickStairs.get(), xp*2, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_BRICK_SLAB, TWBlocks.DeepFrostedStoneBrickSlab.get(), xp, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_BRICK_WALL, TWBlocks.DeepFrostedStoneBrickWall.get(), xp*2, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.CRACKED_DEEPSLATE_BRICKS, TWBlocks.CrackedDeepFrostedStoneBricks.get(), xp*2, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_TILES, TWBlocks.DeepFrostedStoneTiles.get(), xp*2, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_TILE_STAIRS, TWBlocks.DeepFrostedStoneTileStairs.get(), xp*2, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_TILE_SLAB, TWBlocks.DeepFrostedStoneTileSlab.get(), xp, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_TILE_WALL, TWBlocks.DeepFrostedStoneTileWall.get(), xp*2, time*2);
-        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.CRACKED_DEEPSLATE_TILES, TWBlocks.CrackedDeepFrostedStoneTiles.get(), xp*2, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.COBBLED_DEEPSLATE, TWBlocks.DEEP_FROSTED_COBBLESTONE.get(), xp*2, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.COBBLED_DEEPSLATE_STAIRS, TWBlocks.DEEP_FROSTED_COBBLESTONE_STAIRS.get(), xp*2, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.COBBLED_DEEPSLATE_SLAB, TWBlocks.DEEP_FROSTED_COBBLESTONE_SLAB.get(), xp, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.COBBLED_DEEPSLATE_WALL, TWBlocks.DEEP_FROSTED_COBBLESTONE_WALL.get(), xp*2, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE, TWBlocks.DEEP_FROSTED_STONE.get(), xp*2, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_BRICKS, TWBlocks.DEEP_FROSTED_STONE_BRICKS.get(), xp*2, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_BRICK_STAIRS, TWBlocks.DEEP_FROSTED_STONE_BRICK_STAIRS.get(), xp*2, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_BRICK_SLAB, TWBlocks.DEEP_FROSTED_STONE_BRICK_SLAB.get(), xp, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_BRICK_WALL, TWBlocks.DEEP_FROSTED_STONE_BRICK_WALL.get(), xp*2, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.CRACKED_DEEPSLATE_BRICKS, TWBlocks.CRACKED_DEEP_FROSTED_STONE_BRICKS.get(), xp*2, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_TILES, TWBlocks.DEEP_FROSTED_STONE_TILES.get(), xp*2, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_TILE_STAIRS, TWBlocks.DEEP_FROSTED_STONE_TILE_STAIRS.get(), xp*2, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_TILE_SLAB, TWBlocks.DEEP_FROSTED_STONE_TILE_SLAB.get(), xp, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE_TILE_WALL, TWBlocks.DEEP_FROSTED_STONE_TILE_WALL.get(), xp*2, time*2);
+        smelting(consumer, RecipeCategory.BUILDING_BLOCKS, Items.CRACKED_DEEPSLATE_TILES, TWBlocks.CRACKED_DEEP_FROSTED_STONE_TILES.get(), xp*2, time*2);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TWItems.BEER.get())
-                .requires(Ingredient.of(TWTags.Items.BREW_BEER), 4)
+                .requires(Ingredient.of(TWTags.Items.BREWS_BEER), 4)
                 .requires(Ingredient.of(TWItems.HOT_WATER_BOTTLE.get()))
                 .unlockedBy(getHasName(TWItems.HOT_WATER_BOTTLE.get()), has(TWItems.HOT_WATER_BOTTLE.get()))
                 .save(consumer, recipeID(TWItems.BEER.get(), TWItems.HOT_WATER_BOTTLE.get()));

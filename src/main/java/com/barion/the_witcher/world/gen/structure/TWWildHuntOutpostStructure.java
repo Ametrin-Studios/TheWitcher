@@ -46,7 +46,7 @@ public class TWWildHuntOutpostStructure extends Structure {
     public @NotNull StructureType<?> type() {return null/*TWStructures.WildHuntOutpost.getType()*/;}
 
     public static class Piece extends GelTemplateStructurePiece {
-        private static final ResourceLocation StructureFile = TWUtil.location("wild_hunt_outpost");
+        private static final ResourceLocation StructureFile = TWUtil.locate("wild_hunt_outpost");
 
         public Piece(StructurePieceType structurePieceType, int componentType, StructureTemplateManager structureManager, ResourceLocation templateName, StructurePlaceSettings placeSettings, BlockPos pos) {
             super(structurePieceType, componentType, structureManager, templateName, placeSettings, pos);

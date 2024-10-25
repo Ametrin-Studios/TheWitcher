@@ -8,7 +8,7 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import static com.ametrinstudios.ametrin.util.Extensions.MinutesToTicks;
+import static com.ametrinstudios.ametrin.util.TimeHelper.MinutesToTicks;
 
 public final class TWPotions {
     public static final DeferredRegister<Potion> REGISTER = DeferredRegister.create(BuiltInRegistries.POTION, TheWitcher.MOD_ID);

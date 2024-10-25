@@ -46,7 +46,7 @@ public final class TWClientEvents {
 
     @SubscribeEvent
     public static void registerGuiOverlays(RegisterGuiLayersEvent event){
-        event.registerBelow(ResourceLocation.withDefaultNamespace("hotbar"), TWUtil.location("energy_level"), TWGuiOverlay.EnergyLevel);
+        event.registerBelow(ResourceLocation.withDefaultNamespace("hotbar"), TWUtil.locate("energy_level"), TWGuiOverlay.EnergyLevel);
     }
 
     @SubscribeEvent
@@ -66,6 +66,6 @@ public final class TWClientEvents {
 
     @SubscribeEvent
     public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event){
-        event.register(TWUtil.location("white_frost"), new TWWhiteFrostSpecialEffects());
+        event.register(TWUtil.locate("white_frost"), new TWWhiteFrostSpecialEffects());
     }
 }

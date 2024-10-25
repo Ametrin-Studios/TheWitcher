@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Optional;
 
-import static com.barion.the_witcher.util.TWUtil.location;
+import static com.barion.the_witcher.util.TWUtil.locate;
 import static com.barion.the_witcher.util.TWUtil.pieceBuilder;
 
 public class TWIcyRuinStructure extends Structure {
@@ -51,7 +51,7 @@ public class TWIcyRuinStructure extends Structure {
     public @NotNull StructureType<?> type() {return TWStructures.IcyRuin.getType();}
 
     public static class Piece extends GelTemplateStructurePiece {
-        private static final StructurePieces StructureFiles = pieceBuilder().offset(-5, -1, -4).add(location("icy_ruin/small")).offset(-7, -4, -6).add(location("icy_ruin/big")).offset(-4, -4, -7).add(location("icy_tower")).build();
+        private static final StructurePieces StructureFiles = pieceBuilder().offset(-5, -1, -4).add(locate("icy_ruin/small")).offset(-7, -4, -6).add(locate("icy_ruin/big")).offset(-4, -4, -7).add(locate("icy_tower")).build();
         public Piece(StructureTemplateManager structureManager, StructurePieces.Piece piece, BlockPos pos, RandomSource random){
             super(TWStructures.IcyRuin.getPieceType().get(), 0, structureManager, piece.Resource, pos.offset(piece.Offset));
             rotation = Rotation.getRandom(random);

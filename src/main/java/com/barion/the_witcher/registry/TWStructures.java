@@ -21,7 +21,7 @@ public final class TWStructures {
 
 
     static {
-        IcyRuin = StructureRegistrar.builder(TWUtil.location("icy_ruin"), () -> ()-> TWIcyRuinStructure.Codec)
+        IcyRuin = StructureRegistrar.builder(TWUtil.locate("icy_ruin"), () -> ()-> TWIcyRuinStructure.Codec)
                 .addPiece(()-> TWIcyRuinStructure.Piece::new)
                 .pushStructure(TWIcyRuinStructure::new)
                         .biomes(TWTags.Biomes.HAS_ICY_RUIN)
@@ -41,7 +41,7 @@ public final class TWStructures {
                 .placement(()-> GridStructurePlacement.builder(40, 0.7f).build(WildHuntOutpost.getRegistryName()))
                 .build();*/
 
-        WitcherCitadel = StructureRegistrar.builder(TWUtil.location("witcher_citadel"), ()-> ()-> TWWitcherCitadelStructure.Codec)
+        WitcherCitadel = StructureRegistrar.builder(TWUtil.locate("witcher_citadel"), ()-> ()-> TWWitcherCitadelStructure.Codec)
                 .addPiece(()-> TWWitcherCitadelStructure.Piece::new)
                 .pushStructure(TWWitcherCitadelStructure::new)
 //                        .config(TWConfig.COMMON.WitcherCitadelConfig::getStructure)

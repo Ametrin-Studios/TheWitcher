@@ -13,10 +13,11 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
+import java.util.Arrays;
+import java.util.Iterator;
 
 import static com.ametrinstudios.ametrin.data.LootTableProviderHelper.one;
 
@@ -27,75 +28,84 @@ public final class TWBlockLoot extends ExtendedBlockLootSubProvider {
 
     @Override
     protected void generate() {
-        dropSelf(TWBlocks.SILVER_BLOCK.get(),
-                TWBlocks.RAW_SILVER_BLOCK.get(),
-                TWBlocks.MASTER_SMITHING_TABLE.get(),
+        dropSelfOther(TWBlocks.SILVER_BLOCK,
+                TWBlocks.RAW_SILVER_BLOCK,
+                TWBlocks.MASTER_SMITHING_TABLE,
 
-                TWBlocks.FROSTED_STONE_STAIRS.get(),
-                TWBlocks.FROSTED_STONE_SLAB.get(),
-                TWBlocks.FROSTED_STONE_WALL.get(),
-                TWBlocks.FROSTED_STONE_BUTTON.get(),
-                TWBlocks.FROSTED_COBBLESTONE.get(),
-                TWBlocks.FROSTED_COBBLESTONE_STAIRS.get(),
-                TWBlocks.FROSTED_COBBLESTONE_SLAB.get(),
-                TWBlocks.FROSTED_COBBLESTONE_WALL.get(),
-                TWBlocks.FROSTED_COBBLESTONE_BUTTON.get(),
-                TWBlocks.FROSTED_STONE_BRICKS.get(),
-                TWBlocks.FROSTED_STONE_BRICK_STAIRS.get(),
-                TWBlocks.FROSTED_STONE_BRICK_SLAB.get(),
-                TWBlocks.FROSTED_STONE_BRICK_WALL.get(),
-                TWBlocks.FROSTED_STONE_BRICK_BUTTON.get(),
-                TWBlocks.CRACKED_FROSTED_STONE_BRICKS.get(),
-                TWBlocks.CRACKED_FROSTED_STONE_BRICK_STAIRS.get(),
-                TWBlocks.CRACKED_FROSTED_STONE_BRICK_SLAB.get(),
-                TWBlocks.CRACKED_FROSTED_STONE_BRICK_WALL.get(),
-                TWBlocks.CRACKED_FROSTED_STONE_BRICK_BUTTON.get(),
+                TWBlocks.FROSTED_STONE_STAIRS,
+                TWBlocks.FROSTED_STONE_SLAB,
+                TWBlocks.FROSTED_STONE_WALL,
+                TWBlocks.FROSTED_STONE_BUTTON,
+                TWBlocks.FROSTED_COBBLESTONE,
+                TWBlocks.FROSTED_COBBLESTONE_STAIRS,
+                TWBlocks.FROSTED_COBBLESTONE_SLAB,
+                TWBlocks.FROSTED_COBBLESTONE_WALL,
+                TWBlocks.FROSTED_COBBLESTONE_BUTTON,
+                TWBlocks.FROSTED_STONE_BRICKS,
+                TWBlocks.FROSTED_STONE_BRICK_STAIRS,
+                TWBlocks.FROSTED_STONE_BRICK_SLAB,
+                TWBlocks.FROSTED_STONE_BRICK_WALL,
+                TWBlocks.FROSTED_STONE_BRICK_BUTTON,
+                TWBlocks.CRACKED_FROSTED_STONE_BRICKS,
+                TWBlocks.CRACKED_FROSTED_STONE_BRICK_STAIRS,
+                TWBlocks.CRACKED_FROSTED_STONE_BRICK_SLAB,
+                TWBlocks.CRACKED_FROSTED_STONE_BRICK_WALL,
+                TWBlocks.CRACKED_FROSTED_STONE_BRICK_BUTTON,
 
-                TWBlocks.DeepFrostedStoneStairs.get(),
-                TWBlocks.DeepFrostedStoneSlab.get(),
-                TWBlocks.DeepFrostedStoneWall.get(),
-                TWBlocks.DeepFrostedStoneButton.get(),
-                TWBlocks.DeepFrostedCobblestone.get(),
-                TWBlocks.DeepFrostedCobblestoneStairs.get(),
-                TWBlocks.DeepFrostedCobblestoneSlab.get(),
-                TWBlocks.DeepFrostedCobblestoneWall.get(),
-                TWBlocks.DeepFrostedCobblestoneButton.get(),
-                TWBlocks.DeepFrostedStoneBricks.get(),
-                TWBlocks.DeepFrostedStoneBrickStairs.get(),
-                TWBlocks.DeepFrostedStoneBrickSlab.get(),
-                TWBlocks.DeepFrostedStoneBrickWall.get(),
-                TWBlocks.DeepFrostedStoneBrickButton.get(),
-                TWBlocks.CrackedDeepFrostedStoneBricks.get(),
-                TWBlocks.CrackedDeepFrostedStoneBrickStairs.get(),
-                TWBlocks.CrackedDeepFrostedStoneBrickSlab.get(),
-                TWBlocks.CrackedDeepFrostedStoneBrickWall.get(),
-                TWBlocks.CrackedDeepFrostedStoneBrickButton.get(),
-                TWBlocks.DeepFrostedStoneTiles.get(),
-                TWBlocks.DeepFrostedStoneTileStairs.get(),
-                TWBlocks.DeepFrostedStoneTileSlab.get(),
-                TWBlocks.DeepFrostedStoneTileWall.get(),
-                TWBlocks.DeepFrostedStoneTileButton.get(),
-                TWBlocks.CrackedDeepFrostedStoneTiles.get(),
-                TWBlocks.CrackedDeepFrostedStoneTileStairs.get(),
-                TWBlocks.CrackedDeepFrostedStoneTileSlab.get(),
-                TWBlocks.CrackedDeepFrostedStoneTileWall.get(),
-                TWBlocks.CrackedDeepFrostedStoneTileButton.get(),
+                TWBlocks.DEEP_FROSTED_STONE_STAIRS,
+                TWBlocks.DEEP_FROSTED_STONE_SLAB,
+                TWBlocks.DEEP_FROSTED_STONE_WALL,
+                TWBlocks.DEEP_FROSTED_STONE_BUTTON,
+                TWBlocks.DEEP_FROSTED_COBBLESTONE,
+                TWBlocks.DEEP_FROSTED_COBBLESTONE_STAIRS,
+                TWBlocks.DEEP_FROSTED_COBBLESTONE_SLAB,
+                TWBlocks.DEEP_FROSTED_COBBLESTONE_WALL,
+                TWBlocks.DEEP_FROSTED_COBBLESTONE_BUTTON,
+                TWBlocks.DEEP_FROSTED_STONE_BRICKS,
+                TWBlocks.DEEP_FROSTED_STONE_BRICK_STAIRS,
+                TWBlocks.DEEP_FROSTED_STONE_BRICK_SLAB,
+                TWBlocks.DEEP_FROSTED_STONE_BRICK_WALL,
+                TWBlocks.DEEP_FROSTED_STONE_BRICK_BUTTON,
+                TWBlocks.CRACKED_DEEP_FROSTED_STONE_BRICKS,
+                TWBlocks.CRACKED_DEEP_FROSTED_STONE_BRICK_STAIRS,
+                TWBlocks.CRACKED_DEEP_FROSTED_STONE_BRICK_SLAB,
+                TWBlocks.CRACKED_DEEP_FROSTED_STONE_BRICK_WALL,
+                TWBlocks.CRACKED_DEEP_FROSTED_STONE_BRICK_BUTTON,
+                TWBlocks.DEEP_FROSTED_STONE_TILES,
+                TWBlocks.DEEP_FROSTED_STONE_TILE_STAIRS,
+                TWBlocks.DEEP_FROSTED_STONE_TILE_SLAB,
+                TWBlocks.DEEP_FROSTED_STONE_TILE_WALL,
+                TWBlocks.DEEP_FROSTED_STONE_TILE_BUTTON,
+                TWBlocks.CRACKED_DEEP_FROSTED_STONE_TILES,
+                TWBlocks.CRACKED_DEEP_FROSTED_STONE_TILE_STAIRS,
+                TWBlocks.CRACKED_DEEP_FROSTED_STONE_TILE_SLAB,
+                TWBlocks.CRACKED_DEEP_FROSTED_STONE_TILE_WALL,
+                TWBlocks.CRACKED_DEEP_FROSTED_STONE_TILE_BUTTON,
 
-                TWBlocks.HALLUCINATED_STONE.get(),
-                TWBlocks.HALLUCINATED_STONE_STAIRS.get(),
-                TWBlocks.HALLUCINATED_STONE_SLAB.get(),
-                TWBlocks.HALLUCINATED_STONE_WALL.get(),
-                TWBlocks.HALLUCINATED_STONE_BUTTON.get(),
-                TWBlocks.ALCITE.get()
+                TWBlocks.HALLUCINATED_STONE,
+                TWBlocks.HALLUCINATED_STONE_STAIRS,
+                TWBlocks.HALLUCINATED_STONE_SLAB,
+                TWBlocks.HALLUCINATED_STONE_WALL,
+                TWBlocks.HALLUCINATED_STONE_BUTTON,
+                TWBlocks.ALCITE
         );
 
         dropOther(TWBlocks.FROSTED_STONE.get(), TWBlocks.FROSTED_COBBLESTONE.get());
-        dropOther(TWBlocks.DeepFrostedStone.get(), TWBlocks.DeepFrostedCobblestone.get());
+        dropOther(TWBlocks.DEEP_FROSTED_STONE.get(), TWBlocks.DEEP_FROSTED_COBBLESTONE.get());
         dropWhenSilkTouch(TWBlocks.ICICLE.get());
         dropWhenSilkTouch(TWBlocks.LARIMAR.get());
 
         dropBush(TWBlocks.WHITE_MYRTLE_BUSH.get(), TWItems.WHITE_MYRTLE.get());
         dropBush(TWBlocks.CELANDINE_BUSH.get(), TWItems.CELANDINE.get());
+    }
+
+    @SafeVarargs
+    private void dropSelfOther(final DeferredBlock<? extends Block>... blocks) {
+        dropSelfOther(Arrays.stream(blocks).map(DeferredBlock::get).iterator());
+    }
+
+    private  void dropSelfOther(Iterator<? extends Block> blocks) {
+        blocks.forEachRemaining(this::dropSelf);
     }
 
     private void dropBush(Block bush, ItemLike drop){
@@ -105,6 +115,8 @@ public final class TWBlockLoot extends ExtendedBlockLootSubProvider {
                         .add(LootItem.lootTableItem(drop)).apply(SetItemCountFunction.setCount(one())))));
     }
 
-    @Override @Nonnull
-    protected @NotNull Iterable<Block> getKnownBlocks() { return TWBlocks.REGISTER.getEntries().stream().map(DeferredHolder::get).map(block -> (Block)block).toList(); }
+    @Override
+    protected @NotNull Iterable<Block> getKnownBlocks() {
+        return TWBlocks.REGISTER.getEntries().stream().map(block -> (Block) block.get()).toList();
+    }
 }

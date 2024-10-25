@@ -13,10 +13,10 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 
 public final class TWWildHuntKnightRenderer extends HumanoidMobRenderer<TWWildHuntKnightEntity, HumanoidModel<TWWildHuntKnightEntity>> {
-    private static final ResourceLocation TEXTURE = TWUtil.location("textures/entity/wild_hunt_knight.png");
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(TWUtil.location("wild_hunt_knight"), "main");
-    public static final ModelLayerLocation LAYER_LOCATION_INNER_ARMOR = new ModelLayerLocation(TWUtil.location("wild_hunt_knight_inner_armor"), "main");
-    public static final ModelLayerLocation LAYER_LOCATION_OUTER_ARMOR = new ModelLayerLocation(TWUtil.location("wild_hunt_knight_outer_armor"), "main");
+    private static final ResourceLocation TEXTURE = TWUtil.locate("textures/entity/wild_hunt_knight.png");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(TWUtil.locate("wild_hunt_knight"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION_INNER_ARMOR = new ModelLayerLocation(TWUtil.locate("wild_hunt_knight_inner_armor"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION_OUTER_ARMOR = new ModelLayerLocation(TWUtil.locate("wild_hunt_knight_outer_armor"), "main");
 
     public TWWildHuntKnightRenderer(EntityRendererProvider.Context context) {
         super(context, new HumanoidModel<>(context.bakeLayer(LAYER_LOCATION)), 0.5f);
