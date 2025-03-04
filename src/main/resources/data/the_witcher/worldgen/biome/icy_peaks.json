@@ -1,8 +1,8 @@
 {
   "temperature": 0,
   "downfall": 0.5,
-  "precipitation": "snow",
-  "category": "icy",
+  "has_precipitation": true,
+  "temperature_modifier": "frozen",
   "creature_spawn_probability": 0.07,
   "effects": {
     "sky_color": 8364543,
@@ -18,17 +18,13 @@
   },
   "spawners": {},
   "spawn_costs": {},
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
-    ]
-  },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
   "features": [
-    [
-
-    ],
+    [],
     [
       "minecraft:freeze_top_layer"
     ]

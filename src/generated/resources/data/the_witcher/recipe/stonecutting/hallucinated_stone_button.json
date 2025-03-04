@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "the_witcher:hallucinated_stone_stairs"
-  },
+  "ingredient": "the_witcher:hallucinated_stone_stairs",
   "result": {
     "count": 1,
     "id": "the_witcher:hallucinated_stone_button"

@@ -12,14 +12,13 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nonnull;
 import java.util.concurrent.CompletableFuture;
 
 public final class TWItemTagsProvider extends ItemTagsProvider {
-    public TWItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTagsProvider, ExistingFileHelper existingFileHelper){
-        super(output, lookupProvider, blockTagsProvider, TheWitcher.MOD_ID, existingFileHelper);
+    public TWItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTagsProvider) {
+        super(output, lookupProvider, blockTagsProvider, TheWitcher.MOD_ID);
     }
 
     @Override

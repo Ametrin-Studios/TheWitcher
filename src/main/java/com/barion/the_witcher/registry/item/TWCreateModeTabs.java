@@ -100,7 +100,7 @@ public final class TWCreateModeTabs {
         event.accept(TWItems.KIKIMORA_TOOTH);
         event.accept(TWItems.HOT_WATER_BOTTLE);
 
-        event.accept(TWItems.ICE_STUFF);
+        event.accept(TWItems.ICE_STAFF);
         event.accept(TWItems.WILD_HUNT_KNIGHT_SPAWN_EGG);
         event.accept(TWItems.WILD_HUNT_HOUND_SPAWN_EGG);
         event.accept(TWItems.ICE_GHOST_SPAWN_EGG);

@@ -21,8 +21,6 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
 public class TWWildHuntKnightEntity extends Monster {
     public TWWildHuntKnightEntity(EntityType<TWWildHuntKnightEntity> entity, Level level) { super(entity, level); }
 
@@ -34,7 +32,7 @@ public class TWWildHuntKnightEntity extends Monster {
         goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.2, false));
 
         targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, (entity) -> !entity.getType().is(TWTags.EntityTypes.WILD_HUNT_IGNORE)));
+        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, (entity, level) -> !entity.getType().is(TWTags.EntityTypes.WILD_HUNT_IGNORE)));
     }
 
     @NotNull
@@ -45,10 +43,10 @@ public class TWWildHuntKnightEntity extends Monster {
                 .add(Attributes.ATTACK_DAMAGE, 2);
     }
 
-    @Override @ParametersAreNonnullByDefault
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
+    @Override
+    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason spawnReason, @Nullable SpawnGroupData spawnGroupData) {
         populateDefaultEquipmentSlots(random, difficulty);
-        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
+        return super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
     }
 
     @Override

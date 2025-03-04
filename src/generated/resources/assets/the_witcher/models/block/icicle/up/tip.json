@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "minecraft:block/pointed_dripstone",
   "render_type": "minecraft:cutout",
   "textures": {
     "cross": "the_witcher:block/icicle/up/tip"

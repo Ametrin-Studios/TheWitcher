@@ -11,7 +11,7 @@ import net.minecraft.server.level.ServerPlayer;
 
 import java.util.Collection;
 
-public class TWSetSignStrengthCommand {
+public final class TWSetSignStrengthCommand {
     private static final String success = "command.the_witcher.sign_strength.set.success";
 
     public TWSetSignStrengthCommand(CommandDispatcher<CommandSourceStack> dispatcher){
@@ -40,7 +40,7 @@ public class TWSetSignStrengthCommand {
         }
 
         setSignStrengthInternal(source, source.getPlayer(), value);
-        return 1;
+        return 0;
     }
 
     private void setSignStrengthInternal(CommandSourceStack source, ServerPlayer target, int value) {

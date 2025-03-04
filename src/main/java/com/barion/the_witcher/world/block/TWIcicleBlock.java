@@ -15,15 +15,15 @@ import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DripstoneThickness;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -44,7 +44,7 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedBlock {
-    public static final DirectionProperty TIP_DIRECTION = BlockStateProperties.VERTICAL_DIRECTION;
+    public static final EnumProperty<Direction> TIP_DIRECTION = BlockStateProperties.VERTICAL_DIRECTION;
     public static final EnumProperty<DripstoneThickness> THICKNESS = BlockStateProperties.DRIPSTONE_THICKNESS;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     private static final int MAX_SEARCH_LENGTH_WHEN_CHECKING_DRIP_TYPE = 11;
@@ -80,27 +80,31 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateBuilder) {
         stateBuilder.add(TIP_DIRECTION, THICKNESS, WATERLOGGED);
     }
-    @Override @ParametersAreNonnullByDefault
+
+    @Override
+    @ParametersAreNonnullByDefault
     public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos pos) {
         return isValidIciclePlacement(level, pos, blockState.getValue(TIP_DIRECTION));
     }
-    @Override @ParametersAreNonnullByDefault
-    public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState p_154149_, LevelAccessor level, BlockPos pos, BlockPos p_154152_) {
+
+    @Override
+    @ParametersAreNonnullByDefault
+    public @NotNull BlockState updateShape(BlockState blockState, LevelReader level, ScheduledTickAccess scheduledTickAccess, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
         if (blockState.getValue(WATERLOGGED)) {
-            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+            scheduledTickAccess.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
         if (direction != Direction.UP && direction != Direction.DOWN) {
             return blockState;
         } else {
             Direction tipDirection = blockState.getValue(TIP_DIRECTION);
-            if (tipDirection == Direction.DOWN && level.getBlockTicks().hasScheduledTick(pos, this)) {
+            if (tipDirection == Direction.DOWN && scheduledTickAccess.getBlockTicks().hasScheduledTick(pos, this)) {
                 return blockState;
             } else if (direction == tipDirection.getOpposite() && !this.canSurvive(blockState, level, pos)) {
                 if (tipDirection == Direction.DOWN) {
-                    level.scheduleTick(pos, this, DELAY_BEFORE_FALLING);
+                    scheduledTickAccess.scheduleTick(pos, this, DELAY_BEFORE_FALLING);
                 } else {
-                    level.scheduleTick(pos, this, 1);
+                    scheduledTickAccess.scheduleTick(pos, this, 1);
                 }
 
                 return blockState;
@@ -111,15 +115,19 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
             }
         }
     }
-    @Override @ParametersAreNonnullByDefault
+
+    @Override
+    @ParametersAreNonnullByDefault
     public void onProjectileHit(Level level, BlockState blockState, BlockHitResult blockHitResult, Projectile projectile) {
         BlockPos pos = blockHitResult.getBlockPos();
-        if (!level.isClientSide && projectile instanceof ThrownTrident && projectile.mayInteract(level, pos) && projectile.getDeltaMovement().length() > MIN_TRIDENT_VELOCITY_TO_BREAK_ICICLE) {
+        if (!level.isClientSide && projectile instanceof ThrownTrident && projectile.mayInteract((ServerLevel) level, pos) && projectile.getDeltaMovement().length() > MIN_TRIDENT_VELOCITY_TO_BREAK_ICICLE) {
             level.destroyBlock(pos, true);
         }
 
     }
-    @Override @ParametersAreNonnullByDefault
+
+    @Override
+    @ParametersAreNonnullByDefault
     public void fallOn(Level level, BlockState blockState, BlockPos pos, Entity entity, float damage) {
         if (blockState.getValue(TIP_DIRECTION) == Direction.UP && blockState.getValue(THICKNESS) == DripstoneThickness.TIP) {
             entity.causeFallDamage(damage + STALAGMITE_FALL_DISTANCE_OFFSET, STALAGMITE_FALL_DAMAGE_MODIFIER, level.damageSources().stalagmite());
@@ -128,7 +136,9 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
         }
 
     }
-    @Override @ParametersAreNonnullByDefault
+
+    @Override
+    @ParametersAreNonnullByDefault
     public void animateTick(BlockState blockState, Level level, BlockPos pos, RandomSource random) {
         if (canDrip(blockState) && !level.getBiome(pos).is(TWTags.Biomes.ICICLE_CAN_GROW_IN)) {
             float chance = random.nextFloat();
@@ -139,7 +149,9 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
             }
         }
     }
-    @Override @ParametersAreNonnullByDefault
+
+    @Override
+    @ParametersAreNonnullByDefault
     public void tick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource random) {
         if (isStalagmite(blockState) && !canSurvive(blockState, level, pos)) {
             level.destroyBlock(pos, true);
@@ -148,20 +160,23 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
         }
     }
 
-    @Override @ParametersAreNonnullByDefault
+    @Override
+    @ParametersAreNonnullByDefault
     public void randomTick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource random) {
-        if(level.getBiome(pos).is(TWTags.Biomes.ICICLE_CAN_GROW_IN)) {
+        if (level.getBiome(pos).is(TWTags.Biomes.ICICLE_CAN_GROW_IN)) {
             if (random.nextFloat() < GROWTH_PROBABILITY_PER_RANDOM_TICK && isStalactiteStartPos(blockState, level, pos)) {
                 growStalactiteOrStalagmiteIfPossible(blockState, level, pos, random);
             }
-        }else {
+        } else {
             maybeFillCauldron(blockState, level, pos, random.nextFloat());
         }
     }
 
     @VisibleForTesting
     public static void maybeFillCauldron(BlockState blockState, ServerLevel level, BlockPos pos, float number) {
-        if(level.getBiome(pos).is(TWTags.Biomes.ICICLE_CAN_GROW_IN)) {return;}
+        if (level.getBiome(pos).is(TWTags.Biomes.ICICLE_CAN_GROW_IN)) {
+            return;
+        }
 
         if (number > WATER_CAULDRON_FILL_PROBABILITY_PER_RANDOM_TICK) {
             return;
@@ -192,10 +207,14 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
         var cauldronState = level.getBlockState(cauldronPos);
         level.scheduleTick(cauldronPos, cauldronState.getBlock(), delay);
     }
-    @Override
-    public @NotNull PushReaction getPistonPushReaction(@NotNull BlockState blockState) {return PushReaction.DESTROY;}
 
-    @Override @Nullable
+    @Override
+    public @NotNull PushReaction getPistonPushReaction(@NotNull BlockState blockState) {
+        return PushReaction.DESTROY;
+    }
+
+    @Override
+    @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext placeContext) {
         LevelAccessor levelaccessor = placeContext.getLevel();
         BlockPos clickedPos = placeContext.getClickedPos();
@@ -209,15 +228,20 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
             return thickness == null ? null : this.defaultBlockState().setValue(TIP_DIRECTION, tipDirection).setValue(THICKNESS, thickness).setValue(WATERLOGGED, levelaccessor.getFluidState(clickedPos).getType() == Fluids.WATER);
         }
     }
+
     @Override
     public @NotNull FluidState getFluidState(BlockState blockState) {
         return blockState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(blockState);
     }
-    @Override @ParametersAreNonnullByDefault
-    public @NotNull VoxelShape getOcclusionShape(BlockState blockState, BlockGetter level, BlockPos pos) {
+
+    @Override
+    @ParametersAreNonnullByDefault
+    public @NotNull VoxelShape getOcclusionShape(BlockState blockState) {
         return Shapes.empty();
     }
-    @Override @ParametersAreNonnullByDefault
+
+    @Override
+    @ParametersAreNonnullByDefault
     public @NotNull VoxelShape getShape(BlockState blockState, BlockGetter level, BlockPos pos, CollisionContext collisionContext) {
         DripstoneThickness thickness = blockState.getValue(THICKNESS);
         VoxelShape voxelshape;
@@ -237,16 +261,21 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
             voxelshape = BASE_SHAPE;
         }
 
-        Vec3 vec3 = blockState.getOffset(level, pos);
+        Vec3 vec3 = blockState.getOffset(pos);
         return voxelshape.move(vec3.x, 0.0D, vec3.z);
     }
-    @Override @ParametersAreNonnullByDefault
+
+    @Override
+    @ParametersAreNonnullByDefault
     public boolean isCollisionShapeFullBlock(BlockState blockState, BlockGetter level, BlockPos pos) {
         return false;
     }
 
 
-    public float getMaxHorizontalOffset() { return 0.125f; }
+    public float getMaxHorizontalOffset() {
+        return 0.125f;
+    }
+
     @Override
     public void onBrokenAfterFall(@NotNull Level level, @NotNull BlockPos pos, FallingBlockEntity fallingBlockEntity) {
         if (!fallingBlockEntity.isSilent()) {
@@ -262,7 +291,7 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
     private static void spawnFallingStalactite(BlockState blockState, ServerLevel level, BlockPos pos) {
         var mutablePos = pos.mutable();
 
-        for(var fallingState = blockState; isStalactite(fallingState); fallingState = level.getBlockState(mutablePos)) {
+        for (var fallingState = blockState; isStalactite(fallingState); fallingState = level.getBlockState(mutablePos)) {
             var fallingBlockEntity = FallingBlockEntity.fall(level, mutablePos, fallingState);
             if (isTip(fallingState, true)) {
                 var damage = (float) Math.max(1 + pos.getY() - mutablePos.getY(), MAX_STALACTITE_HEIGHT_FOR_DAMAGE_CALCULATION);
@@ -304,7 +333,7 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
     private static void growStalagmiteBelow(ServerLevel level, BlockPos pos) {
         var mutablePos = pos.mutable();
 
-        for(int i = 0; i < MAX_STALAGMITE_SEARCH_RANGE_WHEN_GROWING; ++i) {
+        for (int i = 0; i < MAX_STALAGMITE_SEARCH_RANGE_WHEN_GROWING; ++i) {
             mutablePos.move(Direction.DOWN);
             BlockState blockstate = level.getBlockState(mutablePos);
             if (!blockstate.getFluidState().isEmpty()) {
@@ -360,10 +389,10 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
     }
 
     private static void spawnDripParticle(Level level, BlockPos pos, BlockState blockState, Fluid startFluid) {
-        var vec3 = blockState.getOffset(level, pos);
-        double d1 = (double)pos.getX() + 0.5D + vec3.x;
-        double d2 = (double)((float)(pos.getY() + 1) - STALACTITE_DRIP_START_PIXEL) - 0.0625D;
-        double d3 = (double)pos.getZ() + 0.5D + vec3.z;
+        var vec3 = blockState.getOffset(pos);
+        double d1 = (double) pos.getX() + 0.5D + vec3.x;
+        double d2 = (double) ((float) (pos.getY() + 1) - STALACTITE_DRIP_START_PIXEL) - 0.0625D;
+        double d3 = (double) pos.getZ() + 0.5D + vec3.z;
         level.addParticle(ParticleTypes.DRIPPING_DRIPSTONE_WATER, d1, d2, d3, 0.0D, 0.0D, 0.0D);
     }
 
@@ -464,7 +493,8 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
         return isStalactite(blockState) && !level.getBlockState(pos.above()).is(BlockTags.ICE);
     }
 
-    @Override @ParametersAreNonnullByDefault
+    @Override
+    @ParametersAreNonnullByDefault
     protected boolean isPathfindable(BlockState blockState, PathComputationType pathComputationType) {
         return false;
     }
@@ -500,7 +530,7 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
         Direction direction = Direction.get(axisDirection, Direction.Axis.Y);
         BlockPos.MutableBlockPos mutableBlockPos = pos.mutable();
 
-        for(int i = 1; i < steps; ++i) {
+        for (int i = 1; i < steps; ++i) {
             mutableBlockPos.move(direction);
             BlockState blockstate = level.getBlockState(mutableBlockPos);
             if (blockStatePredicate.test(blockstate)) {
@@ -518,7 +548,7 @@ public class TWIcicleBlock extends Block implements Fallable, SimpleWaterloggedB
     private static boolean canDripThrough(BlockGetter level, BlockPos pos, BlockState blockState) {
         if (blockState.isAir()) {
             return true;
-        } else if (blockState.isSolidRender(level, pos)) {
+        } else if (blockState.isSolidRender()) {
             return false;
         } else if (!blockState.getFluidState().isEmpty()) {
             return false;

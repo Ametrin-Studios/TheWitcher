@@ -9,14 +9,13 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nonnull;
 import java.util.concurrent.CompletableFuture;
 
 public final class TWBlockTagsProvider extends ExtendedBlockTagsProvider {
-    public TWBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper){
-        super(output, lookupProvider, TheWitcher.MOD_ID, existingFileHelper);
+    public TWBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider){
+        super(output, lookupProvider, TheWitcher.MOD_ID);
     }
 
     @Override

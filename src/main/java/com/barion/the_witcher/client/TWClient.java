@@ -1,5 +1,5 @@
 package com.barion.the_witcher.client;
 
-public class TWClient {
+public final class TWClient {
 
 }

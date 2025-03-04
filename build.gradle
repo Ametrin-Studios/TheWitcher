@@ -1,7 +1,8 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '1.0.21'
+    id 'net.neoforged.moddev' version '2.0.78'
+    id 'idea'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -37,13 +38,8 @@ neoForge {
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
-        gameTestServer {
-            type = "gameTestServer"
-            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
-        }
-
         data {
-            data()
+            clientData()
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
 
@@ -78,10 +74,10 @@ repositories {
         url "https://maven.blamejared.com/"
     }
 
-//    maven {
-//        name "Modding Legacy Maven"
-//        url "https://maven.moddinglegacy.com/maven"
-//    }
+    maven {
+        name "Modding Legacy Maven"
+        url "https://maven.moddinglegacy.com/maven"
+    }
 
     maven {
         name = "TerraformersMC"
@@ -90,15 +86,15 @@ repositories {
 }
 
 dependencies {
-    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
-    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
-    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+//    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+//    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+//    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
-    compileOnly "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}:api"
-    localRuntime "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
+//    compileOnly "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}:api"
+//    localRuntime "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
 
     implementation "com.ametrinstudios:ametrin:${minecraft_version}-${ametrin_version}"
-    //implementation "com.legacy:structure-gel_${minecraft_version}-${gel_version}"
+    implementation "com.legacy:structure-gel:${minecraft_version}-${gel_version}"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

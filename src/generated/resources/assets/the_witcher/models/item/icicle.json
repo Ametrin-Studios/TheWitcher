@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:item/pointed_dripstone",
+  "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "the_witcher:block/icicle/down/tip"
   }

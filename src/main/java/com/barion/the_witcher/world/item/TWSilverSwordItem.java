@@ -5,7 +5,10 @@ import com.barion.the_witcher.util.TWUtil;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.TooltipFlag;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -13,8 +16,8 @@ import java.util.List;
 public class TWSilverSwordItem extends SwordItem {
     private final int magicDamage;
     private final Component magicDamageInfo;
-    public TWSilverSwordItem(Tier tier, int magicDamage, float attackSpeed, Properties properties) {
-        super(tier, properties.attributes(SwordItem.createAttributes(Tiers.WOOD, 0, attackSpeed)));
+    public TWSilverSwordItem(ToolMaterial toolMaterial, int magicDamage, float attackSpeed, Properties properties) {
+        super(toolMaterial, 0, attackSpeed, properties);
         this.magicDamage = magicDamage;
         magicDamageInfo = Component.translatable("item.the_witcher.silver_sword.info", this.magicDamage);
     }

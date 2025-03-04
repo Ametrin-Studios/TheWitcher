@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "the_witcher:frosted_stone"
-  },
+  "ingredient": "the_witcher:frosted_stone",
   "result": {
     "count": 1,
     "id": "the_witcher:frosted_cobblestone_wall"

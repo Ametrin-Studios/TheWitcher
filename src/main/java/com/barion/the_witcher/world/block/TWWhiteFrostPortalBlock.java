@@ -13,8 +13,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 public final class TWWhiteFrostPortalBlock extends PortalBlock {
-    public TWWhiteFrostPortalBlock() {
-        super(TWPortals.WHITE_FROST, 11);
+    public TWWhiteFrostPortalBlock(Properties properties) {
+        super(TWPortals.WHITE_FROST, properties.lightLevel((state) -> 11));
     }
 
     @Override @ParametersAreNonnullByDefault

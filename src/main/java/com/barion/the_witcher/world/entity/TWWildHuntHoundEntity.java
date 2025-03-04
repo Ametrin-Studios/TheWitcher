@@ -26,7 +26,7 @@ public class TWWildHuntHoundEntity extends Monster {
         goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.2, false));
 
         targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, (entity) -> !entity.getType().is(TWTags.EntityTypes.WILD_HUNT_IGNORE)));
+        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, (entity, level) -> !entity.getType().is(TWTags.EntityTypes.WILD_HUNT_IGNORE)));
     }
 
     @NotNull

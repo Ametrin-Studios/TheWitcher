@@ -11,7 +11,7 @@ import net.minecraft.server.level.ServerPlayer;
 
 import java.util.Collection;
 
-public class TWSetEnergyCommand {
+public final class TWSetEnergyCommand {
     private static final String success = "command.the_witcher.energy.set.success";
 
     public TWSetEnergyCommand(CommandDispatcher<CommandSourceStack> dispatcher){
@@ -30,7 +30,7 @@ public class TWSetEnergyCommand {
             setEnergyInternal(source, target, value);
         }
 
-        return 1;
+        return 0;
     }
 
     private int setEnergy(CommandSourceStack source, int value) {
@@ -40,7 +40,7 @@ public class TWSetEnergyCommand {
         }
 
         setEnergyInternal(source, source.getPlayer(), value);
-        return 1;
+        return 0;
     }
 
     private void setEnergyInternal(CommandSourceStack source, ServerPlayer target, int value){

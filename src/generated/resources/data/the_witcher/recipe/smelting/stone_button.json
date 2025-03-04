@@ -3,9 +3,7 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": {
-    "item": "the_witcher:frosted_stone_button"
-  },
+  "ingredient": "the_witcher:frosted_stone_button",
   "result": {
     "count": 1,
     "id": "minecraft:stone_button"

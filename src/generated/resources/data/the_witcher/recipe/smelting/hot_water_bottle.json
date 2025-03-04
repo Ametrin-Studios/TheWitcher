@@ -1,11 +1,9 @@
 {
   "type": "minecraft:smelting",
-  "category": "food",
+  "category": "misc",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": {
-    "item": "minecraft:potion"
-  },
+  "ingredient": "minecraft:potion",
   "result": {
     "count": 1,
     "id": "the_witcher:hot_water_bottle"

@@ -8,7 +8,7 @@ import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 
-public class TWGetSignStrengthCommand{
+public final class TWGetSignStrengthCommand{
     private static final String success = "command.the_witcher.sign_strength.get.success";
 
     public TWGetSignStrengthCommand(CommandDispatcher<CommandSourceStack> dispatcher){

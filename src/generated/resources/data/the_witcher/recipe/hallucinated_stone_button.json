@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "ingredients": [
-    {
-      "item": "the_witcher:hallucinated_stone_stairs"
-    }
+    "the_witcher:hallucinated_stone_stairs"
   ],
   "result": {
     "count": 1,

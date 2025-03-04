@@ -1,6 +1,5 @@
 {
-  "parent": "minecraft:block/nether_portal_ew",
-  "render_type": "minecraft:translucent",
+  "parent": "minecraft:nether_portal_ew",
   "textures": {
     "particle": "the_witcher:block/white_frost_portal",
     "portal": "the_witcher:block/white_frost_portal"

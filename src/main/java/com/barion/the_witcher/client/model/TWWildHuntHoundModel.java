@@ -1,17 +1,14 @@
 package com.barion.the_witcher.client.model;
 // Made with Blockbench 4.2.2
 
-import com.barion.the_witcher.world.entity.TWWildHuntHoundEntity;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.barion.the_witcher.client.renderer.entity.state.TWWildHuntHoundRenderState;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import org.jetbrains.annotations.NotNull;
 
-public class TWWildHuntHoundModel extends EntityModel<TWWildHuntHoundEntity> {
+public class TWWildHuntHoundModel extends EntityModel<TWWildHuntHoundRenderState> {
 	private final ModelPart head;
 	private final ModelPart body;
 	private final ModelPart leftArm;
@@ -22,6 +19,7 @@ public class TWWildHuntHoundModel extends EntityModel<TWWildHuntHoundEntity> {
 	private final ModelPart spikes;
 
 	public TWWildHuntHoundModel(ModelPart root) {
+		super(root);
 		this.head = root.getChild("head");
 		this.body = root.getChild("body");
 		this.leftArm = root.getChild("left_arm");
@@ -31,6 +29,7 @@ public class TWWildHuntHoundModel extends EntityModel<TWWildHuntHoundEntity> {
 		this.tail = root.getChild("tail");
 		this.spikes = root.getChild("spikes");
 	}
+
 
 	public static LayerDefinition createMesh() {
 		MeshDefinition meshdefinition = new MeshDefinition();
@@ -76,33 +75,44 @@ public class TWWildHuntHoundModel extends EntityModel<TWWildHuntHoundEntity> {
 	}
 
 	@Override
-	public void setupAnim(@NotNull TWWildHuntHoundEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180f);
+	public void setupAnim(TWWildHuntHoundRenderState renderState) {
 
-		float fallMod = 1f;
-		if (entity.getFallFlyingTicks() > 4) {
-			fallMod = (float)entity.getDeltaMovement().lengthSqr();
-			fallMod /= 0.2f;
-			fallMod *= fallMod * fallMod;
-		}
+		super.setupAnim(renderState);
+		this.head.xRot = renderState.xRot * (float) (Math.PI / 180.0);
+		this.head.yRot = renderState.yRot * (float) (Math.PI / 180.0);
+		float time = renderState.walkAnimationPos;
+		float speed = renderState.walkAnimationSpeed;
+		this.rightLeg.xRot = Mth.cos(time * 0.6662F) * 1.4F * speed;
+		this.leftLeg.xRot = Mth.cos(time * 0.6662F + (float) Math.PI) * 1.4F * speed;
+		this.rightArm.xRot = Mth.cos(time * 0.6662F + (float) Math.PI) * 1.4F * speed;
+		this.leftArm.xRot = Mth.cos(time * 0.6662F) * 1.4F * speed;
 
-		if (fallMod < 1) {fallMod = 1f;}
-
-		this.rightArm.xRot = Mth.cos(limbSwing * 0.6662f + (float)Math.PI) * 2f * limbSwingAmount * 0.5f / fallMod;
-		this.leftArm.xRot = Mth.cos(limbSwing * 0.6662f) * 2f * limbSwingAmount * 0.5f / fallMod;
-		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662f) * 1.4f * limbSwingAmount / fallMod;
-		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662f + (float)Math.PI) * 1.4F * limbSwingAmount / fallMod;
+//		this.head.yRot = netHeadYaw * ((float)Math.PI / 180f);
+//		float fallMod = 1f;
+//		if (entity.getFallFlyingTicks() > 4) {
+//			fallMod = (float)entity.getDeltaMovement().lengthSqr();
+//			fallMod /= 0.2f;
+//			fallMod *= fallMod * fallMod;
+//		}
+//
+//		if (fallMod < 1) {fallMod = 1f;}
+//
+//		this.rightArm.xRot = Mth.cos(limbSwing * 0.6662f + (float)Math.PI) * 2f * limbSwingAmount * 0.5f / fallMod;
+//		this.leftArm.xRot = Mth.cos(limbSwing * 0.6662f) * 2f * limbSwingAmount * 0.5f / fallMod;
+//		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662f) * 1.4f * limbSwingAmount / fallMod;
+//		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662f + (float)Math.PI) * 1.4F * limbSwingAmount / fallMod;
 	}
 
-	@Override
-	public void renderToBuffer(@NotNull PoseStack poseStack, @NotNull VertexConsumer buffer, int packedLight, int packedOverlay, int i2) {
-		head.render(poseStack, buffer, packedLight, packedOverlay);
-		body.render(poseStack, buffer, packedLight, packedOverlay);
-		leftArm.render(poseStack, buffer, packedLight, packedOverlay);
-		rightArm.render(poseStack, buffer, packedLight, packedOverlay);
-		leftLeg.render(poseStack, buffer, packedLight, packedOverlay);
-		rightLeg.render(poseStack, buffer, packedLight, packedOverlay);
-		tail.render(poseStack, buffer, packedLight, packedOverlay);
-		spikes.render(poseStack, buffer, packedLight, packedOverlay);
-	}
+
+//	@Override
+//	public void renderToBuffer(@NotNull PoseStack poseStack, @NotNull VertexConsumer buffer, int packedLight, int packedOverlay, int i2) {
+//		head.render(poseStack, buffer, packedLight, packedOverlay);
+//		body.render(poseStack, buffer, packedLight, packedOverlay);
+//		leftArm.render(poseStack, buffer, packedLight, packedOverlay);
+//		rightArm.render(poseStack, buffer, packedLight, packedOverlay);
+//		leftLeg.render(poseStack, buffer, packedLight, packedOverlay);
+//		rightLeg.render(poseStack, buffer, packedLight, packedOverlay);
+//		tail.render(poseStack, buffer, packedLight, packedOverlay);
+//		spikes.render(poseStack, buffer, packedLight, packedOverlay);
+//	}
 }

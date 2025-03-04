@@ -8,16 +8,20 @@ public record TWEnergyWrapper(Player player) {
     public static final String NBT_ID = "energy";
 
 
-    public float get() { return player.getData(TWAttachmentTypes.ENERGY); }
+    public float get() {
+        return player.getData(TWAttachmentTypes.ENERGY);
+    }
+
     public void set(float energy) {
         player.setData(TWAttachmentTypes.ENERGY, energy);
     }
 
     public void increase(float energy) {
-        set(Math.min(get()+energy, getMax()));
+        set(Math.min(get() + energy, getMax()));
     }
+
     public void decrease(float energy) {
-        set(Math.max(MIN_ENERGY, get()-energy));
+        set(Math.max(MIN_ENERGY, get() - energy));
     }
 
     public int getMax() {

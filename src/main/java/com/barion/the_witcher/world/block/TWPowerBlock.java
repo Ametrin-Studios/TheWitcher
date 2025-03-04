@@ -27,17 +27,18 @@ public class TWPowerBlock extends Block {
         registerDefaultState(getStateDefinition().any().setValue(HAS_POWER, true));
     }
 
-    @Override @ParametersAreNonnullByDefault
+    @Override
+    @ParametersAreNonnullByDefault
     protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if(player instanceof ServerPlayer){
-            if(blockState.getValue(HAS_POWER)){
+        if (player instanceof ServerPlayer) {
+            if (blockState.getValue(HAS_POWER)) {
                 var signStrengthWrapper = new TWSignStrengthWrapper(player);
-                if(signStrengthWrapper.get() == 0) {
+                if (signStrengthWrapper.get() == 0) {
                     player.displayClientMessage(needUnlock, true);
                     return InteractionResult.FAIL;
                 }
 
-                if(signStrengthWrapper.canUpgrade()) {
+                if (signStrengthWrapper.canUpgrade()) {
                     signStrengthWrapper.increase();
                     level.setBlock(pos, blockState.setValue(HAS_POWER, false), 2);
                     level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.2f, level.random.nextFloat() * 0.1f + 0.9f);

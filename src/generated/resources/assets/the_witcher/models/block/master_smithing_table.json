@@ -1,12 +1,9 @@
 {
-  "parent": "minecraft:block/cube",
+  "parent": "minecraft:block/orientable_with_bottom",
   "textures": {
-    "down": "the_witcher:block/master_smithing_table_bottom",
-    "east": "the_witcher:block/master_smithing_table_side",
-    "north": "the_witcher:block/master_smithing_table_front",
-    "particle": "the_witcher:block/master_smithing_table_top",
-    "south": "the_witcher:block/master_smithing_table_front",
-    "up": "the_witcher:block/master_smithing_table_top",
-    "west": "the_witcher:block/master_smithing_table_side"
+    "bottom": "the_witcher:block/master_smithing_table_bottom",
+    "front": "the_witcher:block/master_smithing_table_front",
+    "side": "the_witcher:block/master_smithing_table_side",
+    "top": "the_witcher:block/master_smithing_table_top"
   }
 }

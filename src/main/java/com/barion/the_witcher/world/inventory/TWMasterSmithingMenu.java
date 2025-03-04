@@ -6,6 +6,7 @@ import com.barion.the_witcher.registry.block.TWBlocks;
 import com.barion.the_witcher.registry.recipe.TWRecipeTypes;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -39,12 +40,13 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
     public TWMasterSmithingMenu(int id, Inventory inventory, FriendlyByteBuf data) {
         this(id, inventory, data == null ? ContainerLevelAccess.NULL : ContainerLevelAccess.create(inventory.player.level(), data.readBlockPos()));
     }
+
     public TWMasterSmithingMenu(int id, Inventory inventory, ContainerLevelAccess containerAccess) {
         super(TWMenuTypes.MASTER_SMITHING_TABLE_MENU.get(), id);
         player = inventory.player;
         level = inventory.player.level();
         access = containerAccess;
-        itemHandler = new ItemStackHandler(SLOT_Count){
+        itemHandler = new ItemStackHandler(SLOT_Count) {
             @Override
             protected void onContentsChanged(int slot) {
                 slotsChanged(getContainer());
@@ -53,22 +55,28 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
         checkContainerSize(inventory, SLOT_Count);
 
         addSlot(new SlotItemHandler(itemHandler, 0, 44, 39));
-        addSlot(new SlotItemHandler(itemHandler, 1, 116, 39){
+        addSlot(new SlotItemHandler(itemHandler, 1, 116, 39) {
             @Override
-            public boolean mayPlace(@NotNull ItemStack itemStack) { return false; }
+            public boolean mayPlace(@NotNull ItemStack itemStack) {
+                return false;
+            }
+
             @Override
             public boolean mayPickup(@NotNull Player player) {
                 return TWMasterSmithingMenu.this.mayPickup(player, hasItem());
             }
-            @Override @ParametersAreNonnullByDefault
+
+            @Override
+            @ParametersAreNonnullByDefault
             public void onTake(Player player, ItemStack itemStack) {
                 itemStack.onCraftedBy(player.level(), player, itemStack.getCount());
-                if(!player.getAbilities().instabuild) {
+                if (!player.getAbilities().instabuild) {
                     player.giveExperienceLevels(-selectedRecipe.getXpCost());
                 }
                 itemHandler.extractItem(INPUT_SLOT_ID, 1, false);
                 access.execute((level, pos) -> level.levelEvent(1044, pos, 0));
-            }});
+            }
+        });
 
         addPlayerInventory(inventory);
         addPlayerHotbar(inventory);
@@ -83,17 +91,19 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
     }
 
     public void createResult() {
-        var recipes = level.getRecipeManager().getRecipesFor(TWRecipeTypes.MASTER_SMITHING.get(), this, level);
+        var recipes = level.getServer().getRecipeManager().getRecipeFor(TWRecipeTypes.MASTER_SMITHING.get(), this, level);
         if (recipes.isEmpty()) {
-            if(itemHandler.getStackInSlot(RESULT_SLOT_ID) != ItemStack.EMPTY) {
+            if (itemHandler.getStackInSlot(RESULT_SLOT_ID) != ItemStack.EMPTY) {
                 itemHandler.setStackInSlot(RESULT_SLOT_ID, ItemStack.EMPTY);
                 selectedRecipe = null;
             }
         } else {
-            selectedRecipe = recipes.getFirst().value();
-            if(!canCraft()) {return;}
+            selectedRecipe = recipes.get().value();
+            if (!canCraft()) {
+                return;
+            }
             var resultItem = selectedRecipe.getResultItem(level.registryAccess());
-            if(!itemHandler.getStackInSlot(RESULT_SLOT_ID).is(resultItem.getItem())) {
+            if (!itemHandler.getStackInSlot(RESULT_SLOT_ID).is(resultItem.getItem())) {
                 resultItem.copyFrom(itemHandler.getStackInSlot(INPUT_SLOT_ID), DataComponents.ENCHANTMENTS, DataComponents.DAMAGE);
                 itemHandler.setStackInSlot(RESULT_SLOT_ID, resultItem);
             }
@@ -104,11 +114,17 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
     public boolean stillValid(@NotNull Player player) {
         return access.evaluate((level, pos) -> isValidBlock(level.getBlockState(pos)) && player.distanceToSqr((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D) <= 64.0D, true);
     }
+
     @Override
     public void slotsChanged(@NotNull Container container) {
         super.slotsChanged(container);
-        this.createResult();
+        this.access.execute((level, access) -> {
+            if (level instanceof ServerLevel) {
+                this.createResult();
+            }
+        });
     }
+
     @Override
     public void removed(@NotNull Player player) {
         super.removed(player);
@@ -116,7 +132,7 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
     }
 
     protected void clearContainer(Player player) {
-        if (!player.isAlive() || player instanceof ServerPlayer && ((ServerPlayer)player).hasDisconnected()) {
+        if (!player.isAlive() || player instanceof ServerPlayer && ((ServerPlayer) player).hasDisconnected()) {
             player.drop(itemHandler.getStackInSlot(INPUT_SLOT_ID), false);
         } else {
             Inventory inventory = player.getInventory();
@@ -126,7 +142,7 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
         }
     }
 
-    private SimpleContainer getContainer(){
+    private SimpleContainer getContainer() {
         var inventory = new SimpleContainer(itemHandler.getSlots());
         for (int i = 0; i < itemHandler.getSlots(); i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
@@ -134,9 +150,17 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
         return inventory;
     }
 
-    public boolean enoughXP() {return player.experienceLevel >= selectedRecipe.getXpCost() || player.getAbilities().instabuild;}
-    public boolean canCraft() {return getSelectedRecipe() != null && enoughXP();}
-    public @Nullable TWMasterSmithingRecipe getSelectedRecipe() {return selectedRecipe;}
+    public boolean enoughXP() {
+        return player.experienceLevel >= selectedRecipe.getXpCost() || player.getAbilities().instabuild;
+    }
+
+    public boolean canCraft() {
+        return getSelectedRecipe() != null && enoughXP();
+    }
+
+    public @Nullable TWMasterSmithingRecipe getSelectedRecipe() {
+        return selectedRecipe;
+    }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     // must assign a slot number to each of the slots used by the GUI.
@@ -206,5 +230,7 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
     }
 
     @Override
-    public int size() { return 2; }
+    public int size() {
+        return 2;
+    }
 }

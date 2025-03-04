@@ -2,21 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "tag": "the_witcher:brews_beer"
-    },
-    {
-      "tag": "the_witcher:brews_beer"
-    },
-    {
-      "tag": "the_witcher:brews_beer"
-    },
-    {
-      "tag": "the_witcher:brews_beer"
-    },
-    {
-      "item": "the_witcher:hot_water_bottle"
-    }
+    "#the_witcher:brews_beer",
+    "#the_witcher:brews_beer",
+    "#the_witcher:brews_beer",
+    "#the_witcher:brews_beer",
+    "the_witcher:hot_water_bottle"
   ],
   "result": {
     "count": 1,

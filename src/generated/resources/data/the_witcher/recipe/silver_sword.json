@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "tag": "c:ingots/silver"
-    },
-    "+": {
-      "tag": "the_witcher:ingots/steel"
-    },
-    "-": {
-      "item": "minecraft:stick"
-    }
+    "#": "#c:ingots/silver",
+    "+": "#the_witcher:ingots/steel",
+    "-": "minecraft:stick"
   },
   "pattern": [
     "#",

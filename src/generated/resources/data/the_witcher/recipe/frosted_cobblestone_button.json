@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "ingredients": [
-    {
-      "item": "the_witcher:frosted_cobblestone"
-    }
+    "the_witcher:frosted_cobblestone"
   ],
   "result": {
     "count": 1,

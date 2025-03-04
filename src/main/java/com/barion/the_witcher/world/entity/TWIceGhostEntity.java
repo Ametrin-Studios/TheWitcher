@@ -1,6 +1,7 @@
 package com.barion.the_witcher.world.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,12 +17,9 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
-
-import javax.annotation.ParametersAreNonnullByDefault;
 
 public class TWIceGhostEntity extends Monster {
     public TWIceGhostEntity(EntityType<TWIceGhostEntity> type, Level level) {
@@ -56,11 +54,12 @@ public class TWIceGhostEntity extends Monster {
     public boolean causeFallDamage(float pFallDistance, float pMultiplier, @NotNull DamageSource pSource) { return false; }
     @Override
     protected void checkFallDamage(double pY, boolean pOnGround, @NotNull BlockState pState, @NotNull BlockPos pPos) {}
-    @Override
-    public int getBaseExperienceReward() { return 5 + random.nextInt(5); }
 
-    @Override @ParametersAreNonnullByDefault
-    public boolean isPreventingPlayerRest(Player player) { return true; }
+    @Override
+    protected int getBaseExperienceReward(@NotNull ServerLevel level) {
+        return 5 + random.nextInt(5);
+    }
+
 
     @Override @NotNull
     protected PathNavigation createNavigation(@NotNull Level level) {
@@ -70,7 +69,6 @@ public class TWIceGhostEntity extends Monster {
 
         flyingNavigation.setCanOpenDoors(false);
         flyingNavigation.setCanFloat(true);
-        flyingNavigation.setCanPassDoors(true);
         return flyingNavigation;
     }
 }

@@ -2,7 +2,7 @@ package com.barion.the_witcher.util;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-public class TWConfig {
+public final class TWConfig {
     public static class Common {
         private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 

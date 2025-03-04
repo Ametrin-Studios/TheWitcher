@@ -29,44 +29,52 @@ import net.neoforged.neoforge.server.command.ConfigCommand;
 @EventBusSubscriber(modid = TheWitcher.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public final class TWGameEvents {
     @SubscribeEvent
-    public static void entityTick(final EntityTickEvent.Post event){
-        if(event.getEntity() instanceof LivingEntity livingEntity) {
+    public static void entityTick(final EntityTickEvent.Post event) {
+        if (event.getEntity() instanceof LivingEntity livingEntity) {
             freezeEntity(livingEntity);
         }
     }
 
     private static void freezeEntity(LivingEntity entity) {
-        if(entity.level().dimension() != TWLevels.WHITE_FROST) { return; }
-        if(entity.isOnFire()) {
+        if (entity.level().dimension() != TWLevels.WHITE_FROST) {
+            return;
+        }
+        if (entity.isOnFire()) {
             entity.clearFire();
         }
 
-        if(entity.getType().is(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES) || entity.hasEffect(TWEffects.FROST_RESISTANCE)) { return; }
-        if(entity instanceof Player && ((Player) entity).getAbilities().invulnerable) { return; }
+        if (entity.getType().is(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES) || entity.hasEffect(TWEffects.FROST_RESISTANCE)) {
+            return;
+        }
+        if (entity instanceof Player && ((Player) entity).getAbilities().invulnerable) {
+            return;
+        }
 
         entity.setIsInPowderSnow(true);
-        entity.setTicksFrozen(Math.min(entity.getTicksRequiredToFreeze()+2, entity.getTicksFrozen() + 3)); //very bad, need a better solution
+        entity.setTicksFrozen(Math.min(entity.getTicksRequiredToFreeze() + 2, entity.getTicksFrozen() + 3)); //very bad, need a better solution
     }
 
     @SubscribeEvent
     public static void playerTick(PlayerTickEvent.Post event) {
-        updateEnergy((ServerPlayer) event.getEntity());
+        if (!event.getEntity().level().isClientSide) {
+            updateEnergy((ServerPlayer) event.getEntity());
+        }
     }
 
     private static void updateEnergy(ServerPlayer player) {
-        var signStrength = player.getData(TWAttachmentTypes.SIGN_STRENGTH);
-        if(signStrength == 0) {
+        int signStrength = player.getData(TWAttachmentTypes.SIGN_STRENGTH);
+        if (signStrength == 0) {
             return;
         }
 
         var energyWrapper = new TWEnergyWrapper(player);
-        if(energyWrapper.isFull()) {
+        if (energyWrapper.isFull()) {
             return;
         }
 
-        var increase = 0.2f + signStrength/5f;
-        if(player.hasEffect(TWEffects.ENERGY_REGENERATION)){
-            increase += (player.getEffect(TWEffects.ENERGY_REGENERATION).getAmplifier()+1)/5f;
+        var increase = 0.2f + signStrength / 5f;
+        if (player.hasEffect(TWEffects.ENERGY_REGENERATION)) {
+            increase += (player.getEffect(TWEffects.ENERGY_REGENERATION).getAmplifier() + 1) / 5f;
         }
 
         energyWrapper.increase(increase);
@@ -82,7 +90,7 @@ public final class TWGameEvents {
     }
 
     @SubscribeEvent
-    public static void registerCommands(RegisterCommandsEvent event){
+    public static void registerCommands(RegisterCommandsEvent event) {
         new TWSetEnergyCommand(event.getDispatcher());
         new TWGetEnergyCommand(event.getDispatcher());
         new TWSetSignStrengthCommand(event.getDispatcher());

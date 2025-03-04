@@ -3,11 +3,9 @@ package com.barion.the_witcher.world.item;
 import com.barion.the_witcher.registry.damage.TWDamageSources;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -52,12 +50,14 @@ public class TWHotWaterBottleItem extends Item {
         return 40;
     }
 
-    @Override public @NotNull UseAnim getUseAnimation(@NotNull ItemStack p_41358_) { return UseAnim.DRINK; }
-    @Override public @NotNull SoundEvent getDrinkingSound() { return SoundEvents.HONEY_DRINK; }
-    @Override public @NotNull SoundEvent getEatingSound() { return SoundEvents.HONEY_DRINK; }
+    @Override public @NotNull ItemUseAnimation getUseAnimation(@NotNull ItemStack stack) { return ItemUseAnimation.DRINK; }
+//    @Override public @NotNull SoundEvent getDrinkingSound() { return SoundEvents.HONEY_DRINK; }
+//    @Override public @NotNull SoundEvent getEatingSound() { return SoundEvents.HONEY_DRINK; }
+
+
 
     @Override @ParametersAreNonnullByDefault
-    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public @NotNull InteractionResult use(Level level, Player player, InteractionHand hand) {
         return ItemUtils.startUsingInstantly(level, player, hand);
     }
 }

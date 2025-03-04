@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-25T13:12:27.11764	Tags for minecraft:entity_type mod id the_witcher
+// 1.21.4	2025-03-04T23:36:14.1561111	Tags for minecraft:entity_type mod id the_witcher
 f4e6559262c747b9a7091cdd473fcff572e9ba94 data/c/tags/entity_type/magic_mob.json
 14e7cdebd6b5f672cfded947b1f4e3e7b3ee72f7 data/minecraft/tags/entity_type/freeze_immune_entity_types.json
 569cee91ad8896af49760f8b47f60ded6ea937bb data/minecraft/tags/entity_type/powder_snow_walkable_mobs.json

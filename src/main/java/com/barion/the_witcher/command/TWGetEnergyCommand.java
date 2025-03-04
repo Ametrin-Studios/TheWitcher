@@ -8,7 +8,7 @@ import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 
-public class TWGetEnergyCommand {
+public final class TWGetEnergyCommand {
     private static final String success = "command.the_witcher.energy.get.success";
 
     public TWGetEnergyCommand(CommandDispatcher<CommandSourceStack> dispatcher){

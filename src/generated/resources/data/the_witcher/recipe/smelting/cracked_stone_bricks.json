@@ -3,9 +3,7 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": {
-    "item": "the_witcher:cracked_frosted_stone_bricks"
-  },
+  "ingredient": "the_witcher:cracked_frosted_stone_bricks",
   "result": {
     "count": 1,
     "id": "minecraft:cracked_stone_bricks"

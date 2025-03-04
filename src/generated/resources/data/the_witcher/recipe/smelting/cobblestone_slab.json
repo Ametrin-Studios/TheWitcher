@@ -3,9 +3,7 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.05,
-  "ingredient": {
-    "item": "the_witcher:frosted_cobblestone_slab"
-  },
+  "ingredient": "the_witcher:frosted_cobblestone_slab",
   "result": {
     "count": 1,
     "id": "minecraft:cobblestone_slab"
