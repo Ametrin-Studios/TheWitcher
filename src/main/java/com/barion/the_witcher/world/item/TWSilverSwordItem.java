@@ -1,7 +1,7 @@
 package com.barion.the_witcher.world.item;
 
-import com.barion.the_witcher.util.TWTags;
 import com.barion.the_witcher.util.TWUtil;
+import com.barion.the_witcher.world.TWTags;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;

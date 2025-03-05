@@ -1,5 +1,6 @@
-package com.barion.the_witcher.util;
+package com.barion.the_witcher.world;
 
+import com.barion.the_witcher.util.TWUtil;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;

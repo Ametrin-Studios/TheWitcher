@@ -1,9 +1,11 @@
 package com.barion.the_witcher.attachment;
 
+import com.barion.the_witcher.network.TWEnergyS2C;
 import com.barion.the_witcher.registry.TWAttachmentTypes;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.neoforge.network.PacketDistributor;
 
-public record TWEnergyWrapper(Player player) {
+public record TWEnergyWrapper(ServerPlayer player) {
     private static final int MIN_ENERGY = 0;
     public static final String NBT_ID = "energy";
 
@@ -14,6 +16,7 @@ public record TWEnergyWrapper(Player player) {
 
     public void set(float energy) {
         player.setData(TWAttachmentTypes.ENERGY, energy);
+        PacketDistributor.sendToPlayer(player, new TWEnergyS2C(energy));
     }
 
     public void increase(float energy) {
@@ -30,5 +33,9 @@ public record TWEnergyWrapper(Player player) {
 
     public boolean isFull() {
         return get() >= getMax();
+    }
+
+    public float getPercent() {
+        return get() / getMax();
     }
 }

@@ -2,7 +2,7 @@ package com.barion.the_witcher.registry;
 
 import com.ametrinstudios.ametrin.world.dimension.portal.PortalData;
 import com.barion.the_witcher.registry.block.TWBlocks;
-import com.barion.the_witcher.util.TWTags;
+import com.barion.the_witcher.world.TWTags;
 import net.minecraft.world.level.Level;
 
 public final class TWPortals {

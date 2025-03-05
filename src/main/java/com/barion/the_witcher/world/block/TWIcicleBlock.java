@@ -1,7 +1,7 @@
 package com.barion.the_witcher.world.block;
 
 import com.barion.the_witcher.registry.block.TWBlocks;
-import com.barion.the_witcher.util.TWTags;
+import com.barion.the_witcher.world.TWTags;
 import com.google.common.annotations.VisibleForTesting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

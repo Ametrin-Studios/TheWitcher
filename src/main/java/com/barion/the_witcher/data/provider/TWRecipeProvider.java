@@ -4,7 +4,7 @@ import com.ametrinstudios.ametrin.data.provider.ExtendedRecipeProvider;
 import com.barion.the_witcher.TheWitcher;
 import com.barion.the_witcher.registry.block.TWBlocks;
 import com.barion.the_witcher.registry.item.TWItems;
-import com.barion.the_witcher.util.TWTags;
+import com.barion.the_witcher.world.TWTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;

@@ -1,7 +1,7 @@
 package com.barion.the_witcher.world.entity;
 
 import com.barion.the_witcher.registry.item.TWItems;
-import com.barion.the_witcher.util.TWTags;
+import com.barion.the_witcher.world.TWTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;

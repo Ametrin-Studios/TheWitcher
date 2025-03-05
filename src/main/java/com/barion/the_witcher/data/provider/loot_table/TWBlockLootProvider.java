@@ -21,8 +21,8 @@ import java.util.Iterator;
 
 import static com.ametrinstudios.ametrin.data.LootTableProviderHelper.one;
 
-public final class TWBlockLoot extends ExtendedBlockLootSubProvider {
-    public TWBlockLoot(HolderLookup.Provider registries) {
+public final class TWBlockLootProvider extends ExtendedBlockLootSubProvider {
+    public TWBlockLootProvider(HolderLookup.Provider registries) {
         super(registries);
     }
 

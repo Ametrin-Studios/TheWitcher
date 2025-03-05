@@ -1,6 +1,6 @@
 package com.barion.the_witcher.world.gen.util;
 
-import com.barion.the_witcher.util.TWTags;
+import com.barion.the_witcher.world.TWTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.LevelAccessor;

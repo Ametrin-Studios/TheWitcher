@@ -26,8 +26,9 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
 
+@SuppressWarnings("unused")
 @EventBusSubscriber(modid = TheWitcher.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public final class TWClientEvents {
+public final class TWModClientEvents {
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(TWFluids.SOURCE_ACID.get(), RenderType.translucent());
@@ -40,32 +41,33 @@ public final class TWClientEvents {
     }
 
     @SubscribeEvent
-    public static void registerKeyMappings(RegisterKeyMappingsEvent event){
+    public static void registerKeyMappings(final RegisterKeyMappingsEvent event) {
         event.register(TWKeyBinding.CAST_SIGN);
     }
 
     @SubscribeEvent
-    public static void registerGuiOverlays(RegisterGuiLayersEvent event){
-        event.registerBelow(ResourceLocation.withDefaultNamespace("hotbar"), TWUtil.locate("energy_level"), TWGuiOverlay.EnergyLevel);
+    public static void registerGuiOverlays(final RegisterGuiLayersEvent event) {
+        event.registerBelow(ResourceLocation.withDefaultNamespace("hotbar"), TWUtil.locate("energy_level"), TWGuiOverlay.ENERGY_LEVEL);
     }
 
     @SubscribeEvent
-    public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event){
+    public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(TWEntityTypes.ICE_GHOST.get(), TWIceGhostRenderer::new);
         event.registerEntityRenderer(TWEntityTypes.WILD_HUNT_HOUND.get(), TWWildHuntHoundRenderer::new);
         event.registerEntityRenderer(TWEntityTypes.WILD_HUNT_KNIGHT.get(), TWWildHuntKnightRenderer::new);
     }
+
     @SubscribeEvent
-    public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event){
+    public static void registerLayers(final EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(TWIceGhostRenderer.LAYER_LOCATION, TWIceGhostModel::createMesh);
         event.registerLayerDefinition(TWWildHuntHoundRenderer.LAYER_LOCATION, TWWildHuntHoundModel::createMesh);
-        event.registerLayerDefinition(TWWildHuntKnightRenderer.LAYER_LOCATION, ()-> LayerDefinition.create(HumanoidModel.createMesh(CubeDeformation.NONE, 0), 64, 32));
-        event.registerLayerDefinition(TWWildHuntKnightRenderer.LAYER_LOCATION_OUTER_ARMOR, ()-> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(1), 0), 64, 32));
-        event.registerLayerDefinition(TWWildHuntKnightRenderer.LAYER_LOCATION_INNER_ARMOR, ()-> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.5f), 0), 64, 32));
+        event.registerLayerDefinition(TWWildHuntKnightRenderer.LAYER_LOCATION, () -> LayerDefinition.create(HumanoidModel.createMesh(CubeDeformation.NONE, 0), 64, 32));
+        event.registerLayerDefinition(TWWildHuntKnightRenderer.LAYER_LOCATION_OUTER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(1), 0), 64, 32));
+        event.registerLayerDefinition(TWWildHuntKnightRenderer.LAYER_LOCATION_INNER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.5f), 0), 64, 32));
     }
 
     @SubscribeEvent
-    public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event){
-        event.register(TWUtil.locate("white_frost"), new TWWhiteFrostSpecialEffects());
+    public static void registerDimensionSpecialEffects(final RegisterDimensionSpecialEffectsEvent event) {
+        event.register(TheWitcher.locate("white_frost"), new TWWhiteFrostSpecialEffects());
     }
 }

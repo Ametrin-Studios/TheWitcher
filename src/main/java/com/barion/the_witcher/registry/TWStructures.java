@@ -1,6 +1,6 @@
 package com.barion.the_witcher.registry;
 
-//import com.barion.the_witcher.util.TWTags;
+//import com.barion.the_witcher.world.TWTags;
 //import com.barion.the_witcher.util.TWUtil;
 //import com.barion.the_witcher.world.gen.structure.TWIcyRuinStructure;
 //import com.barion.the_witcher.world.gen.structure.TWWildHuntOutpostStructure;

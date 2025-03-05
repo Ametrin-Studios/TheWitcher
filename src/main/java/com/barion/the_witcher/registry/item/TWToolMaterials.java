@@ -1,6 +1,6 @@
 package com.barion.the_witcher.registry.item;
 
-import com.barion.the_witcher.util.TWTags;
+import com.barion.the_witcher.world.TWTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ToolMaterial;
 

@@ -30,9 +30,9 @@ public class TWPowerBlock extends Block {
     @Override
     @ParametersAreNonnullByDefault
     protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if (player instanceof ServerPlayer) {
+        if (!level.isClientSide()) {
             if (blockState.getValue(HAS_POWER)) {
-                var signStrengthWrapper = new TWSignStrengthWrapper(player);
+                var signStrengthWrapper = new TWSignStrengthWrapper((ServerPlayer) player);
                 if (signStrengthWrapper.get() == 0) {
                     player.displayClientMessage(needUnlock, true);
                     return InteractionResult.FAIL;

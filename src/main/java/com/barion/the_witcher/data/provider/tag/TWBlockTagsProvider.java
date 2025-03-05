@@ -3,7 +3,7 @@ package com.barion.the_witcher.data.provider.tag;
 import com.ametrinstudios.ametrin.data.provider.ExtendedBlockTagsProvider;
 import com.barion.the_witcher.TheWitcher;
 import com.barion.the_witcher.registry.block.TWBlocks;
-import com.barion.the_witcher.util.TWTags;
+import com.barion.the_witcher.world.TWTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;

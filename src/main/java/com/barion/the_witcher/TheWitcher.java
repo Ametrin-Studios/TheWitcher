@@ -4,7 +4,8 @@ import com.ametrinstudios.ametrin.data.provider.CustomLootTableProvider;
 import com.barion.the_witcher.data.provider.TWDamageTypeProvider;
 import com.barion.the_witcher.data.provider.TWModelProvider;
 import com.barion.the_witcher.data.provider.TWRecipeProvider;
-import com.barion.the_witcher.data.provider.loot_table.TWBlockLoot;
+import com.barion.the_witcher.data.provider.loot_table.TWBlockLootProvider;
+import com.barion.the_witcher.data.provider.loot_table.TWChestLootProvider;
 import com.barion.the_witcher.data.provider.tag.TWBlockTagsProvider;
 import com.barion.the_witcher.data.provider.tag.TWDamageTypeTagsProvider;
 import com.barion.the_witcher.data.provider.tag.TWEntityTypeTagsProvider;
@@ -91,7 +92,10 @@ public final class TheWitcher {
             event.createProvider(TWModelProvider::new);
             event.createProvider(TWRecipeProvider.Runner::new);
 
-            event.createProvider(CustomLootTableProvider.builder().addBlockProvider(TWBlockLoot::new)::build);
+            event.createProvider(CustomLootTableProvider.builder()
+                    .addBlockProvider(TWBlockLootProvider::new)
+                    .addChestProvider(TWChestLootProvider::new)
+                    ::build);
 
             event.createBlockAndItemTags(TWBlockTagsProvider::new, TWItemTagsProvider::new);
             event.createProvider(TWEntityTypeTagsProvider::new);

@@ -1,9 +1,11 @@
 package com.barion.the_witcher.attachment;
 
+import com.barion.the_witcher.network.TWSignStrengthS2C;
 import com.barion.the_witcher.registry.TWAttachmentTypes;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.neoforge.network.PacketDistributor;
 
-public record TWSignStrengthWrapper(Player player) {
+public record TWSignStrengthWrapper(ServerPlayer player) {
     public static final int MAX_STRENGTH = 5;
     public static final int MIN_STRENGTH = 0;
 
@@ -13,6 +15,7 @@ public record TWSignStrengthWrapper(Player player) {
 
     public void set(int data) {
         player.setData(TWAttachmentTypes.SIGN_STRENGTH, data);
+        PacketDistributor.sendToPlayer(player, new TWSignStrengthS2C(data));
         updateMaxEnergy();
     }
 
