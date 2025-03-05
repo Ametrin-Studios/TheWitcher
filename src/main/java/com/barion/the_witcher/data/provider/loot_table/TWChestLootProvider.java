@@ -23,7 +23,7 @@ public final class TWChestLootProvider implements LootTableSubProvider {
     @Override
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
         {
-            consumer.accept(location("white_frost_portal"), LootTable.lootTable()
+            consumer.accept(locate("white_frost_portal"), LootTable.lootTable()
                     .withPool(pool(one())
                             .add(item(Items.FLINT_AND_STEEL, 1, one())))
                     .withPool(pool(number(4, 8))
@@ -37,7 +37,7 @@ public final class TWChestLootProvider implements LootTableSubProvider {
         } // White Frost Portal
 
         {
-            consumer.accept(location("witcher_castle/brewing"), LootTable.lootTable()
+            consumer.accept(locate("witcher_castle/brewing"), LootTable.lootTable()
                     .withPool(pool(number(10, 15))
                             .add(item(TWItems.WHITE_MYRTLE.get(), 6, one()))
                             //.add(lootItem(TWItems.Beer.get(), 4, one()))
@@ -55,7 +55,7 @@ public final class TWChestLootProvider implements LootTableSubProvider {
                             //.add(lootItem(TWItems.PotionOfZireael.get(), 1, lootNumber(0, 1))
                     ));
 
-            consumer.accept(location("witcher_castle/food"), LootTable.lootTable()
+            consumer.accept(locate("witcher_castle/food"), LootTable.lootTable()
                     .withPool(pool(number(14, 19))
                                     .add(item(Items.BREAD, 2, one()))
                                     .add(item(Items.WHEAT_SEEDS, 4, one()))
@@ -81,7 +81,7 @@ public final class TWChestLootProvider implements LootTableSubProvider {
                             //.add(lootItem(TWItems.Beer.get(), 1, lootNumber(0, 1)))
                     ));
 
-            consumer.accept(location("witcher_castle/smithing"), LootTable.lootTable()
+            consumer.accept(locate("witcher_castle/smithing"), LootTable.lootTable()
                     .withPool(pool(number(4, 6))
                             .add(item(TWItems.SILVER_NUGGET.get(), 2, number(3, 4)))
                             .add(item(TWItems.RAW_SILVER.get(), 1, number(1, 2)))
@@ -103,7 +103,7 @@ public final class TWChestLootProvider implements LootTableSubProvider {
                             .add(item(Items.BLAZE_POWDER, 1, one()))
                     ));
 
-            consumer.accept(location("witcher_castle/util"), LootTable.lootTable()
+            consumer.accept(locate("witcher_castle/util"), LootTable.lootTable()
                     .withPool(pool(number(7, 14))
                             .add(item(Items.ARROW, 12, number(1, 3)))
                             .add(item(Items.COBWEB, 7, one()))
@@ -120,7 +120,7 @@ public final class TWChestLootProvider implements LootTableSubProvider {
         } // Witcher Castle
     }
 
-    public static ResourceKey<LootTable> location(String key) {
+    public static ResourceKey<LootTable> locate(String key) {
         return ResourceKey.create(Registries.LOOT_TABLE, TheWitcher.locate("chests/" + key));
     }
 }

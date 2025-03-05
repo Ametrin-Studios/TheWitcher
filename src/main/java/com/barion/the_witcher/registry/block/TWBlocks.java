@@ -9,7 +9,6 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -19,8 +18,7 @@ import java.util.function.Function;
 
 import static com.ametrinstudios.ametrin.world.block.helper.BlockBehaviourPropertiesHelper.copyProperties;
 import static com.ametrinstudios.ametrin.world.block.helper.BlockBehaviourPropertiesHelper.properties;
-import static com.ametrinstudios.ametrin.world.block.helper.BlockRegisterHelper.emission;
-import static com.ametrinstudios.ametrin.world.block.helper.BlockRegisterHelper.stair;
+import static com.ametrinstudios.ametrin.world.block.helper.BlockRegisterHelper.*;
 
 public final class TWBlocks {
     public static final DeferredRegister.Blocks REGISTER = DeferredRegister.createBlocks(TheWitcher.MOD_ID);
@@ -38,53 +36,53 @@ public final class TWBlocks {
     public static final DeferredBlock<TWPowerBlock> POWER_BLOCK = registerWithItem("power_block", TWPowerBlock::new, copyProperties(Blocks.GLASS).noLootTable());
 
     public static final DeferredBlock<Block> FROSTED_COBBLESTONE = registerSimpleWithItem("frosted_cobblestone", COBBLED_FROSTED_PROPERTIES);
-    public static final DeferredBlock<StairBlock> FROSTED_COBBLESTONE_STAIRS = registerWithItem("frosted_cobblestone_stairs", properties -> stair(FROSTED_COBBLESTONE.get().defaultBlockState(), properties), COBBLED_FROSTED_PROPERTIES);
+    public static final DeferredBlock<StairBlock> FROSTED_COBBLESTONE_STAIRS = registerWithItem("frosted_cobblestone_stairs", stair(()-> FROSTED_COBBLESTONE.get().defaultBlockState()), COBBLED_FROSTED_PROPERTIES);
     public static final DeferredBlock<SlabBlock> FROSTED_COBBLESTONE_SLAB = registerWithItem("frosted_cobblestone_slab", SlabBlock::new, COBBLED_FROSTED_PROPERTIES);
     public static final DeferredBlock<WallBlock> FROSTED_COBBLESTONE_WALL = registerWithItem("frosted_cobblestone_wall", WallBlock::new, COBBLED_FROSTED_PROPERTIES);
     public static final DeferredBlock<ButtonBlock> FROSTED_COBBLESTONE_BUTTON = registerStoneButton("frosted_cobblestone_button", TWBlockSetTypes.FROSTED_COBBLESTONE);
     public static final DeferredBlock<Block> FROSTED_STONE = registerSimpleWithItem("frosted_stone", FROSTED_PROPERTIES);
-    public static final DeferredBlock<StairBlock> FROSTED_STONE_STAIRS = registerWithItem("frosted_stone_stairs", properties -> stair(FROSTED_STONE.get(), properties), FROSTED_PROPERTIES);
+    public static final DeferredBlock<StairBlock> FROSTED_STONE_STAIRS = registerWithItem("frosted_stone_stairs", stair(()-> FROSTED_STONE.get().defaultBlockState()), FROSTED_PROPERTIES);
     public static final DeferredBlock<SlabBlock> FROSTED_STONE_SLAB = registerWithItem("frosted_stone_slab", SlabBlock::new, FROSTED_PROPERTIES);
     public static final DeferredBlock<WallBlock> FROSTED_STONE_WALL = registerWithItem("frosted_stone_wall", WallBlock::new, FROSTED_PROPERTIES);
     public static final DeferredBlock<ButtonBlock> FROSTED_STONE_BUTTON = registerStoneButton("frosted_stone_button", TWBlockSetTypes.FROSTED_STONE);
     public static final DeferredBlock<Block> FROSTED_STONE_BRICKS = registerWithItem("frosted_stone_bricks", Block::new, FROSTED_PROPERTIES);
-    public static final DeferredBlock<StairBlock> FROSTED_STONE_BRICK_STAIRS = registerWithItem("frosted_stone_brick_stairs", properties -> stair(FROSTED_STONE_BRICKS.get(), properties), FROSTED_PROPERTIES);
+    public static final DeferredBlock<StairBlock> FROSTED_STONE_BRICK_STAIRS = registerWithItem("frosted_stone_brick_stairs", stair(()-> FROSTED_STONE_BRICKS.get().defaultBlockState()), FROSTED_PROPERTIES);
     public static final DeferredBlock<SlabBlock> FROSTED_STONE_BRICK_SLAB = registerWithItem("frosted_stone_brick_slab", SlabBlock::new, FROSTED_PROPERTIES);
     public static final DeferredBlock<WallBlock> FROSTED_STONE_BRICK_WALL = registerWithItem("frosted_stone_brick_wall", WallBlock::new, FROSTED_PROPERTIES);
     public static final DeferredBlock<ButtonBlock> FROSTED_STONE_BRICK_BUTTON = registerStoneButton("frosted_stone_brick_button", TWBlockSetTypes.FROSTED_STONE);
     public static final DeferredBlock<Block> CRACKED_FROSTED_STONE_BRICKS = registerWithItem("cracked_frosted_stone_bricks", Block::new, FROSTED_PROPERTIES);
-    public static final DeferredBlock<StairBlock> CRACKED_FROSTED_STONE_BRICK_STAIRS = registerWithItem("cracked_frosted_stone_brick_stairs", properties -> stair(CRACKED_FROSTED_STONE_BRICKS.get(), properties), FROSTED_PROPERTIES);
+    public static final DeferredBlock<StairBlock> CRACKED_FROSTED_STONE_BRICK_STAIRS = registerWithItem("cracked_frosted_stone_brick_stairs", stair(()-> CRACKED_FROSTED_STONE_BRICKS.get().defaultBlockState()), FROSTED_PROPERTIES);
     public static final DeferredBlock<SlabBlock> CRACKED_FROSTED_STONE_BRICK_SLAB = registerWithItem("cracked_frosted_stone_brick_slab", SlabBlock::new, FROSTED_PROPERTIES);
     public static final DeferredBlock<WallBlock> CRACKED_FROSTED_STONE_BRICK_WALL = registerWithItem("cracked_frosted_stone_brick_wall", WallBlock::new, FROSTED_PROPERTIES);
     public static final DeferredBlock<ButtonBlock> CRACKED_FROSTED_STONE_BRICK_BUTTON = registerStoneButton("cracked_frosted_stone_brick_button", TWBlockSetTypes.FROSTED_STONE);
 
     public static final DeferredBlock<Block> DEEP_FROSTED_COBBLESTONE = registerSimpleWithItem("deep_frosted_cobblestone", DEEP_COBBLED_FROSTED_PROPERTIES);
-    public static final DeferredBlock<StairBlock> DEEP_FROSTED_COBBLESTONE_STAIRS = registerWithItem("deep_frosted_cobblestone_stairs", properties -> stair(DEEP_FROSTED_COBBLESTONE.get(), properties), DEEP_COBBLED_FROSTED_PROPERTIES);
+    public static final DeferredBlock<StairBlock> DEEP_FROSTED_COBBLESTONE_STAIRS = registerWithItem("deep_frosted_cobblestone_stairs", stair(()-> DEEP_FROSTED_COBBLESTONE.get().defaultBlockState()), DEEP_COBBLED_FROSTED_PROPERTIES);
     public static final DeferredBlock<SlabBlock> DEEP_FROSTED_COBBLESTONE_SLAB = registerWithItem("deep_frosted_cobblestone_slab", SlabBlock::new, DEEP_COBBLED_FROSTED_PROPERTIES);
     public static final DeferredBlock<WallBlock> DEEP_FROSTED_COBBLESTONE_WALL = registerWithItem("deep_frosted_cobblestone_wall", WallBlock::new, DEEP_COBBLED_FROSTED_PROPERTIES);
     public static final DeferredBlock<ButtonBlock> DEEP_FROSTED_COBBLESTONE_BUTTON = registerStoneButton("deep_frosted_cobblestone_button", TWBlockSetTypes.DEEP_FROSTED_COBBLESTONE);
     public static final DeferredBlock<Block> DEEP_FROSTED_STONE = registerSimpleWithItem("deep_frosted_stone", DEEP_FROSTED_PROPERTIES);
-    public static final DeferredBlock<StairBlock> DEEP_FROSTED_STONE_STAIRS = registerWithItem("deep_frosted_stone_stairs", properties -> stair(DEEP_FROSTED_STONE.get(), properties), DEEP_FROSTED_PROPERTIES);
+    public static final DeferredBlock<StairBlock> DEEP_FROSTED_STONE_STAIRS = registerWithItem("deep_frosted_stone_stairs", stair(()-> DEEP_FROSTED_STONE.get().defaultBlockState()), DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<SlabBlock> DEEP_FROSTED_STONE_SLAB = registerWithItem("deep_frosted_stone_slab", SlabBlock::new, DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<WallBlock> DEEP_FROSTED_STONE_WALL = registerWithItem("deep_frosted_stone_wall", WallBlock::new, DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<ButtonBlock> DEEP_FROSTED_STONE_BUTTON = registerStoneButton("deep_frosted_stone_button", TWBlockSetTypes.DEEP_FROSTED_STONE);
     public static final DeferredBlock<Block> DEEP_FROSTED_STONE_BRICKS = registerSimpleWithItem("deep_frosted_stone_bricks", DEEP_FROSTED_PROPERTIES);
-    public static final DeferredBlock<StairBlock> DEEP_FROSTED_STONE_BRICK_STAIRS = registerWithItem("deep_frosted_stone_brick_stairs", properties -> stair(DEEP_FROSTED_STONE_BRICKS.get(), properties), DEEP_FROSTED_PROPERTIES);
+    public static final DeferredBlock<StairBlock> DEEP_FROSTED_STONE_BRICK_STAIRS = registerWithItem("deep_frosted_stone_brick_stairs", stair(()-> DEEP_FROSTED_STONE_BRICKS.get().defaultBlockState()), DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<SlabBlock> DEEP_FROSTED_STONE_BRICK_SLAB = registerWithItem("deep_frosted_stone_brick_slab", SlabBlock::new, DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<WallBlock> DEEP_FROSTED_STONE_BRICK_WALL = registerWithItem("deep_frosted_stone_brick_wall", WallBlock::new, DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<ButtonBlock> DEEP_FROSTED_STONE_BRICK_BUTTON = registerStoneButton("deep_frosted_stone_brick_button", TWBlockSetTypes.DEEP_FROSTED_STONE);
     public static final DeferredBlock<Block> CRACKED_DEEP_FROSTED_STONE_BRICKS = registerSimpleWithItem("cracked_deep_frosted_stone_bricks", DEEP_FROSTED_PROPERTIES);
-    public static final DeferredBlock<StairBlock> CRACKED_DEEP_FROSTED_STONE_BRICK_STAIRS = registerWithItem("cracked_deep_frosted_stone_brick_stairs", properties -> stair(CRACKED_DEEP_FROSTED_STONE_BRICKS.get(), properties), DEEP_FROSTED_PROPERTIES);
+    public static final DeferredBlock<StairBlock> CRACKED_DEEP_FROSTED_STONE_BRICK_STAIRS = registerWithItem("cracked_deep_frosted_stone_brick_stairs", stair(()-> CRACKED_DEEP_FROSTED_STONE_BRICKS.get().defaultBlockState()), DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<SlabBlock> CRACKED_DEEP_FROSTED_STONE_BRICK_SLAB = registerWithItem("cracked_deep_frosted_stone_brick_slab", SlabBlock::new, DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<WallBlock> CRACKED_DEEP_FROSTED_STONE_BRICK_WALL = registerWithItem("cracked_deep_frosted_stone_brick_wall", WallBlock::new, DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<ButtonBlock> CRACKED_DEEP_FROSTED_STONE_BRICK_BUTTON = registerStoneButton("cracked_deep_frosted_stone_brick_button", TWBlockSetTypes.DEEP_FROSTED_STONE);
     public static final DeferredBlock<Block> DEEP_FROSTED_STONE_TILES = registerSimpleWithItem("deep_frosted_stone_tiles", DEEP_FROSTED_PROPERTIES);
-    public static final DeferredBlock<StairBlock> DEEP_FROSTED_STONE_TILE_STAIRS = registerWithItem("deep_frosted_stone_tile_stairs", properties -> stair(DEEP_FROSTED_STONE_TILES.get(), properties), DEEP_FROSTED_PROPERTIES);
+    public static final DeferredBlock<StairBlock> DEEP_FROSTED_STONE_TILE_STAIRS = registerWithItem("deep_frosted_stone_tile_stairs", stair(()-> DEEP_FROSTED_STONE_TILES.get().defaultBlockState()), DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<SlabBlock> DEEP_FROSTED_STONE_TILE_SLAB = registerWithItem("deep_frosted_stone_tile_slab", SlabBlock::new, DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<WallBlock> DEEP_FROSTED_STONE_TILE_WALL = registerWithItem("deep_frosted_stone_tile_wall", WallBlock::new, DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<ButtonBlock> DEEP_FROSTED_STONE_TILE_BUTTON = registerStoneButton("deep_frosted_stone_tile_button", TWBlockSetTypes.DEEP_FROSTED_STONE);
     public static final DeferredBlock<Block> CRACKED_DEEP_FROSTED_STONE_TILES = registerSimpleWithItem("cracked_deep_frosted_stone_tiles", DEEP_FROSTED_PROPERTIES);
-    public static final DeferredBlock<StairBlock> CRACKED_DEEP_FROSTED_STONE_TILE_STAIRS = registerWithItem("cracked_deep_frosted_stone_tile_stairs", properties -> stair(CRACKED_DEEP_FROSTED_STONE_TILES.get(), properties), DEEP_FROSTED_PROPERTIES);
+    public static final DeferredBlock<StairBlock> CRACKED_DEEP_FROSTED_STONE_TILE_STAIRS = registerWithItem("cracked_deep_frosted_stone_tile_stairs", stair(()-> CRACKED_DEEP_FROSTED_STONE_TILES.get().defaultBlockState()), DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<SlabBlock> CRACKED_DEEP_FROSTED_STONE_TILE_SLAB = registerWithItem("cracked_deep_frosted_stone_tile_slab", SlabBlock::new, DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<WallBlock> CRACKED_DEEP_FROSTED_STONE_TILE_WALL = registerWithItem("cracked_deep_frosted_stone_tile_wall", WallBlock::new, DEEP_FROSTED_PROPERTIES);
     public static final DeferredBlock<ButtonBlock> CRACKED_DEEP_FROSTED_STONE_TILE_BUTTON = registerStoneButton("cracked_deep_frosted_stone_tile_button", TWBlockSetTypes.DEEP_FROSTED_STONE);
@@ -100,18 +98,14 @@ public final class TWBlocks {
 
     public static final DeferredBlock<LiquidBlock> ACID = REGISTER.registerBlock("acid", properties -> new LiquidBlock(TWFluids.SOURCE_ACID.get(), properties), copyProperties(Blocks.WATER).lightLevel(emission(5)));
     public static final DeferredBlock<Block> HALLUCINATED_STONE = registerSimpleWithItem("hallucinated_stone", HALLUCINATED_STONE_PROPERTIES);
-    public static final DeferredBlock<StairBlock> HALLUCINATED_STONE_STAIRS = registerWithItem("hallucinated_stone_stairs", properties -> stair(HALLUCINATED_STONE.get().defaultBlockState(), properties), HALLUCINATED_STONE_PROPERTIES);
+    public static final DeferredBlock<StairBlock> HALLUCINATED_STONE_STAIRS = registerWithItem("hallucinated_stone_stairs", stair(()-> HALLUCINATED_STONE.get().defaultBlockState()), HALLUCINATED_STONE_PROPERTIES);
     public static final DeferredBlock<SlabBlock> HALLUCINATED_STONE_SLAB = registerWithItem("hallucinated_stone_slab", SlabBlock::new, HALLUCINATED_STONE_PROPERTIES);
     public static final DeferredBlock<WallBlock> HALLUCINATED_STONE_WALL = registerWithItem("hallucinated_stone_wall", WallBlock::new, HALLUCINATED_STONE_PROPERTIES);
     public static final DeferredBlock<ButtonBlock> HALLUCINATED_STONE_BUTTON = registerStoneButton("hallucinated_stone_button", TWBlockSetTypes.HALLUCINATED_STONE);
     public static final DeferredBlock<Block> ALCITE = registerSimpleWithItem("alcite", copyProperties(HALLUCINATED_STONE_PROPERTIES).lightLevel(emission(4)));
 
-    private static BlockBehaviour.Properties buttonProperties() {
-        return BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY);
-    }
-
     private static DeferredBlock<ButtonBlock> registerStoneButton(String name, BlockSetType type) {
-        return registerButton(name, type, 20);
+        return registerButton(name, type, STONE_BUTTON_TICKS_PRESSED);
     }
 
     private static DeferredBlock<ButtonBlock> registerButton(String name, BlockSetType type, int ticksToStayPressed) {

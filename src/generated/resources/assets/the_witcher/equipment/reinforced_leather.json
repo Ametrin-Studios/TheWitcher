@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "the_witcher:reinforced_leather"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "the_witcher:reinforced_leather"
+      }
+    ]
+  }
+}

@@ -2,10 +2,12 @@ package com.barion.the_witcher;
 
 import com.ametrinstudios.ametrin.data.provider.CustomLootTableProvider;
 import com.barion.the_witcher.data.provider.TWDamageTypeProvider;
+import com.barion.the_witcher.data.provider.TWEquipmentAssetProvider;
 import com.barion.the_witcher.data.provider.TWModelProvider;
 import com.barion.the_witcher.data.provider.TWRecipeProvider;
 import com.barion.the_witcher.data.provider.loot_table.TWBlockLootProvider;
 import com.barion.the_witcher.data.provider.loot_table.TWChestLootProvider;
+import com.barion.the_witcher.data.provider.loot_table.TWEquipmentLootProvider;
 import com.barion.the_witcher.data.provider.tag.TWBlockTagsProvider;
 import com.barion.the_witcher.data.provider.tag.TWDamageTypeTagsProvider;
 import com.barion.the_witcher.data.provider.tag.TWEntityTypeTagsProvider;
@@ -13,6 +15,7 @@ import com.barion.the_witcher.data.provider.tag.TWItemTagsProvider;
 import com.barion.the_witcher.registry.*;
 import com.barion.the_witcher.registry.block.TWBlockEntities;
 import com.barion.the_witcher.registry.block.TWBlocks;
+import com.barion.the_witcher.registry.block.TWDynamicSpawners;
 import com.barion.the_witcher.registry.damage.TWDamageTypes;
 import com.barion.the_witcher.registry.fluid.TWFluidTypes;
 import com.barion.the_witcher.registry.fluid.TWFluids;
@@ -24,9 +27,11 @@ import com.barion.the_witcher.registry.recipe.TWRecipeBookCategories;
 import com.barion.the_witcher.registry.recipe.TWRecipeSerializers;
 import com.barion.the_witcher.registry.recipe.TWRecipeTypes;
 import com.barion.the_witcher.util.TWConfig;
+import com.legacy.structure_gel.api.registry.registrar.RegistrarHandler;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -70,7 +75,7 @@ public final class TheWitcher {
         modBus.addListener(TWEntityTypes::registerAttributes);
         TWStructures.init();
 
-//        RegistrarHandler.registerHandlers(MOD_ID, modBus);
+        RegistrarHandler.registerHandlers(MOD_ID, modBus, TWDynamicSpawners.HANDLER);
     }
 
     public static ResourceLocation locate(String key) {
@@ -79,8 +84,7 @@ public final class TheWitcher {
 
     @EventBusSubscriber(modid = TheWitcher.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
     public static class DataGenerators {
-        private DataGenerators() {
-        }
+        private DataGenerators() { }
 
         @SubscribeEvent
         public static void gatherData(GatherDataEvent.Client event) {
@@ -95,12 +99,14 @@ public final class TheWitcher {
             event.createProvider(CustomLootTableProvider.builder()
                     .addBlockProvider(TWBlockLootProvider::new)
                     .addChestProvider(TWChestLootProvider::new)
+                    .addProvider(LootContextParamSets.EQUIPMENT, TWEquipmentLootProvider::new)
                     ::build);
 
             event.createBlockAndItemTags(TWBlockTagsProvider::new, TWItemTagsProvider::new);
             event.createProvider(TWEntityTypeTagsProvider::new);
 //            event.createProvider(TWBiomeTagsProvider::new);
             event.createProvider(TWDamageTypeTagsProvider::new);
+            event.createProvider(TWEquipmentAssetProvider::new);
         }
     }
 }

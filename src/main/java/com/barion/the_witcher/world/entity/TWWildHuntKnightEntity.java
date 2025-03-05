@@ -1,6 +1,6 @@
 package com.barion.the_witcher.world.entity;
 
-import com.barion.the_witcher.registry.item.TWItems;
+import com.barion.the_witcher.registry.TWLootTables;
 import com.barion.the_witcher.world.TWTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -14,12 +14,12 @@ import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public class TWWildHuntKnightEntity extends Monster {
     public TWWildHuntKnightEntity(EntityType<TWWildHuntKnightEntity> entity, Level level) { super(entity, level); }
@@ -43,7 +43,9 @@ public class TWWildHuntKnightEntity extends Monster {
                 .add(Attributes.ATTACK_DAMAGE, 2);
     }
 
-    @Override
+    private static final EquipmentTable equipmentTable = new EquipmentTable(TWLootTables.Equipment.WILD_HUNT_KNIGHT, 0.2f);
+
+    @Override @ParametersAreNonnullByDefault
     public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason spawnReason, @Nullable SpawnGroupData spawnGroupData) {
         populateDefaultEquipmentSlots(random, difficulty);
         return super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
@@ -51,43 +53,44 @@ public class TWWildHuntKnightEntity extends Monster {
 
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource random, @NotNull DifficultyInstance difficulty) {
-        populateEquipmentSlot(EquipmentSlot.HEAD);
-        populateEquipmentSlot(EquipmentSlot.CHEST);
-        populateEquipmentSlot(EquipmentSlot.LEGS);
-        populateEquipmentSlot(EquipmentSlot.FEET);
-        setItemSlot(EquipmentSlot.MAINHAND, getEquipmentItemForSlot(EquipmentSlot.MAINHAND, random.nextInt(3) > 0));
-        if(random.nextInt(3) == 2){
-            setItemSlot(EquipmentSlot.OFFHAND, getEquipmentItemForSlot(EquipmentSlot.OFFHAND, false));
-        }
+        equip(equipmentTable);
+//        populateEquipmentSlot(EquipmentSlot.HEAD);
+//        populateEquipmentSlot(EquipmentSlot.CHEST);
+//        populateEquipmentSlot(EquipmentSlot.LEGS);
+//        populateEquipmentSlot(EquipmentSlot.FEET);
+//        setItemSlot(EquipmentSlot.MAINHAND, getEquipmentItemForSlot(EquipmentSlot.MAINHAND, random.nextInt(3) > 0));
+//        if(random.nextInt(3) == 2){
+//            setItemSlot(EquipmentSlot.OFFHAND, getEquipmentItemForSlot(EquipmentSlot.OFFHAND, false));
+//        }
     }
 
-    protected void populateEquipmentSlot(EquipmentSlot slot){
-        int chance = random.nextInt(5);
-        if(chance <=  1) {return;}
-
-        setItemSlot(slot, getEquipmentItemForSlot(slot, chance == 4));
-    }
-
-    protected ItemStack getEquipmentItemForSlot(EquipmentSlot slot, boolean isRare){
-        if(isRare){
-            switch(slot){
-                case HEAD -> {return new ItemStack(TWItems.REINFORCED_LEATHER_HELMET.get());}
-                case CHEST -> {return new ItemStack(TWItems.REINFORCED_LEATHER_CHESTPLATE.get());}
-                case LEGS -> {return new ItemStack(TWItems.REINFORCED_LEATHER_LEGGINGS.get());}
-                case FEET -> {return new ItemStack(TWItems.REINFORCED_LEATHER_BOOTS.get());}
-                case MAINHAND -> {return new ItemStack(TWItems.STEEL_SWORD.get());}
-                case OFFHAND -> {return new ItemStack(Items.SHIELD);}
-            }
-        }else {
-            switch(slot){
-                case HEAD -> {return new ItemStack(Items.IRON_HELMET);}
-                case CHEST -> {return new ItemStack(Items.IRON_CHESTPLATE);}
-                case LEGS -> {return new ItemStack(Items.IRON_LEGGINGS);}
-                case FEET -> {return new ItemStack(Items.IRON_BOOTS);}
-                case MAINHAND -> {return new ItemStack(Items.IRON_SWORD);}
-                case OFFHAND -> {return new ItemStack(Items.SHIELD);}
-            }
-        }
-        return ItemStack.EMPTY;
-    }
+//    protected void populateEquipmentSlot(EquipmentSlot slot){
+//        int chance = random.nextInt(5);
+//        if(chance <=  1) {return;}
+//
+//        setItemSlot(slot, getEquipmentItemForSlot(slot, chance == 4));
+//    }
+//
+//    protected ItemStack getEquipmentItemForSlot(EquipmentSlot slot, boolean isRare){
+//        if(isRare){
+//            switch(slot){
+//                case HEAD -> {return new ItemStack(TWItems.REINFORCED_LEATHER_HELMET.get());}
+//                case CHEST -> {return new ItemStack(TWItems.REINFORCED_LEATHER_CHESTPLATE.get());}
+//                case LEGS -> {return new ItemStack(TWItems.REINFORCED_LEATHER_LEGGINGS.get());}
+//                case FEET -> {return new ItemStack(TWItems.REINFORCED_LEATHER_BOOTS.get());}
+//                case MAINHAND -> {return new ItemStack(TWItems.STEEL_SWORD.get());}
+//                case OFFHAND -> {return new ItemStack(Items.SHIELD);}
+//            }
+//        }else {
+//            switch(slot){
+//                case HEAD -> {return new ItemStack(Items.IRON_HELMET);}
+//                case CHEST -> {return new ItemStack(Items.IRON_CHESTPLATE);}
+//                case LEGS -> {return new ItemStack(Items.IRON_LEGGINGS);}
+//                case FEET -> {return new ItemStack(Items.IRON_BOOTS);}
+//                case MAINHAND -> {return new ItemStack(Items.IRON_SWORD);}
+//                case OFFHAND -> {return new ItemStack(Items.SHIELD);}
+//            }
+//        }
+//        return ItemStack.EMPTY;
+//    }
 }

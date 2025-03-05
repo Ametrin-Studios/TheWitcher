@@ -1,7 +1,6 @@
 package com.barion.the_witcher.registry;
 
 import com.ametrinstudios.ametrin.world.item.helper.ArmorMaterialBuilder;
-import com.barion.the_witcher.registry.item.TWEquipmentAssets;
 import com.barion.the_witcher.world.TWTags;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.equipment.ArmorMaterial;

@@ -9,7 +9,7 @@ public final class TWPortals {
     public static final PortalData WHITE_FROST =
             PortalData.builder(Level.OVERWORLD, TWLevels.WHITE_FROST)
                     .poi(TWPOIs.WHITE_FROST_PORTAL)
-                    .portal(TWBlocks.WHITE_FROST_PORTAL)
+                    .portal(() -> TWBlocks.WHITE_FROST_PORTAL.get().defaultBlockState())
                     .defaultFrame(TWBlocks.WHITE_FROST_PORTAL_FRAME)
                     .validFrames(TWTags.Blocks.WHITE_FROST_PORTAL_FRAME)
                     .build();

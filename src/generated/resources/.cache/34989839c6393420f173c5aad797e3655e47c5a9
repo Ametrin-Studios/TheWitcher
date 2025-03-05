@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-05T00:39:28.7605021	Model Definitions - the_witcher
+// 1.21.4	2025-03-05T11:28:20.9206715	Model Definitions - the_witcher
 dc677952f961d917352d9833b6c3bee65f5004a2 assets/the_witcher/blockstates/acid.json
 eb40f5169c349ef65bb316ec684310e1e9ad917c assets/the_witcher/blockstates/alcite.json
 037bc8079bf98ab49cc7ecd6b4a85f649edf25c1 assets/the_witcher/blockstates/celandine_bush.json
@@ -313,9 +313,9 @@ f96fd9b31dc2bb268c981e4252799717decc9cf3 assets/the_witcher/models/block/power_b
 41ebd8dfa0f93240a895b55a602f15a3c2b2560d assets/the_witcher/models/block/power_block/on.json
 422c76e0a8fe61483cb71040c5e521d943b50b1b assets/the_witcher/models/block/raw_silver_block.json
 2492238c3b72069290ecbfa1ef0db2d8041ea098 assets/the_witcher/models/block/silver_block.json
-b9086418c4b75539815929e088dcf6e94baab4ae assets/the_witcher/models/block/white_frost_portal_ew.json
+3266657c53758bc94f2fd4287b2853ed41e56bff assets/the_witcher/models/block/white_frost_portal_ew.json
 53f13bcbb9bfcb67a45195d3e15ea4e13dcb954a assets/the_witcher/models/block/white_frost_portal_frame.json
-07144f809c28785fc6316bbb9c477090d8c26573 assets/the_witcher/models/block/white_frost_portal_ns.json
+b3e8bff076e3ea4089ea356021f4de313f31fa35 assets/the_witcher/models/block/white_frost_portal_ns.json
 181d8ebbc855b694ecb618e6ae0f2b06df78f438 assets/the_witcher/models/block/white_myrtle_bush/stage0.json
 c1c01e72dcfeddfc7cf6efda5a2e2507c09ded60 assets/the_witcher/models/block/white_myrtle_bush/stage1.json
 371a4980f043f152d5b2c9bb0b7e2d1bcff30c37 assets/the_witcher/models/block/white_myrtle_bush/stage2.json

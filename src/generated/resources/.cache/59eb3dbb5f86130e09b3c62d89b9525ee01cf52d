@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-05T09:08:44.3011622	Loot Tables
+// 1.21.4	2025-03-05T10:17:04.7239954	Loot Tables
 e8a3f7a503dc5b28525da7cb2ff64a75174d28b1 data/the_witcher/loot_table/blocks/alcite.json
 badffc3eb2c1959e6773836d3e8d67c0ff782719 data/the_witcher/loot_table/blocks/celandine_bush.json
 f344dda418d94f7950d5c5214f9a0073cf33b1c9 data/the_witcher/loot_table/blocks/cracked_deep_frosted_stone_bricks.json
@@ -67,3 +67,5 @@ c5dce55fe7f2850c6fed5782a3c617d7295aeb30 data/the_witcher/loot_table/blocks/whit
 a3596e04bb937510cb06e0b427f000c119596b29 data/the_witcher/loot_table/chests/witcher_castle/food.json
 9f6bbfef9047fd54656e098bac0b4bc280f70d59 data/the_witcher/loot_table/chests/witcher_castle/smithing.json
 968ff92decb8ac1a755fd48dd65e6bb7133e9a24 data/the_witcher/loot_table/chests/witcher_castle/util.json
+b4e47420bbbd46fed99e8a99d2e75b82289f096c data/the_witcher/loot_table/equipment/witcher_citadel/top_skeleton.json
+aba32e6acdf0dd88f94473445016eab7b266f1d1 data/the_witcher/loot_table/wild_hunt_knight.json
