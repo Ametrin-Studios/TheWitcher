@@ -6,14 +6,43 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "the_witcher:ice_staff"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
           "functions": [
             {
               "add": false,
               "count": 1.0,
               "function": "minecraft:set_count"
+            },
+            {
+              "function": "minecraft:set_potion",
+              "id": "the_witcher:frost_resistance_potion"
             }
           ],
-          "name": "minecraft:flint_and_steel"
+          "name": "minecraft:potion"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "function": "minecraft:set_potion",
+              "id": "the_witcher:long_frost_resistance_potion"
+            }
+          ],
+          "name": "minecraft:potion"
         }
       ],
       "rolls": 1.0

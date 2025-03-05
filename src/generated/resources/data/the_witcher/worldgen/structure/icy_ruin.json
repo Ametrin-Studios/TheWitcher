@@ -1,0 +1,6 @@
+{
+  "type": "the_witcher:icy_ruin",
+  "biomes": "#the_witcher:has/icy_ruin",
+  "spawn_overrides": {},
+  "step": "surface_structures"
+}

@@ -8,10 +8,7 @@ import com.barion.the_witcher.data.provider.TWRecipeProvider;
 import com.barion.the_witcher.data.provider.loot_table.TWBlockLootProvider;
 import com.barion.the_witcher.data.provider.loot_table.TWChestLootProvider;
 import com.barion.the_witcher.data.provider.loot_table.TWEquipmentLootProvider;
-import com.barion.the_witcher.data.provider.tag.TWBlockTagsProvider;
-import com.barion.the_witcher.data.provider.tag.TWDamageTypeTagsProvider;
-import com.barion.the_witcher.data.provider.tag.TWEntityTypeTagsProvider;
-import com.barion.the_witcher.data.provider.tag.TWItemTagsProvider;
+import com.barion.the_witcher.data.provider.tag.*;
 import com.barion.the_witcher.registry.*;
 import com.barion.the_witcher.registry.block.TWBlockEntities;
 import com.barion.the_witcher.registry.block.TWBlocks;
@@ -73,9 +70,8 @@ public final class TheWitcher {
         TWPOIs.REGISTER.register(modBus);
 
         modBus.addListener(TWEntityTypes::registerAttributes);
-        TWStructures.init();
 
-        RegistrarHandler.registerHandlers(MOD_ID, modBus, TWDynamicSpawners.HANDLER);
+        RegistrarHandler.registerHandlers(MOD_ID, modBus, TWDynamicSpawners.HANDLER, TWLootTableAliases.HANDLER);
     }
 
     public static ResourceLocation locate(String key) {
@@ -88,9 +84,10 @@ public final class TheWitcher {
 
         @SubscribeEvent
         public static void gatherData(GatherDataEvent.Client event) {
+            event.createProvider(TWBiomeTagsProvider::new);
 
-            event.createDatapackRegistryObjects(new RegistrySetBuilder()
-                            .add(Registries.DAMAGE_TYPE, TWDamageTypeProvider::run)
+            event.createDatapackRegistryObjects(RegistrarHandler.injectRegistries(new RegistrySetBuilder())
+                    .add(Registries.DAMAGE_TYPE, TWDamageTypeProvider::run)
             );
 
             event.createProvider(TWModelProvider::new);
@@ -104,7 +101,6 @@ public final class TheWitcher {
 
             event.createBlockAndItemTags(TWBlockTagsProvider::new, TWItemTagsProvider::new);
             event.createProvider(TWEntityTypeTagsProvider::new);
-//            event.createProvider(TWBiomeTagsProvider::new);
             event.createProvider(TWDamageTypeTagsProvider::new);
             event.createProvider(TWEquipmentAssetProvider::new);
         }

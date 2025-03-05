@@ -259,13 +259,6 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
           "name": "minecraft:blaze_powder"
         }
       ],
@@ -276,5 +269,5 @@
       }
     }
   ],
-  "random_sequence": "the_witcher:chests/witcher_castle/smithing"
+  "random_sequence": "the_witcher:chests/witcher_citadel/smithing"
 }

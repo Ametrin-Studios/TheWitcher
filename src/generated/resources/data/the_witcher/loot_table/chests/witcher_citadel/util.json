@@ -9,44 +9,28 @@
           "functions": [
             {
               "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:arrow",
+          "weight": 12
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
               "count": 1.0,
               "function": "minecraft:set_count"
             }
           ],
-          "name": "the_witcher:white_myrtle",
-          "weight": 6
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 4.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:wheat",
-          "weight": 10
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:gunpowder",
-          "weight": 10
+          "name": "minecraft:cobweb",
+          "weight": 7
         },
         {
           "type": "minecraft:item",
@@ -61,20 +45,27 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:spider_eye",
-          "weight": 12
+          "name": "minecraft:string",
+          "weight": 9
+        },
+        {
+          "type": "minecraft:item",
+          "name": "the_witcher:silver_nugget"
         },
         {
           "type": "minecraft:item",
           "functions": [
             {
               "add": false,
-              "count": 1.0,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.0
+              },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:glowstone_dust",
-          "weight": 2
+          "name": "the_witcher:steel_nugget"
         },
         {
           "type": "minecraft:item",
@@ -86,18 +77,8 @@
             }
           ],
           "name": "minecraft:redstone",
-          "weight": 3
-        }
-      ],
-      "rolls": {
-        "type": "minecraft:uniform",
-        "max": 15.0,
-        "min": 10.0
-      }
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
+          "weight": 7
+        },
         {
           "type": "minecraft:item",
           "functions": [
@@ -105,14 +86,14 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 2.0,
+                "max": 3.0,
                 "min": 1.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "the_witcher:celandine",
-          "weight": 2
+          "name": "minecraft:rotten_flesh",
+          "weight": 14
         },
         {
           "type": "minecraft:item",
@@ -123,8 +104,8 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "the_witcher:kikimora_tooth",
-          "weight": 2
+          "name": "minecraft:gunpowder",
+          "weight": 9
         },
         {
           "type": "minecraft:item",
@@ -132,18 +113,49 @@
             {
               "add": false,
               "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:paper",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.0
+              },
               "function": "minecraft:set_count"
             }
           ],
           "name": "minecraft:blaze_powder"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "the_witcher:kikimora_tooth"
         }
       ],
       "rolls": {
         "type": "minecraft:uniform",
-        "max": 3.0,
-        "min": 1.0
+        "max": 14.0,
+        "min": 7.0
       }
     }
   ],
-  "random_sequence": "the_witcher:chests/witcher_castle/brewing"
+  "random_sequence": "the_witcher:chests/witcher_citadel/util"
 }

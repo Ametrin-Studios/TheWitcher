@@ -1,0 +1,7 @@
+{
+  "type": "the_witcher:witcher_citadel",
+  "biomes": "#the_witcher:has/witcher_citadel",
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin"
+}
