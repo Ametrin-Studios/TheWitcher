@@ -1,0 +1,14 @@
+{
+  "remove": [
+    "#c:is_mountain",
+    "#c:is_stony_shores",
+    "#c:is_beach",
+    "#c:is_windswept"
+  ],
+  "values": [
+    "#c:is_forest",
+    "#c:is_plains",
+    "#c:is_savanna",
+    "#c:is_dead"
+  ]
+}

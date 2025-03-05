@@ -6,15 +6,39 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:ice"
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:ice",
+          "weight": 15
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:snow_block"
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:snow_block",
+          "weight": 8
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:bone"
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:bone",
+          "weight": 5
         },
         {
           "type": "minecraft:item",

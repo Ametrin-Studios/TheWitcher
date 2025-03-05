@@ -1,0 +1,28 @@
+{
+  "values": [
+    {
+      "id": "the_witcher:frozen_spikes",
+      "required": false
+    },
+    {
+      "id": "the_witcher:icy_peaks",
+      "required": false
+    },
+    {
+      "id": "the_witcher:snowy_desert",
+      "required": false
+    },
+    {
+      "id": "the_witcher:arctic_boneyard",
+      "required": false
+    },
+    {
+      "id": "the_witcher:frosted_ocean",
+      "required": false
+    },
+    {
+      "id": "the_witcher:icebound_depths",
+      "required": false
+    }
+  ]
+}

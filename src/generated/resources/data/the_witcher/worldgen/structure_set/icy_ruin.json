@@ -1,0 +1,17 @@
+{
+  "placement": {
+    "type": "structure_gel:grid_placement",
+    "allowed_near_spawn": true,
+    "frequency": 0.8,
+    "offset": 26,
+    "salt": 1829128284,
+    "spacing": 27,
+    "structure": "the_witcher:icy_ruin"
+  },
+  "structures": [
+    {
+      "structure": "the_witcher:icy_ruin",
+      "weight": 1
+    }
+  ]
+}

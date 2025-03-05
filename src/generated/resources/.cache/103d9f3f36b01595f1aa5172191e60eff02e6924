@@ -1,2 +1,8 @@
-// 1.21.4	2025-03-04T23:36:14.1601976	Registries
+// 1.21.4	2025-03-05T16:20:34.0636999	Registries
 b84334b6e3ed264336ee11693cc93a1a7659bd99 data/the_witcher/damage_type/hot_water.json
+35db44ebf92934f58a7a0fc0bcd17173486ffff1 data/the_witcher/worldgen/structure/icy_ruin.json
+62c16b210049ce05a7ca6f4795473f89e497f89a data/the_witcher/worldgen/structure/wild_hunt_outpost.json
+450d394ccef7b626db3ce8ca1cb656959496508f data/the_witcher/worldgen/structure/witcher_citadel.json
+2105f56abe475c28217efc3f668335ac075fba1a data/the_witcher/worldgen/structure_set/icy_ruin.json
+1c8fc76379075583c70467088575ec1287149ca1 data/the_witcher/worldgen/structure_set/wild_hunt_outpost.json
+d46c688f1f708daaf32ef488711bed316e738707 data/the_witcher/worldgen/structure_set/witcher_citadel.json

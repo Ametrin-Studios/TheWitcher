@@ -40,11 +40,13 @@ public class TWWildHuntOutpostStructure extends Structure {
 //        Pair<Boolean, Float> results = ExperimentalTerrainAnalyzer.isFlatEnough(pos, context.structureTemplateManager().getOrCreate(Piece.StructureFile).getSize(rotation), 1, 100, context.chunkGenerator(), context.heightAccessor(), context.randomState());
 //        if(!results.getFirst()) {return Optional.empty();}
 //        TWUtil.Logger.info("Generated at: {} {} {}", pos.getX(), pos.getY(), pos.getZ());
-        return Optional.of(new Structure.GenerationStub(pos, (piecesBuilder)-> piecesBuilder.addPiece(new Piece(pos/*.atY((int) Math.floor(results.getSecond()))*/, context, rotation))));
+        return Optional.of(new Structure.GenerationStub(pos, (piecesBuilder) -> piecesBuilder.addPiece(new Piece(pos/*.atY((int) Math.floor(results.getSecond()))*/, context, rotation))));
     }
 
     @Override
-    public @NotNull StructureType<?> type() {return null/*TWStructures.WildHuntOutpost.getType()*/;}
+    public @NotNull StructureType<?> type() {
+        return TWStructures.WILD_HUNT_OUTPOST.getType();
+    }
 
     public static class Piece extends GelTemplateStructurePiece {
         private static final ResourceLocation StructureFile = TWUtil.locate("wild_hunt_outpost");
@@ -53,13 +55,13 @@ public class TWWildHuntOutpostStructure extends Structure {
             super(structurePieceType, componentType, structureManager, templateName, placeSettings, pos);
         }
 
-        public Piece(BlockPos pos, GenerationContext context, Rotation rotation){
+        public Piece(BlockPos pos, GenerationContext context, Rotation rotation) {
             super(TWStructures.WILD_HUNT_OUTPOST.getPieceType().get(), 0, context.structureTemplateManager(), StructureFile, pos);
             this.rotation = rotation;
             setupPlaceSettings(context.structureTemplateManager());
         }
 
-        public Piece(StructurePieceSerializationContext context, CompoundTag nbt){
+        public Piece(StructurePieceSerializationContext context, CompoundTag nbt) {
             super(TWStructures.WILD_HUNT_OUTPOST.getPieceType().get(), nbt, context.structureTemplateManager());
             setupPlaceSettings(context.structureTemplateManager());
         }
@@ -78,7 +80,9 @@ public class TWWildHuntOutpostStructure extends Structure {
             return settings;
         }
 
-        @Override @ParametersAreNonnullByDefault
-        protected void handleDataMarker(String key, BlockPos pos, ServerLevelAccessor level, RandomSource random, BoundingBox box) {}
+        @Override
+        @ParametersAreNonnullByDefault
+        protected void handleDataMarker(String key, BlockPos pos, ServerLevelAccessor level, RandomSource random, BoundingBox box) {
+        }
     }
 }

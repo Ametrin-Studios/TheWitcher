@@ -20,27 +20,46 @@ public final class TWBiomeTagsProvider extends BiomeTagsProvider {
 
     @Override
     protected void addTags(@NotNull HolderLookup.Provider lookupProvider) {
-        tag(TWTags.Biomes.IS_WHITE_FROST).add(
-                TWBiomes.FROZEN_SPIKES,
-                TWBiomes.ICY_PEAKS,
-                TWBiomes.SNOWY_DESERT,
-                TWBiomes.ARCTIC_BONEYARD,
-                TWBiomes.FROSTED_OCEAN,
-                TWBiomes.ICEBOUND_DEPTHS
-        );
-        tag(TWTags.Biomes.HAS_ICY_RUIN).add(
-                TWBiomes.FROZEN_SPIKES,
-                TWBiomes.ICY_PEAKS,
-                TWBiomes.SNOWY_DESERT,
-                TWBiomes.ARCTIC_BONEYARD
-        );
+        tag(TWTags.Biomes.HAS_WITCHER_CITADEL)
+                .addTag(Tags.Biomes.IS_FOREST)
+                .addTag(Tags.Biomes.IS_PLAINS)
+                .addTag(Tags.Biomes.IS_SAVANNA)
+                .addTag(Tags.Biomes.IS_DEAD)
 
-        tag(TWTags.Biomes.ICICLE_CAN_GROW_IN).addTag(TWTags.Biomes.IS_WHITE_FROST).addTag(Tags.Biomes.IS_COLD);
-        tag(TWTags.Biomes.DEALS_FREEZING_DAMAGE).addTag(TWTags.Biomes.IS_WHITE_FROST);
+                .remove(Tags.Biomes.IS_MOUNTAIN)
+                .remove(Tags.Biomes.IS_STONY_SHORES)
+                .remove(Tags.Biomes.IS_BEACH)
+                .remove(Tags.Biomes.IS_WINDSWEPT)
+        ;
 
-        tag(BiomeTags.HAS_NETHER_FOSSIL).add(
-                TWBiomes.ARCTIC_BONEYARD
-        );
+        tag(TWTags.Biomes.IS_WHITE_FROST)
+                .addOptional(TWBiomes.FROZEN_SPIKES.location())
+                .addOptional(TWBiomes.ICY_PEAKS.location())
+                .addOptional(TWBiomes.SNOWY_DESERT.location())
+                .addOptional(TWBiomes.ARCTIC_BONEYARD.location())
+                .addOptional(TWBiomes.FROSTED_OCEAN.location())
+                .addOptional(TWBiomes.ICEBOUND_DEPTHS.location())
+        ;
+
+        tag(TWTags.Biomes.HAS_ICY_RUIN)
+                .addOptional(TWBiomes.FROZEN_SPIKES.location())
+                .addOptional(TWBiomes.ICY_PEAKS.location())
+                .addOptional(TWBiomes.SNOWY_DESERT.location())
+                .addOptional(TWBiomes.ARCTIC_BONEYARD.location())
+        ;
+
+        tag(TWTags.Biomes.ICICLE_CAN_GROW_IN)
+                .addTag(TWTags.Biomes.IS_WHITE_FROST)
+                .addTag(Tags.Biomes.IS_ICY)
+        ;
+
+        tag(TWTags.Biomes.DEALS_FREEZING_DAMAGE)
+                .addTag(TWTags.Biomes.IS_WHITE_FROST)
+        ;
+
+        tag(BiomeTags.HAS_NETHER_FOSSIL)
+                .addOptional(TWBiomes.ARCTIC_BONEYARD.location())
+        ;
 
         tag(TWTags.Biomes.HAS_WHITE_MYRTLE).add(
                 Biomes.FLOWER_FOREST,

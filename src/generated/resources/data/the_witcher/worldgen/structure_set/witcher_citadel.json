@@ -1,0 +1,17 @@
+{
+  "placement": {
+    "type": "structure_gel:grid_placement",
+    "allowed_near_spawn": false,
+    "frequency": 0.9,
+    "offset": 48,
+    "salt": 1901783879,
+    "spacing": 72,
+    "structure": "the_witcher:witcher_citadel"
+  },
+  "structures": [
+    {
+      "structure": "the_witcher:witcher_citadel",
+      "weight": 1
+    }
+  ]
+}

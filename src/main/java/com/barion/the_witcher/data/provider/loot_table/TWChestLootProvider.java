@@ -26,9 +26,9 @@ public final class TWChestLootProvider implements LootTableSubProvider {
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> output) {
         output.accept(TWLootTables.Chests.ICE_RUIN, LootTable.lootTable()
                 .withPool(pool(number(6, 10))
-                        .add(item(Items.ICE))
-                        .add(item(Items.SNOW_BLOCK))
-                        .add(item(Items.BONE))
+                        .add(item(Items.ICE, 15, one()))
+                        .add(item(Items.SNOW_BLOCK, 8, one()))
+                        .add(item(Items.BONE, 5, one()))
                         .add(item(Items.POWDER_SNOW_BUCKET))
                         .add(item(TWItems.SILVER_NUGGET))
                         .add(potion(1, TWPotions.FROST_RESISTANCE_POTION, one()))

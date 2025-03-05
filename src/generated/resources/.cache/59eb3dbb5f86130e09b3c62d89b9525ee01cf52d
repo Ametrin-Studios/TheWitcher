@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-05T13:29:05.5382095	Loot Tables
+// 1.21.4	2025-03-05T17:13:47.6612623	Loot Tables
 e8a3f7a503dc5b28525da7cb2ff64a75174d28b1 data/the_witcher/loot_table/blocks/alcite.json
 badffc3eb2c1959e6773836d3e8d67c0ff782719 data/the_witcher/loot_table/blocks/celandine_bush.json
 f344dda418d94f7950d5c5214f9a0073cf33b1c9 data/the_witcher/loot_table/blocks/cracked_deep_frosted_stone_bricks.json
@@ -62,7 +62,7 @@ df39b268d40319a27f8875e941da45031d251a6f data/the_witcher/loot_table/blocks/mast
 1b1d831aa586e4f40768de9b37b2b8cf81f33560 data/the_witcher/loot_table/blocks/raw_silver_block.json
 d6a3fd16a0872a6dce89f8b68a9b5e0b212ecbb2 data/the_witcher/loot_table/blocks/silver_block.json
 c5dce55fe7f2850c6fed5782a3c617d7295aeb30 data/the_witcher/loot_table/blocks/white_myrtle_bush.json
-ba42d71072fda6aa40d269d34ecc1f61f7ce2ce2 data/the_witcher/loot_table/chests/ice_ruin.json
+2b14567d55ba23ee768a94a2087b8910e6604adc data/the_witcher/loot_table/chests/ice_ruin.json
 3d22d825bce952817a8d5b59145996afd0708716 data/the_witcher/loot_table/chests/white_frost_portal.json
 860aa7d6655cffea04835b9faa398c6b0dda8d52 data/the_witcher/loot_table/chests/witcher_citadel/brewing.json
 0bb0b24221df32a231f706f389f0a3ad898df974 data/the_witcher/loot_table/chests/witcher_citadel/food.json

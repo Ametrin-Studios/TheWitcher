@@ -1,0 +1,17 @@
+{
+  "placement": {
+    "type": "structure_gel:grid_placement",
+    "allowed_near_spawn": true,
+    "frequency": 0.7,
+    "offset": 39,
+    "salt": 879928579,
+    "spacing": 40,
+    "structure": "the_witcher:wild_hunt_outpost"
+  },
+  "structures": [
+    {
+      "structure": "the_witcher:wild_hunt_outpost",
+      "weight": 1
+    }
+  ]
+}
