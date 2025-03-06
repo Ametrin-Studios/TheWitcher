@@ -37,8 +37,8 @@ public final class TWMasterSmithingScreen extends AbstractContainerScreen<TWMast
     @Override
     protected void renderLabels(@NotNull GuiGraphics graphics, int mouseX, int mouseY) {
         super.renderLabels(graphics, mouseX, mouseY);
-        if (menu.getSelectedRecipe() != null) {
-            graphics.drawString(font, menu.getSelectedRecipe().getXpCost() + " XP", 77, 56, menu.enoughXP() ? 8453920 : 16736352, true);
+        if (menu.getXPCost() != -1) {
+            graphics.drawString(font, menu.getXPCost() + " XP", 77, 56, menu.enoughXP() ? 8453920 : 16736352, true);
         }
     }
 }

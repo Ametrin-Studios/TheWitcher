@@ -1,5 +1,6 @@
 package com.barion.the_witcher.recipe;
 
+import com.barion.the_witcher.registry.recipe.TWRecipeBookCategories;
 import com.barion.the_witcher.registry.recipe.TWRecipeSerializers;
 import com.barion.the_witcher.registry.recipe.TWRecipeTypes;
 import com.barion.the_witcher.world.inventory.TWMasterSmithingMenu;
@@ -38,7 +39,7 @@ public final class TWMasterSmithingRecipe implements Recipe<TWMasterSmithingMenu
     @Override
     @ParametersAreNonnullByDefault
     public @NotNull ItemStack assemble(TWMasterSmithingMenu container, HolderLookup.Provider provider) {
-        return output;
+        return getResultItem(provider);
     }
 
     public @NotNull ItemStack getResultItem(@NotNull HolderLookup.Provider provider) {
@@ -48,9 +49,6 @@ public final class TWMasterSmithingRecipe implements Recipe<TWMasterSmithingMenu
     public int getXpCost() {
         return xpCost;
     }
-
-//    @Override
-//    public @NotNull ItemStack getToastSymbol() { return TWBlocks.MASTER_SMITHING_TABLE.get().asItem().getDefaultInstance(); }
 
     @Override
     public @NotNull RecipeSerializer<? extends Recipe<TWMasterSmithingMenu>> getSerializer() {
@@ -76,8 +74,8 @@ public final class TWMasterSmithingRecipe implements Recipe<TWMasterSmithingMenu
     }
 
     @Override
-    public RecipeBookCategory recipeBookCategory() {
-        return RecipeBookCategories.STONECUTTER;
+    public @NotNull RecipeBookCategory recipeBookCategory() {
+        return TWRecipeBookCategories.MASTER_SMITHING.get();
     }
 
     public static class Type implements RecipeType<TWMasterSmithingRecipe> {

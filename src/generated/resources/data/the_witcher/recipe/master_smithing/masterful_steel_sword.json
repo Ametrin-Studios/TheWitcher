@@ -1,0 +1,9 @@
+{
+  "type": "the_witcher:master_smithing",
+  "ingredient": "the_witcher:steel_sword",
+  "output": {
+    "count": 1,
+    "id": "the_witcher:masterful_steel_sword"
+  },
+  "xp": 20
+}

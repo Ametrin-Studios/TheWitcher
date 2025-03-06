@@ -6,7 +6,6 @@ import com.barion.the_witcher.registry.block.TWBlocks;
 import com.barion.the_witcher.registry.recipe.TWRecipeTypes;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -14,6 +13,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeInput;
@@ -31,28 +31,31 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
     private final Level level;
     private final ItemStackHandler itemHandler;
     private final ContainerLevelAccess access;
+    private final DataSlot xpSlot;
     private TWMasterSmithingRecipe selectedRecipe;
 
-    public static final int SLOT_Count = 2;
+    public static final int SLOT_COUNT = 2;
     public static final int RESULT_SLOT_ID = 1;
     public static final int INPUT_SLOT_ID = 0;
 
     public TWMasterSmithingMenu(int id, Inventory inventory, FriendlyByteBuf data) {
-        this(id, inventory, data == null ? ContainerLevelAccess.NULL : ContainerLevelAccess.create(inventory.player.level(), data.readBlockPos()));
+        this(id, inventory, data == null ? ContainerLevelAccess.NULL : ContainerLevelAccess.create(inventory.player.level(), data.readBlockPos()), DataSlot.standalone());
     }
 
-    public TWMasterSmithingMenu(int id, Inventory inventory, ContainerLevelAccess containerAccess) {
+    public TWMasterSmithingMenu(int id, Inventory inventory, ContainerLevelAccess containerAccess, DataSlot xpSlot) {
         super(TWMenuTypes.MASTER_SMITHING_TABLE_MENU.get(), id);
         player = inventory.player;
         level = inventory.player.level();
         access = containerAccess;
-        itemHandler = new ItemStackHandler(SLOT_Count) {
+        this.xpSlot = xpSlot;
+        xpSlot.set(-1);
+        itemHandler = new ItemStackHandler(SLOT_COUNT) {
             @Override
             protected void onContentsChanged(int slot) {
                 slotsChanged(getContainer());
             }
         };
-        checkContainerSize(inventory, SLOT_Count);
+        checkContainerSize(inventory, SLOT_COUNT);
 
         addSlot(new SlotItemHandler(itemHandler, 0, 44, 39));
         addSlot(new SlotItemHandler(itemHandler, 1, 116, 39) {
@@ -78,6 +81,9 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
             }
         });
 
+        addDataSlot(xpSlot);
+
+
         addPlayerInventory(inventory);
         addPlayerHotbar(inventory);
     }
@@ -96,13 +102,15 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
             if (itemHandler.getStackInSlot(RESULT_SLOT_ID) != ItemStack.EMPTY) {
                 itemHandler.setStackInSlot(RESULT_SLOT_ID, ItemStack.EMPTY);
                 selectedRecipe = null;
+                xpSlot.set(-1);
             }
         } else {
             selectedRecipe = recipes.get().value();
+            xpSlot.set(selectedRecipe.getXpCost());
             if (!canCraft()) {
                 return;
             }
-            var resultItem = selectedRecipe.getResultItem(level.registryAccess());
+            var resultItem = selectedRecipe.assemble(this, level.registryAccess());
             if (!itemHandler.getStackInSlot(RESULT_SLOT_ID).is(resultItem.getItem())) {
                 resultItem.copyFrom(itemHandler.getStackInSlot(INPUT_SLOT_ID), DataComponents.ENCHANTMENTS, DataComponents.DAMAGE);
                 itemHandler.setStackInSlot(RESULT_SLOT_ID, resultItem);
@@ -117,11 +125,8 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
 
     @Override
     public void slotsChanged(@NotNull Container container) {
-        super.slotsChanged(container);
         this.access.execute((level, access) -> {
-            if (level instanceof ServerLevel) {
-                this.createResult();
-            }
+            this.createResult();
         });
     }
 
@@ -135,7 +140,7 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
         if (!player.isAlive() || player instanceof ServerPlayer && ((ServerPlayer) player).hasDisconnected()) {
             player.drop(itemHandler.getStackInSlot(INPUT_SLOT_ID), false);
         } else {
-            Inventory inventory = player.getInventory();
+            var inventory = player.getInventory();
             if (inventory.player instanceof ServerPlayer) {
                 inventory.placeItemBackInInventory(itemHandler.getStackInSlot(INPUT_SLOT_ID));
             }
@@ -151,7 +156,11 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
     }
 
     public boolean enoughXP() {
-        return player.experienceLevel >= selectedRecipe.getXpCost() || player.getAbilities().instabuild;
+        return player.experienceLevel >= getXPCost() || player.getAbilities().instabuild;
+    }
+
+    public int getXPCost() {
+        return xpSlot.get();
     }
 
     public boolean canCraft() {
@@ -179,8 +188,8 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
 
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
-        Slot sourceSlot = slots.get(index);
-        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
+        var sourceSlot = slots.get(index);
+        if (!sourceSlot.hasItem()) return ItemStack.EMPTY;  // EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copyOfSourceStack = sourceStack.copy();
 
@@ -188,10 +197,10 @@ public class TWMasterSmithingMenu extends AbstractContainerMenu implements Recip
         if (index < FIRST_SLOT + VANILLA_SLOTS) {
             // This is a vanilla container slot so merge the stack into the tile inventory
             if (!moveItemStackTo(sourceStack, MOD_FIRST_SLOT, MOD_FIRST_SLOT
-                    + SLOT_Count, false)) {
+                    + SLOT_COUNT, false)) {
                 return ItemStack.EMPTY;  // EMPTY_ITEM
             }
-        } else if (index < MOD_FIRST_SLOT + SLOT_Count) {
+        } else if (index < MOD_FIRST_SLOT + SLOT_COUNT) {
             // This is a TE slot so merge the stack into the players inventory
             if (!moveItemStackTo(sourceStack, FIRST_SLOT, FIRST_SLOT + VANILLA_SLOTS, false)) {
                 return ItemStack.EMPTY;

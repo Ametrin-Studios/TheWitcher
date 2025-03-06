@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-04T23:36:14.147835	The Witcher recipes
+// 1.21.4	2025-03-06T14:23:16.3206163	The Witcher recipes
 745e376906688f068b1afc0ff806fb02b520b7f5 data/the_witcher/advancement/recipes/building_blocks/cracked_frosted_stone_brick_slab.json
 73492ba75ae411921fbadfc692b38e8037ed520d data/the_witcher/advancement/recipes/building_blocks/cracked_frosted_stone_brick_stairs.json
 27de012761d38b06c35385ba7ea44fc649cd084e data/the_witcher/advancement/recipes/building_blocks/deep_frosted_cobblestone_slab.json
@@ -124,6 +124,8 @@ ad00bce06fb4905cad228115f106cb61d1296289 data/the_witcher/advancement/recipes/de
 0c39b1c276c981c9d9984e74af7b09f69cc306d4 data/the_witcher/advancement/recipes/food/beer.json
 672815171d3df49fb9431e3d90582ada3e0893ba data/the_witcher/advancement/recipes/food/smelting/hot_water_bottle.json
 fea239069e5bfffe9b5500e7d9194b78ddd0efec data/the_witcher/advancement/recipes/food/smoking/hot_water_bottle.json
+d5791592f735a3a024ee0636973d062236c3ffff data/the_witcher/advancement/recipes/master_smithing/masterful_silver_sword.json
+a4158eefb3132d80d94709d10bc9e26381acdcd4 data/the_witcher/advancement/recipes/master_smithing/masterful_steel_sword.json
 fea096c2731e32e517042e449cc12c9db836b3b9 data/the_witcher/advancement/recipes/misc/blasting/silver_ingot.json
 c31f86545fecbf0b036275b09ed9b0b5de9c4300 data/the_witcher/advancement/recipes/misc/raw_silver.json
 36c816eea6fd9d5b2771c2382407fd9469d963b3 data/the_witcher/advancement/recipes/misc/raw_silver_block.json
@@ -204,6 +206,8 @@ dd12b214ab56d831e8004cf0eee6611fe4a30378 data/the_witcher/recipe/frosted_stone_s
 cde0b456de554007f2442fa0b89df8132d449d0f data/the_witcher/recipe/hallucinated_stone_slab.json
 305aa6cd2fd91595983591c1bd9b3e85c40bf185 data/the_witcher/recipe/hallucinated_stone_stairs.json
 e2cda18358cc3ad1e73076f88131db7fa723970a data/the_witcher/recipe/hallucinated_stone_wall.json
+76786fd9c5866519ad4da32a3fd30529829615b5 data/the_witcher/recipe/master_smithing/masterful_silver_sword.json
+dc7420838633c246ebb8f1d9473508dff0883e81 data/the_witcher/recipe/master_smithing/masterful_steel_sword.json
 8c23a8db6199237c9fc69911406b4ee73f407391 data/the_witcher/recipe/raw_silver.json
 bd558bf9a88e7d7cc765d3b1438a08a2ed30a681 data/the_witcher/recipe/raw_silver_block.json
 53f4c73585a6ceca190248b9c3a7c23e92b57081 data/the_witcher/recipe/silver_block.json
