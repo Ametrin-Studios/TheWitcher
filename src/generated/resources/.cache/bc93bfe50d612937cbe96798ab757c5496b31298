@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-04T23:36:14.1645883	Tags for minecraft:item mod id the_witcher
+// 1.21.4	2025-03-06T14:45:02.6547577	Tags for minecraft:item mod id the_witcher
 7e84ad47a883c955bd0840618f34fbb44a9e81a6 data/c/tags/item/ingots.json
 269a4b2283f0cd05a65405c0589bb4993b7b9793 data/c/tags/item/ingots/silver.json
 5e891ae74dea68b8aea184a9a9c05bee9b89713b data/c/tags/item/nuggets.json
@@ -14,6 +14,7 @@ c6cc9ae2c82ba6a033cadd219b59c48e0ca167a4 data/minecraft/tags/item/beacon_payment
 3ad8bb8cee36ba07d7eff13ca0ddc302b5b5c70a data/minecraft/tags/item/slabs.json
 5786d05be7c48c65df49cd613efce30d20c1f973 data/minecraft/tags/item/stairs.json
 e93d0dcade0235d66987b6285169bcc58e495522 data/minecraft/tags/item/stone_crafting_materials.json
+689dcb137269a6a0d803b9f43ebb6a06095ef65c data/minecraft/tags/item/swords.json
 b727ea6a4bfdf35cb1717924f92490be761fc47f data/minecraft/tags/item/walls.json
 ff3a3b673874f7b3a403e20237d77480338c239b data/the_witcher/tags/item/brews_beer.json
 a2d1653a72db672faeb80cac74fd0dda897c6f3e data/the_witcher/tags/item/ingots/steel.json

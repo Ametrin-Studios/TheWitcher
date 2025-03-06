@@ -23,13 +23,6 @@ public final class TWItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(@Nonnull HolderLookup.Provider provider) {
-        copy(TWTags.Blocks.STORAGE_BLOCKS_SILVER, TWTags.Items.STORAGE_BLOCKS_SILVER);
-        copy(TWTags.Blocks.STORAGE_BLOCKS_RAW_SILVER, TWTags.Items.STORAGE_BLOCKS_RAW_SILVER);
-        copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
-        copy(BlockTags.STAIRS, ItemTags.STAIRS);
-        copy(BlockTags.SLABS, ItemTags.SLABS);
-        copy(BlockTags.WALLS, ItemTags.WALLS);
-        copy(BlockTags.BUTTONS, ItemTags.BUTTONS);
 
         tag(TWTags.Items.RAW_MATERIALS_SILVER).add(TWItems.RAW_SILVER.get());
         tag(TWTags.Items.SILVER_INGOTS).add(TWItems.SILVER_INGOT.get());
@@ -38,20 +31,31 @@ public final class TWItemTagsProvider extends ItemTagsProvider {
         tag(TWTags.Items.STEEL_NUGGETS).add(TWItems.STEEL_NUGGET.get());
         tag(TWTags.Items.STEEL_NUGGETS).add(TWItems.STEEL_NUGGET.get());
 
+        tag(Tags.Items.RAW_MATERIALS).addTag(TWTags.Items.RAW_MATERIALS_SILVER);
+
         tag(Tags.Items.INGOTS)
                 .addTag(TWTags.Items.SILVER_INGOTS)
-                .addTag(TWTags.Items.STEEL_INGOTS);
+                .addTag(TWTags.Items.STEEL_INGOTS)
+        ;
 
         tag(Tags.Items.NUGGETS)
                 .addTag(TWTags.Items.SILVER_NUGGETS)
-                .addTag(TWTags.Items.STEEL_NUGGETS);
+                .addTag(TWTags.Items.STEEL_NUGGETS)
+        ;
+
+        tag(ItemTags.SWORDS).add(
+                TWItems.STEEL_SWORD.get(),
+                TWItems.SILVER_SWORD.get(),
+                TWItems.MASTERFUL_STEEL_SWORD.get(),
+                TWItems.MASTERFUL_SILVER_SWORD.get()
+        );
 
         tag(ItemTags.STONE_CRAFTING_MATERIALS).add(
-                TWBlocks.FROSTED_STONE.get().asItem(),
-                TWBlocks.FROSTED_COBBLESTONE.get().asItem(),
-                TWBlocks.DEEP_FROSTED_STONE.get().asItem(),
-                TWBlocks.DEEP_FROSTED_COBBLESTONE.get().asItem(),
-                TWBlocks.HALLUCINATED_STONE.get().asItem()
+                TWBlocks.FROSTED_STONE.asItem(),
+                TWBlocks.FROSTED_COBBLESTONE.asItem(),
+                TWBlocks.DEEP_FROSTED_STONE.asItem(),
+                TWBlocks.DEEP_FROSTED_COBBLESTONE.asItem(),
+                TWBlocks.HALLUCINATED_STONE.asItem()
         );
 
         tag(ItemTags.FREEZE_IMMUNE_WEARABLES).add(
@@ -66,7 +70,14 @@ public final class TWItemTagsProvider extends ItemTagsProvider {
                 Items.BROWN_MUSHROOM
         );
 
-        tag(Tags.Items.RAW_MATERIALS).addTag(TWTags.Items.RAW_MATERIALS_SILVER);
         tag(ItemTags.BEACON_PAYMENT_ITEMS).add(TWItems.SILVER_INGOT.get(), TWItems.STEEL_INGOT.get());
+
+        copy(TWTags.Blocks.STORAGE_BLOCKS_SILVER, TWTags.Items.STORAGE_BLOCKS_SILVER);
+        copy(TWTags.Blocks.STORAGE_BLOCKS_RAW_SILVER, TWTags.Items.STORAGE_BLOCKS_RAW_SILVER);
+        copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
+        copy(BlockTags.STAIRS, ItemTags.STAIRS);
+        copy(BlockTags.SLABS, ItemTags.SLABS);
+        copy(BlockTags.WALLS, ItemTags.WALLS);
+        copy(BlockTags.BUTTONS, ItemTags.BUTTONS);
     }
 }
