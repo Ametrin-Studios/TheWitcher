@@ -21,7 +21,7 @@ public final class TWSetEnergyCommand {
                                 .then(Commands.argument("amount", IntegerArgumentType.integer(0))
                                         .executes((command)-> setEnergy(command.getSource(), IntegerArgumentType.getInteger(command, "amount")))
                                         .then(Commands.argument("targets", EntityArgument.players())
-                                                .executes((command)-> setEnergy(command.getSource(), EntityArgument.getPlayers(command, "targets"), IntegerArgumentType.getInteger(command, "level")))
+                                                .executes((command)-> setEnergy(command.getSource(), EntityArgument.getPlayers(command, "targets"), IntegerArgumentType.getInteger(command, "amount")))
         )))));
     }
 

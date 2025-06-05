@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 public class TWMasterSmithingTableBlock extends CraftingTableBlock {
-    public static final Component TEXT_COMPONENT = Component.translatable("container.the_witcher.master_smithting");
+    public static final Component TEXT_COMPONENT = Component.translatable("container.the_witcher.master_smithing");
 
     public TWMasterSmithingTableBlock(Properties properties) {
         super(properties);

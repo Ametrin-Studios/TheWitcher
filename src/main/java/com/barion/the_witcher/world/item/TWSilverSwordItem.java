@@ -26,13 +26,13 @@ public class TWSilverSwordItem extends SwordItem {
     @Override
     @ParametersAreNonnullByDefault
     public void postHurtEnemy(ItemStack itemStack, LivingEntity target, LivingEntity attacker) {
-        //TODO: fix
+        // TODO: fix
         if (target.getType().is(TWTags.EntityTypes.MAGIC_MOB)) {
             var damageSource = target.level().damageSources().mobAttack(attacker);
             float damage = magicDamage;
             var enchantmentBonus = getAttackDamageBonus(target, damage, damageSource);
-            if (attacker instanceof Player) {
-                var dmgScale = ((Player) attacker).getAttackStrengthScale(0.5f);
+            if (attacker instanceof Player attackingPlayer) {
+                var dmgScale = attackingPlayer.getAttackStrengthScale(0.5f);
                 damage *= 0.2f + dmgScale * dmgScale * 0.8f;
                 enchantmentBonus *= dmgScale;
                 TWUtil.Logger.info("Scaled damage with: " + (0.2f + dmgScale * dmgScale * 0.8f));
