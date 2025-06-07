@@ -7,7 +7,6 @@ import com.barion.the_witcher.data.provider.TWModelProvider;
 import com.barion.the_witcher.data.provider.TWRecipeProvider;
 import com.barion.the_witcher.data.provider.loot_table.TWBlockLootProvider;
 import com.barion.the_witcher.data.provider.loot_table.TWChestLootProvider;
-import com.barion.the_witcher.data.provider.loot_table.TWEquipmentLootProvider;
 import com.barion.the_witcher.data.provider.tag.*;
 import com.barion.the_witcher.registry.*;
 import com.barion.the_witcher.registry.block.TWBlockEntities;
@@ -28,7 +27,6 @@ import com.legacy.structure_gel.api.registry.registrar.RegistrarHandler;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -68,6 +66,9 @@ public final class TheWitcher {
         TWFeatures.REGISTER.register(modBus);
         TWMenuTypes.REGISTER.register(modBus);
         TWPOIs.REGISTER.register(modBus);
+        TWParticleTypes.REGISTER.register(modBus);
+
+        TWSignTypes.REGISTER.register(modBus);
 
         modBus.addListener(TWEntityTypes::registerAttributes);
 
@@ -96,7 +97,6 @@ public final class TheWitcher {
             event.createProvider(CustomLootTableProvider.builder()
                     .addBlockProvider(TWBlockLootProvider::new)
                     .addChestProvider(TWChestLootProvider::new)
-                    .addProvider(LootContextParamSets.EQUIPMENT, TWEquipmentLootProvider::new)
                     ::build);
 
             event.createBlockAndItemTags(TWBlockTagsProvider::new, TWItemTagsProvider::new);

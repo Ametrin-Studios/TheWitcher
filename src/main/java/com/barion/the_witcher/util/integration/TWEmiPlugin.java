@@ -25,7 +25,7 @@
 //
 //        var manager = registry.getRecipeManager();
 //        for (var recipe : manager.getAllRecipesFor(TWRecipeTypes.MASTER_SMITHING.get())) {
-//            registry.addRecipe(new TWMasterSmithingEmiRecipe(recipe.id(), recipe.value()));
+//            registry.addRecipe(new TWMasterSmithingEmiRecipe(recipe.id(), recipe.signType()));
 //        }
 //    }
 //}

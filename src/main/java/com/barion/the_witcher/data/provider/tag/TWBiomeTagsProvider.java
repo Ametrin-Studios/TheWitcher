@@ -63,6 +63,7 @@ public final class TWBiomeTagsProvider extends BiomeTagsProvider {
 
         tag(TWTags.Biomes.HAS_WHITE_MYRTLE).add(
                 Biomes.FLOWER_FOREST,
+                Biomes.SUNFLOWER_PLAINS,
                 Biomes.BIRCH_FOREST,
                 Biomes.OLD_GROWTH_BIRCH_FOREST
         );

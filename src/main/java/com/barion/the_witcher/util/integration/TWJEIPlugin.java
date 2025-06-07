@@ -29,7 +29,7 @@
 //
 //
 //    public void registerRecipes(@NotNull IRecipeRegistration registration) {
-//        var recipes = recipeMap.byType(TWRecipeTypes.MASTER_SMITHING.get()).stream().map(RecipeHolder::value).toList();
+//        var recipes = recipeMap.byType(TWRecipeTypes.MASTER_SMITHING.get()).stream().map(RecipeHolder::signType).toList();
 //        registration.addRecipes(TWMasterSmithingRecipeCategory.RECIPE_TYPE, recipes);
 //    }
 //}

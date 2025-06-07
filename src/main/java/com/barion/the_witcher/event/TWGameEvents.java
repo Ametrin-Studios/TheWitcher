@@ -51,12 +51,12 @@ public final class TWGameEvents {
         if (entity.getType().is(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES) || entity.hasEffect(TWEffects.FROST_RESISTANCE)) {
             return;
         }
-        if (entity instanceof Player && ((Player) entity).getAbilities().invulnerable) {
+        if (entity instanceof Player player && player.getAbilities().invulnerable) {
             return;
         }
 
         entity.setIsInPowderSnow(true);
-        entity.setTicksFrozen(Math.min(entity.getTicksRequiredToFreeze() + 2, entity.getTicksFrozen() + 3)); //very bad, need a better solution
+        entity.setTicksFrozen(Math.min(entity.getTicksRequiredToFreeze() + 2, entity.getTicksFrozen() + 3)); // very bad, need a better solution
     }
 
     @SubscribeEvent

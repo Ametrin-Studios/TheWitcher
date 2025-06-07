@@ -7,7 +7,6 @@ import net.neoforged.neoforge.network.PacketDistributor;
 
 public record TWEnergyWrapper(ServerPlayer player) {
     private static final int MIN_ENERGY = 0;
-    public static final String NBT_ID = "energy";
 
 
     public float get() {
