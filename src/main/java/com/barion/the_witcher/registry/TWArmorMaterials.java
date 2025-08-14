@@ -20,5 +20,6 @@ public final class TWArmorMaterials {
             .repairIngredient(TWTags.Items.STEEL_INGOTS)
             .toughness(3)
             .knockbackResistance(0.1f)
+            .durability(35)
             .build();
 }

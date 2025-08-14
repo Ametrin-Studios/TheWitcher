@@ -9,10 +9,13 @@ import com.barion.the_witcher.registry.block.TWBlocks;
 import com.barion.the_witcher.world.item.TWKikimoraToothItem;
 import com.barion.the_witcher.world.item.TWSilverSwordItem;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public final class TWItems {
     public static final DeferredRegister.Items REGISTER = DeferredRegister.createItems(TheWitcher.MOD_ID);
@@ -32,7 +35,12 @@ public final class TWItems {
     public static final DeferredItem<ArmorItem> REINFORCED_LEATHER_HELMET = REGISTER.registerItem("reinforced_leather_helmet", properties -> new ArmorItem(TWArmorMaterials.REINFORCED_LEATHER, ArmorType.HELMET, properties));
     public static final DeferredItem<ArmorItem> REINFORCED_LEATHER_CHESTPLATE = REGISTER.registerItem("reinforced_leather_chestplate", properties -> new ArmorItem(TWArmorMaterials.REINFORCED_LEATHER, ArmorType.CHESTPLATE, properties));
     public static final DeferredItem<ArmorItem> REINFORCED_LEATHER_LEGGINGS = REGISTER.registerItem("reinforced_leather_leggings", properties -> new ArmorItem(TWArmorMaterials.REINFORCED_LEATHER, ArmorType.LEGGINGS, properties));
-    public static final DeferredItem<ArmorItem> REINFORCED_LEATHER_BOOTS = REGISTER.registerItem("reinforced_leather_boots", properties -> new ArmorItem(TWArmorMaterials.REINFORCED_LEATHER, ArmorType.BOOTS, properties));
+    public static final DeferredItem<ArmorItem> REINFORCED_LEATHER_BOOTS = REGISTER.registerItem("reinforced_leather_boots", properties -> new ArmorItem(TWArmorMaterials.REINFORCED_LEATHER, ArmorType.BOOTS, properties) {
+        @Override @ParametersAreNonnullByDefault
+        public boolean canWalkOnPowderedSnow(ItemStack stack, LivingEntity wearer) {
+            return true;
+        }
+    });
 
     public static final DeferredItem<TWKikimoraToothItem> KIKIMORA_TOOTH = REGISTER.registerItem("kikimora_tooth", TWKikimoraToothItem::new);
     public static final DeferredItem<BlockItem> WHITE_MYRTLE = REGISTER.registerItem("white_myrtle", (properties) -> new BlockItem(TWBlocks.WHITE_MYRTLE_BUSH.get(), properties.useItemDescriptionPrefix()));
