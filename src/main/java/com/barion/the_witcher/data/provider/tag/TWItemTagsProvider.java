@@ -58,6 +58,19 @@ public final class TWItemTagsProvider extends ItemTagsProvider {
                 TWBlocks.HALLUCINATED_STONE.asItem()
         );
 
+        tag(ItemTags.HEAD_ARMOR)
+                .add(TWItems.REINFORCED_LEATHER_HELMET.get())
+        ;
+        tag(ItemTags.CHEST_ARMOR)
+                .add(TWItems.REINFORCED_LEATHER_CHESTPLATE.get())
+        ;
+        tag(ItemTags.LEG_ARMOR)
+                .add(TWItems.REINFORCED_LEATHER_LEGGINGS.get())
+        ;
+        tag(ItemTags.FOOT_ARMOR)
+                .add(TWItems.REINFORCED_LEATHER_BOOTS.get())
+        ;
+
         tag(ItemTags.FREEZE_IMMUNE_WEARABLES).add(
                 TWItems.REINFORCED_LEATHER_HELMET.get(),
                 TWItems.REINFORCED_LEATHER_CHESTPLATE.get(),

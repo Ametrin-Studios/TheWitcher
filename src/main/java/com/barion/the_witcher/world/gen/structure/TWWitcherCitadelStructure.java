@@ -76,7 +76,7 @@ public class TWWitcherCitadelStructure extends Structure {
             BlockPos pivot = new BlockPos(size.getX() / 2, 0, size.getZ() / 2);
             StructurePlaceSettings settings = new StructurePlaceSettings().setLiquidSettings(LiquidSettings.IGNORE_WATERLOGGING).setRotationPivot(pivot);
             settings.addProcessor(BlockIgnoreProcessor.STRUCTURE_AND_AIR).addProcessor(RemoveGelStructureProcessor.INSTANCE);
-            settings.addProcessor(TWProcessors.CrackStoneBricks);
+            settings.addProcessor(TWProcessors.CRACK_STONE_BRICKS);
             return settings;
         }
 

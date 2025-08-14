@@ -1,4 +1,4 @@
-// 1.21.4	2025-03-06T14:45:02.6547577	Tags for minecraft:item mod id the_witcher
+// 1.21.4	2025-08-14T16:29:19.7889323	Tags for minecraft:item mod id the_witcher
 7e84ad47a883c955bd0840618f34fbb44a9e81a6 data/c/tags/item/ingots.json
 269a4b2283f0cd05a65405c0589bb4993b7b9793 data/c/tags/item/ingots/silver.json
 5e891ae74dea68b8aea184a9a9c05bee9b89713b data/c/tags/item/nuggets.json
@@ -10,7 +10,11 @@ eea26b51d63a26ed77f89e9a41a04bb5b20d1fed data/c/tags/item/storage_blocks.json
 a19f158ea62aecb2decae8db799e4c94220dd282 data/c/tags/item/storage_blocks/silver.json
 c6cc9ae2c82ba6a033cadd219b59c48e0ca167a4 data/minecraft/tags/item/beacon_payment_items.json
 9c06cc4b78c78456a0b2d02c8979f6a5802ff48b data/minecraft/tags/item/buttons.json
+51f5d3818ca268e397f4555f6cadad1bf6a21b1a data/minecraft/tags/item/chest_armor.json
+587d41fda6fd383986f758a740103862e824713d data/minecraft/tags/item/foot_armor.json
 3595cddac008d77d7a2160bd7ad93613e4dd0b5d data/minecraft/tags/item/freeze_immune_wearables.json
+69cf2f86febdf50fb93ab60995263552547c8989 data/minecraft/tags/item/head_armor.json
+9f3797fd834f806b91fbe8cf7be0b2133af038c3 data/minecraft/tags/item/leg_armor.json
 3ad8bb8cee36ba07d7eff13ca0ddc302b5b5c70a data/minecraft/tags/item/slabs.json
 5786d05be7c48c65df49cd613efce30d20c1f973 data/minecraft/tags/item/stairs.json
 e93d0dcade0235d66987b6285169bcc58e495522 data/minecraft/tags/item/stone_crafting_materials.json

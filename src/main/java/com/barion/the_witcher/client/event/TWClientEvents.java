@@ -10,10 +10,11 @@ import com.barion.the_witcher.client.renderer.entity.TWIceGhostRenderer;
 import com.barion.the_witcher.client.renderer.entity.TWWildHuntHoundRenderer;
 import com.barion.the_witcher.client.renderer.entity.TWWildHuntKnightRenderer;
 import com.barion.the_witcher.client.screen.TWMasterSmithingScreen;
+import com.barion.the_witcher.network.TWCastSignC2S;
 import com.barion.the_witcher.registry.TWEntityTypes;
 import com.barion.the_witcher.registry.TWMenuTypes;
+import com.barion.the_witcher.registry.TWSignTypes;
 import com.barion.the_witcher.registry.fluid.TWFluids;
-import com.barion.the_witcher.util.TWUtil;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
@@ -25,10 +26,18 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 @SuppressWarnings("unused")
-@EventBusSubscriber(modid = TheWitcher.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public final class TWModClientEvents {
+@EventBusSubscriber(modid = TheWitcher.MOD_ID, value = Dist.CLIENT)
+public final class TWClientEvents {
+    @SubscribeEvent
+    public static void onKeyInput(final InputEvent.Key event) {
+        if (TWKeyBinding.CAST_SIGN.consumeClick()) {
+            PacketDistributor.sendToServer(new TWCastSignC2S(TWSignTypes.QUEN.getKey()));
+        }
+    }
+
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(TWFluids.SOURCE_ACID.get(), RenderType.translucent());
@@ -47,7 +56,7 @@ public final class TWModClientEvents {
 
     @SubscribeEvent
     public static void registerGuiOverlays(final RegisterGuiLayersEvent event) {
-        event.registerBelow(ResourceLocation.withDefaultNamespace("hotbar"), TWUtil.locate("energy_level"), TWGuiOverlay.ENERGY_LEVEL);
+        event.registerBelow(ResourceLocation.withDefaultNamespace("hotbar"), TheWitcher.locate("energy_level"), TWGuiOverlay.ENERGY_LEVEL);
     }
 
     @SubscribeEvent

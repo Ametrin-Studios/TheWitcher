@@ -28,7 +28,7 @@ public final class TWStructures {
             .pushStructure(TWWildHuntOutpostStructure::new)
                     .biomes(TWTags.Biomes.HAS_ICY_RUIN)
 //                    .spawns(MobCategory.MONSTER, StructureSpawnOverride.BoundingBoxType.PIECE,)
-            .terrainAdjustment(TerrainAdjustment.BEARD_BOX)
+                    .terrainAdjustment(TerrainAdjustment.BEARD_BOX)
             .popStructure()
             .build();
 

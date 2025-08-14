@@ -1,8 +1,8 @@
-// 1.21.4	2025-03-05T16:19:14.7507023	Tags for minecraft:worldgen/biome mod id the_witcher
+// 1.21.4	2025-08-14T14:43:20.8850626	Tags for minecraft:worldgen/biome mod id the_witcher
 86d9033965e171ae56f90166dc091b20fefa06ce data/minecraft/tags/worldgen/biome/has_structure/nether_fossil.json
 7edf754e2a8ebdc05e7f9981a135aab5b9e6efb7 data/the_witcher/tags/worldgen/biome/deals_freezing_damage.json
 bdcc3ab07b79325b410f680342e93bf60cf302f8 data/the_witcher/tags/worldgen/biome/has/icy_ruin.json
-27e5d3844ef4e1e9f635845c0662051580fdf309 data/the_witcher/tags/worldgen/biome/has/white_myrtle.json
+8b00b871fb8851446d03d87f8483395c3598f416 data/the_witcher/tags/worldgen/biome/has/white_myrtle.json
 911f71bfb27bc20ac35fd2993e608d8d6991e866 data/the_witcher/tags/worldgen/biome/has/witcher_citadel.json
 77559a392d66137f345da0f66fb711335191dc2a data/the_witcher/tags/worldgen/biome/icicle_can_grow_in.json
 fe61d0202f72a060c48c5f2ca878eece1b42728a data/the_witcher/tags/worldgen/biome/is/white_frost.json

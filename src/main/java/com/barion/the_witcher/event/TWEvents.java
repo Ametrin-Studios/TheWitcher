@@ -6,12 +6,11 @@ import com.barion.the_witcher.command.TWGetEnergyCommand;
 import com.barion.the_witcher.command.TWGetSignStrengthCommand;
 import com.barion.the_witcher.command.TWSetEnergyCommand;
 import com.barion.the_witcher.command.TWSetSignStrengthCommand;
-import com.barion.the_witcher.network.TWEnergyS2C;
-import com.barion.the_witcher.network.TWMaxEnergyS2C;
-import com.barion.the_witcher.network.TWSignStrengthS2C;
+import com.barion.the_witcher.network.*;
 import com.barion.the_witcher.registry.TWAttachmentTypes;
 import com.barion.the_witcher.registry.TWEffects;
 import com.barion.the_witcher.registry.TWLevels;
+import com.barion.the_witcher.registry.TWRegistries;
 import com.barion.the_witcher.registry.item.TWItems;
 import com.barion.the_witcher.registry.item.TWPotions;
 import net.minecraft.server.level.ServerPlayer;
@@ -28,11 +27,13 @@ import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.server.command.ConfigCommand;
 
 @SuppressWarnings("unused")
-@EventBusSubscriber(modid = TheWitcher.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
-public final class TWGameEvents {
+@EventBusSubscriber(modid = TheWitcher.MOD_ID)
+public final class TWEvents {
     @SubscribeEvent
     public static void entityTick(final EntityTickEvent.Post event) {
         if (event.getEntity() instanceof LivingEntity livingEntity) {
@@ -111,5 +112,43 @@ public final class TWGameEvents {
         new TWGetSignStrengthCommand(event.getDispatcher());
 
         ConfigCommand.register(event.getDispatcher());
+    }
+
+    @SubscribeEvent
+    public static void registerPayloadsEvent(final RegisterPayloadHandlersEvent event) {
+        var registrar = event.registrar("1");
+
+        registrar.playToClient(TWEnergyS2C.TYPE, TWEnergyS2C.STREAM_CODEC, (payload, context) -> {
+            context.player().setData(TWAttachmentTypes.ENERGY.get(), payload.value());
+        });
+
+        registrar.playToClient(TWMaxEnergyS2C.TYPE, TWMaxEnergyS2C.STREAM_CODEC, (payload, context) -> {
+            context.player().setData(TWAttachmentTypes.MAX_ENERGY.get(), payload.value());
+        });
+
+        registrar.playToClient(TWSignStrengthS2C.TYPE, TWSignStrengthS2C.STREAM_CODEC, (payload, context) -> {
+            context.player().setData(TWAttachmentTypes.SIGN_STRENGTH.get(), payload.value());
+        });
+
+        registrar.playToServer(TWCastSignC2S.TYPE, TWCastSignC2S.STREAM_CODEC, (payload, context) -> {
+            var energy = new TWEnergyWrapper((ServerPlayer) context.player());
+            var signType = TWRegistries.SIGN_TYPE.getOrThrow(payload.signType()).value();
+            if(energy.get() < signType.energyConsumed()){
+                return;
+            }
+            energy.decrease(signType.energyConsumed());
+            PacketDistributor.sendToAllPlayers(new TWSignCastedS2C(payload.signType()));
+        });
+
+        registrar.playToClient(TWSignCastedS2C.TYPE, TWSignCastedS2C.STREAM_CODEC, (payload, context) -> {
+            var player = context.player();
+            var signType = TWRegistries.SIGN_TYPE.getOrThrow(payload.signType()).value();
+            player.level().addParticle(signType.particle(), player.getX(), player.getY(), player.getZ(), 0, 1, 0);
+        });
+    }
+
+    @SubscribeEvent
+    public static void newRegistryEvent(final NewRegistryEvent event){
+        event.register(TWRegistries.SIGN_TYPE);
     }
 }

@@ -75,11 +75,11 @@ public class TWIcyRuinStructure extends Structure {
             var pivot = new BlockPos(size.getX() / 2, 0, size.getZ() / 2);
             var settings = new StructurePlaceSettings().setLiquidSettings(LiquidSettings.IGNORE_WATERLOGGING).setRotationPivot(pivot);
             settings.addProcessor(BlockIgnoreProcessor.STRUCTURE_AND_AIR).addProcessor(RemoveGelStructureProcessor.INSTANCE);
-            settings.addProcessor(TWProcessors.CobbleFrostedStoneBricks)
-                    .addProcessor(TWProcessors.CrackFrostedStoneBricks)
-                    .addProcessor(TWProcessors.CrackFrostedStoneBrickStairs)
-                    .addProcessor(TWProcessors.CrackFrostedStoneBrickSlab)
-                    .addProcessor(TWProcessors.CrackFrostedStoneBrickWall);
+            settings.addProcessor(TWProcessors.COBBLE_FROSTED_STONE_BRICKS)
+                    .addProcessor(TWProcessors.CRACK_FROSTED_STONE_BRICKS)
+                    .addProcessor(TWProcessors.CRACK_FROSTED_STONE_BRICK_STAIRS)
+                    .addProcessor(TWProcessors.CRACK_FROSTED_STONE_BRICK_SLAB)
+                    .addProcessor(TWProcessors.CRACK_FROSTED_STONE_BRICK_WALL);
             return settings;
         }
 

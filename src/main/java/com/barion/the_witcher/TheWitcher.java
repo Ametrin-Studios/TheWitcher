@@ -79,7 +79,7 @@ public final class TheWitcher {
         return ResourceLocation.fromNamespaceAndPath(TheWitcher.MOD_ID, key);
     }
 
-    @EventBusSubscriber(modid = TheWitcher.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+    @EventBusSubscriber(modid = TheWitcher.MOD_ID)
     public static class DataGenerators {
         private DataGenerators() { }
 
